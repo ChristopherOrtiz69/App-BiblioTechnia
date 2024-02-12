@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Prueba_Libro
@@ -12,15 +13,16 @@ namespace Prueba_Libro
         private TextBox txtBusqueda;
         private List<string> nombresDocumentos;
         private List<Image> imagenesDocumentos;
-
+        private Panel panelContenedor;
+       
         public Form1()
         {
             InitializeComponent();
             InitializeComponentsAndData();
-            this.AutoScroll = true;
-            //InicializarPDFEncriptado();
+            this.AutoScroll = true; 
+          //  InicializarPDFEncriptado();
         }
-
+    
         private void InitializeComponentsAndData()
         {
             documentManager = new DocumentManager();
@@ -59,7 +61,7 @@ namespace Prueba_Libro
 
             for (int i = 0; i < documentos.Count; i++)
             {
-                PictureBox pictureBox = CreatePictureBox(imagenesDocumentos[i], new Point(xPos, yPos), pictureBox_Click, pictureBox_MouseEnter, pictureBox_MouseLeave);
+                PictureBox pictureBox = CreatePictureBox(imagenesDocumentos[i], new Point(xPos, yPos), pictureBox_Click, /*pictureBox_MouseEnter*/ pictureBox_MouseLeave);
                 pictureBox.Tag = documentos[i].Id; // Se asigna el ID del documento al Tag del PictureBox
                 Controls.Add(pictureBox);
 
@@ -84,8 +86,8 @@ namespace Prueba_Libro
         {
             // Crear la barra de búsqueda en la parte superior derecha del formulario
             txtBusqueda = new TextBox();
-            txtBusqueda.Location = new Point(ClientSize.Width - 400, 100);
-            txtBusqueda.Size = new Size(200, 40);
+            txtBusqueda.Location = new Point(ClientSize.Width - 500, 100);
+            txtBusqueda.Size = new Size(300, 500);
             Controls.Add(txtBusqueda);
 
             // Crear el botón de búsqueda
@@ -108,12 +110,14 @@ namespace Prueba_Libro
             // Filtrar los documentos que contienen el texto de búsqueda en el nombre
             var documentosFiltrados = documentos.Where(doc => doc.Nombre.ToLower().Contains(textoBusqueda)).ToList();
 
+
             // Limpiar los controles excepto la barra de búsqueda y el botón de búsqueda
             foreach (Control control in Controls.Cast<Control>().ToList())
             {
                 if (control != txtBusqueda && control != sender as Button)
                 {
                     Controls.Remove(control);
+
                     control.Dispose();
                 }
             }
@@ -124,7 +128,18 @@ namespace Prueba_Libro
             InitializeUI(documentosFiltrados);
         }
 
-        private PictureBox CreatePictureBox(Image image, Point location, EventHandler clickEvent, EventHandler enterEvent, EventHandler leaveEvent)
+        private PictureBox CreatePictureBox(Image image, Point location, EventHandler clickEvent, EventHandler leaveEvent)
+        {
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Image = image;
+            pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox.Location = location;
+            pictureBox.Click += clickEvent;
+            //pictureBox.MouseEnter += enterEvent;
+            pictureBox.MouseLeave += leaveEvent;
+            return pictureBox;
+        }
+         /*   private PictureBox CreatePictureBox(Image image, Point location, EventHandler clickEvent, EventHandler enterEvent, EventHandler leaveEvent)
         {
             PictureBox pictureBox = new PictureBox();
             pictureBox.Image = image;
@@ -134,7 +149,7 @@ namespace Prueba_Libro
             pictureBox.MouseEnter += enterEvent;
             pictureBox.MouseLeave += leaveEvent;
             return pictureBox;
-        }
+        }*/
 
         private Label CreateLabel(string text, Font font, Size size, Point location)
         {
@@ -154,13 +169,6 @@ namespace Prueba_Libro
             {
                 // Obtener el primer documento de la lista
                 var primerDocumento = documentos[0];
-
-                // Solicitas  contraseña al usuario (puedes implementar tu propia lógica para esto)
-                string userPassword = "contraseña_del_usuario";
-                string ownerPassword = "contraseña_del_propietario";
-
-
-
                 // Combinar la ruta del ejecutable con la ruta del documento PDF cifrado
                 string pdfFileName = $"Encrypted_{primerDocumento.Nombre}.pdf";
                 string pdfFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pdfFileName);
@@ -198,19 +206,12 @@ namespace Prueba_Libro
             }
         }
 
-
-        private bool EsDocumentoEncriptado(DocumentManager.Documento documento)
-        {
-            // Comprobar si el documento está encriptado en función de su ruta
-            return documento.Ruta.StartsWith("Encrypted_");
-        }
-
-        private void pictureBox_MouseEnter(object sender, EventArgs e)
+       /* private void pictureBox_MouseEnter(object sender, EventArgs e)
         {
             // Se maneja el evento mouse enter en el PictureBox
             PictureBox pictureBox = sender as PictureBox;
             pictureBox.Image = Properties.Resources.libro_fondo_ejemplo;
-        }
+        }*/
 
         private void pictureBox_MouseLeave(object sender, EventArgs e)
         {
