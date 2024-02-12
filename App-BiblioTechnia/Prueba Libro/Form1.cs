@@ -18,6 +18,7 @@ namespace Prueba_Libro
             InitializeComponent();
             InitializeComponentsAndData();
             this.AutoScroll = true;
+            //InicializarPDFEncriptado();
         }
 
         private void InitializeComponentsAndData()
@@ -62,7 +63,7 @@ namespace Prueba_Libro
                 pictureBox.Tag = documentos[i].Id; // Se asigna el ID del documento al Tag del PictureBox
                 Controls.Add(pictureBox);
 
-                Label labelSubtitle = CreateLabel(nombresDocumentos[i], new Font("Barlow", 10, FontStyle.Regular), new Size(pictureBoxWidth, 20), new Point(xPos, yPos + pictureBoxHeight));
+                Label labelSubtitle = CreateLabel(nombresDocumentos[i], new Font("Barlow", 10, FontStyle.Regular), new Size(pictureBoxWidth, 40), new Point(xPos, yPos + pictureBoxHeight));
                 Controls.Add(labelSubtitle);
 
                 // Se actualiza posición X e Y para el próximo PictureBox y Label
@@ -83,14 +84,14 @@ namespace Prueba_Libro
         {
             // Crear la barra de búsqueda en la parte superior derecha del formulario
             txtBusqueda = new TextBox();
-            txtBusqueda.Location = new Point(ClientSize.Width - 220, 10);
-            txtBusqueda.Size = new Size(200, 20);
+            txtBusqueda.Location = new Point(ClientSize.Width - 400, 100);
+            txtBusqueda.Size = new Size(200, 40);
             Controls.Add(txtBusqueda);
 
             // Crear el botón de búsqueda
             Button btnBuscar = new Button();
             btnBuscar.Text = "Buscar";
-            btnBuscar.Location = new Point(txtBusqueda.Location.X + txtBusqueda.Width + 10, 10);
+            btnBuscar.Location = new Point(txtBusqueda.Location.X + txtBusqueda.Width + 10, 100);
             btnBuscar.Size = new Size(75, 20);
             btnBuscar.Click += BtnBuscar_Click;
             Controls.Add(btnBuscar);
@@ -145,26 +146,63 @@ namespace Prueba_Libro
             label.Location = location;
             return label;
         }
+        private void InicializarPDFEncriptado()
+        {
+            // Obtener el primer documento en la lista de documentos
+            var documentos = documentManager.ObtenerDocumentos();
+            if (documentos.Count > 0)
+            {
+                // Obtener el primer documento de la lista
+                var primerDocumento = documentos[0];
+
+                // Solicitas  contraseña al usuario (puedes implementar tu propia lógica para esto)
+                string userPassword = "contraseña_del_usuario";
+                string ownerPassword = "contraseña_del_propietario";
+
+
+
+                // Combinar la ruta del ejecutable con la ruta del documento PDF cifrado
+                string pdfFileName = $"Encrypted_{primerDocumento.Nombre}.pdf";
+                string pdfFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pdfFileName);
+
+                // Abrir el PDF encriptado en un nuevo formulario
+                using (var pdfForm = new PdfForm(pdfFilePath))
+                {
+                    pdfForm.ShowDialog(); // Mostrar el formulario PDF de manera modal
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay documentos disponibles.");
+            }
+        }
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
             // Manejar el evento de clic en el PictureBox
             PictureBox pictureBox = sender as PictureBox;
-            int selectedDocumentId = (int)pictureBox.Tag; // Se obtiene  el ID del documento del Tag del PictureBox
+            int selectedDocumentId = (int)pictureBox.Tag; // Obtener el ID del documento del Tag del PictureBox
 
-            // Se obtieeen el nombre del documento
+            // Obtener el documento correspondiente al ID
             DocumentManager.Documento documento = documentManager.ObtenerDocumentos().FirstOrDefault(doc => doc.Id == selectedDocumentId);
+
+            // Verificar si se encontró el documento
             if (documento != null)
             {
-                string pdfFileName = $"Encrypted_{documento.Nombre}.pdf"; // Se usa el nombre del documento aquí
-                string pdfFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pdfFileName);
-
+                // Mostrar el formulario del PDF correspondiente
                 ShowPdfForm(selectedDocumentId);
             }
             else
             {
                 MessageBox.Show("Documento no encontrado.");
             }
+        }
+
+
+        private bool EsDocumentoEncriptado(DocumentManager.Documento documento)
+        {
+            // Comprobar si el documento está encriptado en función de su ruta
+            return documento.Ruta.StartsWith("Encrypted_");
         }
 
         private void pictureBox_MouseEnter(object sender, EventArgs e)
