@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "2dseKWLsGbcziGjU0+O9pP+lZDRJ4GBWCQH/HVPPu7ojapYKt+oUz2m22FGX8hd3WhBgTeX0N75dMTIYnpShIQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\App-BiblioTechnia\\App-BiblioTechnia.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sistemas\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
+    "C:\\Users\\Sistemas\\.nuget\\packages\\itext7\\8.0.3\\itext7.8.0.3.nupkg.sha512",
+    "C:\\Users\\Sistemas\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
+    "C:\\Users\\Sistemas\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\Sistemas\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net40\\1.0.3\\microsoft.netframework.referenceassemblies.net40.1.0.3.nupkg.sha512",
+    "C:\\Users\\Sistemas\\.nuget\\packages\\microsoft.web.webview2\\1.0.2277.86\\microsoft.web.webview2.1.0.2277.86.nupkg.sha512"
+  ],
+  "logs": []
+}
