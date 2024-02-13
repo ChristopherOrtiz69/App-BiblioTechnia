@@ -63,6 +63,16 @@ namespace Prueba_Libro.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5R6d_0001_1707415664p {
+            get {
+                object obj = ResourceManager.GetObject("_5R6d_0001_1707415664p", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap biblioTechnia {
             get {
                 object obj = ResourceManager.GetObject("biblioTechnia", resourceCulture);
@@ -76,6 +86,16 @@ namespace Prueba_Libro.Properties {
         internal static System.Drawing.Bitmap fondo {
             get {
                 object obj = ResourceManager.GetObject("fondo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KhLH_0001_1707415666p {
+            get {
+                object obj = ResourceManager.GetObject("KhLH_0001_1707415666p", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +166,26 @@ namespace Prueba_Libro.Properties {
         internal static System.Drawing.Bitmap Logo_BiblioTechnia {
             get {
                 object obj = ResourceManager.GetObject("Logo_BiblioTechnia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QSK7_0001_1707415664p {
+            get {
+                object obj = ResourceManager.GetObject("QSK7_0001_1707415664p", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sl1p_0001_1707415665p {
+            get {
+                object obj = ResourceManager.GetObject("sl1p_0001_1707415665p", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
