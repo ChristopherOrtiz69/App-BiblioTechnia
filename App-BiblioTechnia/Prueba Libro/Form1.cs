@@ -20,7 +20,7 @@ namespace Prueba_Libro
             InitializeComponent();
             InitializeComponentsAndData();
             this.AutoScroll = true; 
-          //  InicializarPDFEncriptado();
+            InicializarPDFEncriptado();
         }
     
         private void InitializeComponentsAndData()

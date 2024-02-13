@@ -11,7 +11,6 @@ namespace Prueba_Libro
 {
     public partial class PdfForm : Form
     {
-
         private string pdfFilePath;
         private WebView2 webView;
         private bool webViewInitialized;

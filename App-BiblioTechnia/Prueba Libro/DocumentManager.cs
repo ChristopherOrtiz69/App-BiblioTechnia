@@ -35,7 +35,7 @@
             {
                 documentos = new List<Documento>    
                 {
-                    new Documento(0, "Texto largooooooo","DocumentosPDF/Libro.pdf", Properties.Resources.LibroCerrado),
+                    new Documento(0, "Texto largooooooo","Prueba_1.pdf", Properties.Resources.LibroCerrado),
                     new Documento(1, "LibroconUnNombresoteMUYMUYMUYLARGOlargisisisisissisimo", "DocumentosPDF/Prueba_1.pdf", Properties.Resources.LibroCerrado),
                     new Documento(2, "HolaMundo", "DocumentosPDF/Libro.pdf", Properties.Resources.LibroCerrado),
                     new Documento(3, "Libro", "DocumentosPDF/Libro.pdf", Properties.Resources.LibroCerrado),
