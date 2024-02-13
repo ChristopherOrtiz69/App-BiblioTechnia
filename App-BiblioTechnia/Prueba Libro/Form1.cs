@@ -20,7 +20,7 @@ namespace Prueba_Libro
             InitializeComponent();
             InitializeComponentsAndData();
             this.AutoScroll = true; 
-            InicializarPDFEncriptado();
+            //InicializarPDFEncriptado();
         }
     
         private void InitializeComponentsAndData()
@@ -46,7 +46,8 @@ namespace Prueba_Libro
             pictureBoxHeader.Location = new Point(50, 0);
             Controls.Add(pictureBoxHeader);
 
-            Label labelTitle = CreateLabel("----Catálogo----", new Font("Barlow", 20, FontStyle.Regular), new Size(400, 50), new Point((int)((ClientSize.Width - 400) / 2.2), 240));
+            Label labelTitle = CreateLabel("---Catálogo---", new Font("Barlow", 20, FontStyle.Regular), new Size(400, 50), new Point((int)((ClientSize.Width - 400) / 2.2), 240));
+            labelTitle.ForeColor = Color.DodgerBlue; // Cambiar el color del texto a azul
             Controls.Add(labelTitle);
 
             // Aquí están almacenadas las variables para la disposición de las imágenes
@@ -61,7 +62,8 @@ namespace Prueba_Libro
 
             for (int i = 0; i < documentos.Count; i++)
             {
-                PictureBox pictureBox = CreatePictureBox(imagenesDocumentos[i], new Point(xPos, yPos), pictureBox_Click, /*pictureBox_MouseEnter*/ pictureBox_MouseLeave);
+                PictureBox pictureBox = CreatePictureBox(imagenesDocumentos[i], new Point(xPos, yPos), pictureBox_Click);
+
                 pictureBox.Tag = documentos[i].Id; // Se asigna el ID del documento al Tag del PictureBox
                 Controls.Add(pictureBox);
 
@@ -128,29 +130,15 @@ namespace Prueba_Libro
             InitializeUI(documentosFiltrados);
         }
 
-        private PictureBox CreatePictureBox(Image image, Point location, EventHandler clickEvent, EventHandler leaveEvent)
+        private PictureBox CreatePictureBox(Image image, Point location, EventHandler clickEvent)
         {
             PictureBox pictureBox = new PictureBox();
             pictureBox.Image = image;
             pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox.Location = location;
             pictureBox.Click += clickEvent;
-            //pictureBox.MouseEnter += enterEvent;
-            pictureBox.MouseLeave += leaveEvent;
             return pictureBox;
         }
-         /*   private PictureBox CreatePictureBox(Image image, Point location, EventHandler clickEvent, EventHandler enterEvent, EventHandler leaveEvent)
-        {
-            PictureBox pictureBox = new PictureBox();
-            pictureBox.Image = image;
-            pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox.Location = location;
-            pictureBox.Click += clickEvent;
-            pictureBox.MouseEnter += enterEvent;
-            pictureBox.MouseLeave += leaveEvent;
-            return pictureBox;
-        }*/
-
         private Label CreateLabel(string text, Font font, Size size, Point location)
         {
             Label label = new Label();
@@ -159,6 +147,7 @@ namespace Prueba_Libro
             label.Font = font;
             label.Size = size;
             label.Location = location;
+            
             return label;
         }
         private void InicializarPDFEncriptado()
@@ -205,13 +194,6 @@ namespace Prueba_Libro
                 MessageBox.Show("Documento no encontrado.");
             }
         }
-
-       /* private void pictureBox_MouseEnter(object sender, EventArgs e)
-        {
-            // Se maneja el evento mouse enter en el PictureBox
-            PictureBox pictureBox = sender as PictureBox;
-            pictureBox.Image = Properties.Resources.libro_fondo_ejemplo;
-        }*/
 
         private void pictureBox_MouseLeave(object sender, EventArgs e)
         {

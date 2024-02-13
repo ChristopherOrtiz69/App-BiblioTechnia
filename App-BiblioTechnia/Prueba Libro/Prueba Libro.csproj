@@ -222,6 +222,7 @@
     <None Include="Resources\Logo bibliotechnia 1200px_Mesa de trabajo 1.jpg" />
     <None Include="Resources\fondo.jpg" />
     <None Include="Resources\libro_fondo_ejemplo.jpg" />
+    <Content Include="Logo-icono-bibliotechnia_Mesa-de-trabajo-1.ico" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -233,7 +234,9 @@
     </None>
     <None Include="Resources\LibroAbierto2.jpg" />
     <None Include="Resources\LibroAbierto.jpg" />
-    <None Include="Resources\LibroCerrado.jpg" />
+    <Content Include="Resources\LibroCerrado.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\FondoGris.jpg" />
     <None Include="Resources\Libro.jpg" />
     <None Include="Resources\biblioTechnia.jpg" />
