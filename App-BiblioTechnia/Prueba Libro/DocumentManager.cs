@@ -26,6 +26,7 @@
                     Nombre = nombre;
                     Ruta = ruta;
                     Imagen = imagen;
+                    
                 }
             }
 
@@ -35,7 +36,7 @@
             {
                 documentos = new List<Documento>    
                 {
-                    new Documento(0, "Renacer","DocumentosPDF/5R6d-0001-1707415664.pdf", Properties.Resources._5R6d_0001_1707415664p),
+                    new Documento(0, "Renacer","DocumentosPDF/9789562828055.epub", Properties.Resources._5R6d_0001_1707415664p),
                     new Documento(1, "El Pecado de la Carne", "DocumentosPDF/KhLH-0001-1707415666.pdf", Properties.Resources.KhLH_0001_1707415666p),
                     new Documento(2, "Guia de Aves", "DocumentosPDF/QSK7-0001-1707415664.pdf", Properties.Resources.QSK7_0001_1707415664p),
                     new Documento(3, "Encomio de Arte en la Medicina", "DocumentosPDF/sl1p-0001-1707415665.pdf", Properties.Resources.sl1p_0001_1707415665p),
