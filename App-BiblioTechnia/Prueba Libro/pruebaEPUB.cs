@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using VersOne.Epub;
 
@@ -11,7 +12,7 @@ namespace Prueba_Libro
         {
             InitializeComponent();
             this.AutoScroll = true;
-            MostrarContenidoEpub("DocumentosPDF/pruebaEpub.epub");
+            MostrarContenidoEpub("DocumentosPDF/pruebaEpub5.epub");
         }
 
         private void MostrarContenidoEpub(string filePath)
@@ -44,8 +45,18 @@ namespace Prueba_Libro
             // Puedes acceder a los archivos a través de las propiedades del objeto EpubBook
             // como ReadingOrder, Resources, etc.
 
-            // Este es solo un ejemplo básico, necesitarás adaptarlo según tus necesidades específicas
-            return "<html><body><h1>Contenido del ePub</h1><p>Este es un ejemplo básico de contenido.</p></body></html>";
+            // Construir el contenido HTML utilizando el contenido del primer capítulo del ePub
+            EpubLocalTextContentFile firstChapter = book.ReadingOrder.FirstOrDefault();
+            if (firstChapter != null)
+            {
+                string htmlContent = firstChapter.Content;
+                return htmlContent;
+            }
+            else
+            {
+                return "<html><body><h1>Contenido del ePub no encontrado</h1></body></html>";
+            }
         }
+
     }
 }

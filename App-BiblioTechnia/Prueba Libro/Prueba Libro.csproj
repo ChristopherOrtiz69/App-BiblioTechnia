@@ -262,6 +262,9 @@
     <None Include="Resources\Logo bibliotechnia 1200px_Mesa de trabajo 1.jpg" />
     <None Include="Resources\fondo.jpg" />
     <None Include="Resources\libro_fondo_ejemplo.jpg" />
+    <Content Include="index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Logo-icono-bibliotechnia_Mesa-de-trabajo-1.ico" />
     <None Include="Resources\5R6d-0001-1707415664p.png" />
     <None Include="Resources\KhLH-0001-1707415666p.png" />

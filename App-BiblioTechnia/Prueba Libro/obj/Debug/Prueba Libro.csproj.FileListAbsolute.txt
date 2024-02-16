@@ -468,3 +468,4 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\DocumentosPDF\pruebaEpub.epub
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\DocumentosPDF\pruebaEpub2.epub
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba_Libro.pruebaEPUB.resources
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\index.html
