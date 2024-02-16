@@ -181,6 +181,16 @@ namespace Prueba_Libro.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] monofonto {
+            get {
+                object obj = ResourceManager.GetObject("monofonto", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap QSK7_0001_1707415664p {

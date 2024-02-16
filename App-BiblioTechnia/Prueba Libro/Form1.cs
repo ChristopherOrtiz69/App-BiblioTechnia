@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using VersOne.Epub;
+
 
 namespace Prueba_Libro
 {
@@ -16,14 +18,81 @@ namespace Prueba_Libro
         private Panel panelContenedor;
         private const int pictureBoxWidth = 500;
         private const int pictureBoxHeight = 800;
-
+        //private System.Windows.Forms.WebBrowser webBrowser;
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();  
             InitializeComponentsAndData();
             this.AutoScroll = true;
-           // InicializarPDFEncriptado();
+            pruebaEPUB pruebaEPUBForm = new pruebaEPUB();
+            pruebaEPUBForm.Show();
+            // InicializarPDFEncriptado();
+            //webBrowser = new System.Windows.Forms.WebBrowser();
+            //webBrowser.Dock = DockStyle.Fill; // Ajustar el control al tamaño del formulario
+            //Controls.Add(webBrowser); // Agregar el control al formulario
+            //webBrowser.DocumentCompleted += (sender, e) =>
+            /*{
+                if (webBrowser.Document != null && webBrowser.Document.Body != null)
+                {
+                    // Acceder a los metadatos del libro ePub
+                    EpubBook book = EpubReader.ReadBook("DocumentosPDF/pruebaEpub2.epub");
+
+                    // Mostrar un mensaje de confirmación de detección de ePub
+                    MessageBox.Show("Archivo ePub detectado", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Continuar solo si el libro es un archivo ePub
+                    if (book != null)
+                    {
+                        string title = book.Title ?? "Título no encontrado";
+                        string author = book.Author ?? "Autor no encontrado";
+                        string description = book.Description ?? "Descripción no encontrada";
+
+                        // Crear el mensaje con los metadatos
+                        string message = $"Título: {title}\n" +
+                                         $"Autor: {author}\n" +
+                                         $"Descripción: {description}\n";
+
+                        // Mostrar el mensaje con los metadatos en una ventana emergente
+                        MessageBox.Show(message, "Metadatos del ePub", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Si no se pudo cargar el libro, mostrar un mensaje de error
+                        MessageBox.Show("No se pudo cargar el archivo ePub", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            };*/
+
+
+            AbrirYMostrarLibroEpub();
         }
+        private void AbrirYMostrarLibroEpub()
+        {
+            // Ruta al archivo ePub
+            string filePath = "DocumentosPDF/pruebaEpub.epub";
+
+            try
+            {
+                // Leer el archivo ePub
+                EpubBook book = EpubReader.ReadBook(filePath);
+
+                // Obtener el contenido HTML del primer capítulo
+                string htmlContent = book.ReadingOrder.FirstOrDefault()?.Content ?? "No hay contenido disponible";
+
+                // Mostrar el contenido en el WebBrowser agregado dinámicamente
+               // webBrowser.DocumentText = htmlContent;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el archivo ePub: " + ex.Message,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+
 
         private void InitializeComponentsAndData()
         {
@@ -45,10 +114,10 @@ namespace Prueba_Libro
             pictureBoxHeader.Image = Properties.Resources.Logo_BiblioTechnia;
             pictureBoxHeader.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxHeader.Size = new Size(350, 300);
-            pictureBoxHeader.Location = new Point(30, -50);
+            pictureBoxHeader.Location = new Point(20, -50);
             Controls.Add(pictureBoxHeader);
 
-            Label labelTitle = CreateLabel("    Catálogo", new Font("Barlow", 25, FontStyle.Regular), new Size(400, 50), new Point((int)((ClientSize.Width - 400) / 2.2), 240));
+            Label labelTitle = CreateLabel("    Catálogo", new Font("monofonto", 30), new Size(400, 70), new Point((int)((ClientSize.Width - 400) / 2.2), 220));
             labelTitle.ForeColor = Color.DodgerBlue; // Cambiar el color del texto a azul
             Controls.Add(labelTitle);
 
@@ -63,7 +132,7 @@ namespace Prueba_Libro
             // Crear el botón de borrar
             Button btnBorrar = new Button();
             btnBorrar.Text = "Regresar";
-            btnBorrar.Location = new Point(ClientSize.Width - 160, 100);
+            btnBorrar.Location = new Point(ClientSize.Width - 125, 100);
             btnBorrar.Size = new Size(85, 30);
             btnBorrar.Click += BtnBorrar_Click;
             btnBorrar.ForeColor = Color.DodgerBlue;
@@ -85,12 +154,13 @@ namespace Prueba_Libro
                 pictureBox.Tag = documentos[i].Id; // Se asigna el ID del documento al Tag del PictureBox
                 Controls.Add(pictureBox);
 
-                Label labelSubtitle = CreateLabel(nombresDocumentos[i], new Font("Barlow", 12, FontStyle.Regular), new Size(pictureBoxWidth / 2, 80), new Point(xPos, yPos - -380));
+                Label labelSubtitle = CreateLabel(nombresDocumentos[i], new Font("chris", 12, FontStyle.Italic), new Size(pictureBoxWidth / 2, 80), new Point(xPos, yPos - -380));
+
                 Controls.Add(labelSubtitle);
 
                 // Se actualiza posición X e Y para el próximo PictureBox y Label
                 xPos += pictureBoxWidth / 2 + spacingX;
-                columnCount++;
+                columnCount++; 
 
                 if (columnCount >= maxColumns)
                 {
@@ -105,7 +175,7 @@ namespace Prueba_Libro
         {
             // Crear la barra de búsqueda en la parte superior derecha del formulario
             txtBusqueda = new TextBox();
-            txtBusqueda.Location = new Point(ClientSize.Width - 600, 100);
+            txtBusqueda.Location = new Point(ClientSize.Width - 565, 100);
             txtBusqueda.Size = new Size(350, 30); // Aumentar la altura de la TextBox
             txtBusqueda.Multiline = true;
             txtBusqueda.Font = new Font("Barlow", 12, FontStyle.Regular);
@@ -113,7 +183,6 @@ namespace Prueba_Libro
 
             // Crear el botón de búsqueda
             Button btnBuscar = new Button();
-            //btnBuscar.Text = ".           Buscar";
             btnBuscar.Location = new Point(txtBusqueda.Location.X + txtBusqueda.Width + 3, 100);
             btnBuscar.Size = new Size(85, 30);
             btnBuscar.Click += BtnBuscar_Click;

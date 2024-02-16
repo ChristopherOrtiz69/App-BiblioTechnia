@@ -32,6 +32,7 @@ namespace Prueba_Libro
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.SuspendLayout();
             // 
             // Form1
@@ -55,6 +56,8 @@ namespace Prueba_Libro
         }
 
         #endregion
+
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }
 
