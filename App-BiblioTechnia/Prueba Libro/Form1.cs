@@ -24,14 +24,14 @@ namespace Prueba_Libro
             InitializeComponent();  
             InitializeComponentsAndData();
             this.AutoScroll = true;
-            pruebaEPUB pruebaEPUBForm = new pruebaEPUB();
-            pruebaEPUBForm.Show();
-            // InicializarPDFEncriptado();
-            //webBrowser = new System.Windows.Forms.WebBrowser();
-            //webBrowser.Dock = DockStyle.Fill; // Ajustar el control al tamaño del formulario
+            //pruebaEPUB pruebaEPUBForm = new pruebaEPUB();
+            //pruebaEPUBForm.Show();
+            //InicializarPDFEncriptado();
+           // webBrowser = new System.Windows.Forms.WebBrowser();
+           // webBrowser.Dock = DockStyle.Fill; // Ajustar el control al tamaño del formulario
             //Controls.Add(webBrowser); // Agregar el control al formulario
-            //webBrowser.DocumentCompleted += (sender, e) =>
-            /*{
+            /*webBrowser.DocumentCompleted += (sender, e) =>
+            {
                 if (webBrowser.Document != null && webBrowser.Document.Body != null)
                 {
                     // Acceder a los metadatos del libro ePub
@@ -60,12 +60,12 @@ namespace Prueba_Libro
                         // Si no se pudo cargar el libro, mostrar un mensaje de error
                         MessageBox.Show("No se pudo cargar el archivo ePub", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
+                }*/
 
-            };*/
+            }
 
 
-            AbrirYMostrarLibroEpub();
+           /* AbrirYMostrarLibroEpub();
         }
         private void AbrirYMostrarLibroEpub()
         {
@@ -90,9 +90,7 @@ namespace Prueba_Libro
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
-        }
-
-
+        }*/
 
         private void InitializeComponentsAndData()
         {
