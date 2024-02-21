@@ -1,91 +1,158 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-using Microsoft.Web.WebView2.Core;
-using Microsoft.Web.WebView2.WinForms;
+using Ghostscript.NET;
+using Ghostscript.NET.Viewer;
 
 namespace Prueba_Libro
 {
     public partial class PdfForm : Form
     {
-        private string pdfFilePath;
-        private WebView2 webView;
-        private Button btnSubir;
-        private Button btnBajar;
+        private GhostscriptViewer _viewer;
+        private GhostscriptVersionInfo _gsVersion = GhostscriptVersionInfo.GetLastInstalledVersion();
+        private bool _shiftActivated = false;
+        private bool _imprActivated = false;
 
-        public PdfForm(string pdfFileName)
+        public PdfForm(string filePath)
         {
             InitializeComponent();
+            InitializeViewer(filePath);
+            InitializeNavigationButtons();
 
-            // Combinar la ruta del ejecutable con el nombre del archivo PDF
-            pdfFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pdfFileName);
-
-            // Crear botones de subir y bajar
-            btnSubir = new Button();
-            btnSubir.Text = "Subir";
-            btnSubir.Location = new System.Drawing.Point(10, 10);
-            btnSubir.Click += BtnSubir_Click;
-            Controls.Add(btnSubir);
-
-            btnBajar = new Button();
-            btnBajar.Text = "Bajar";
-            btnBajar.Location = new System.Drawing.Point(10, 40);
-            btnBajar.Click += BtnBajar_Click;
-            Controls.Add(btnBajar);
-
-            // Crear y configurar el control WebView2
-            webView = new WebView2();
-            webView.Dock = DockStyle.Fill;
-            Controls.Add(webView);
-
-            // Suscribirse al evento CoreWebView2InitializationCompleted para cargar el PDF después de que se complete la inicialización del WebView2
-            webView.CoreWebView2InitializationCompleted += WebView_CoreWebView2InitializationCompleted;
-
-            // Inicializar el control WebView2
-            webView.EnsureCoreWebView2Async(null);
-
-            // Deshabilitar todos los controles excepto los botones de subir y bajar
-            DisableAllControlsExceptButtons();
+            // Inicializar el evento de teclado
+            this.KeyPreview = true;
+            this.KeyDown += PdfForm_KeyDown;
+            this.KeyUp += PdfForm_KeyUp;
+           
         }
 
-        private async void BtnSubir_Click(object sender, EventArgs e)
+        private void InitializeViewer(string filePath)
         {
-            // Desplazar hacia arriba dentro del control WebView2
-            await webView.ExecuteScriptAsync("window.scrollTo({ top: document.documentElement.scrollTop - 100, behavior: 'smooth' });");
+            _viewer = new GhostscriptViewer();
+            _viewer.DisplaySize += _viewer_DisplaySize;
+            _viewer.DisplayUpdate += _viewer_DisplayUpdate;
+            _viewer.DisplayPage += _viewer_DisplayPage;
+
+            _viewer.Open(filePath, _gsVersion, false);
         }
 
-        private async void BtnBajar_Click(object sender, EventArgs e)
+        private void InitializeNavigationButtons()
         {
-            // Desplazar hacia abajo dentro del control WebView2
-            await webView.ExecuteScriptAsync("window.scrollTo({ top: document.documentElement.scrollTop + 100, behavior: 'smooth' });");
+            Button btnNextPage = new Button();
+            btnNextPage.Text = "Siguiente";
+            btnNextPage.Location = new System.Drawing.Point(1050, 500);
+            btnNextPage.Click += btnNextPage_Click;
+            this.Controls.Add(btnNextPage);
+
+            Button btnPreviousPage = new Button();
+            btnPreviousPage.Text = "Anterior";
+            btnPreviousPage.Location = new System.Drawing.Point(350, 500);
+            btnPreviousPage.Click += btnPreviousPage_Click;
+            this.Controls.Add(btnPreviousPage);
+
+            Button btnFirstPage = new Button();
+            btnFirstPage.Text = "Primera";
+            btnFirstPage.Location = new System.Drawing.Point(190, 10);
+            btnFirstPage.Click += btnFirstPage_Click;
+            this.Controls.Add(btnFirstPage);
+
+            Button btnLastPage = new Button();
+            btnLastPage.Text = "Última";
+            btnLastPage.Location = new System.Drawing.Point(280, 10);
+            btnLastPage.Click += btnLastPage_Click;
+            this.Controls.Add(btnLastPage);
         }
 
-        private void WebView_CoreWebView2InitializationCompleted(object sender, CoreWebView2InitializationCompletedEventArgs e)
+        private void _viewer_DisplaySize(object sender, GhostscriptViewerViewEventArgs e)
         {
-            // Navegar al archivo PDF una vez que el control WebView2 esté inicializado
-            webView.CoreWebView2.Navigate(pdfFilePath);
+            pictureBox1.Image = e.Image;
         }
 
-        private void DisableAllControlsExceptButtons()
+        private void _viewer_DisplayUpdate(object sender, GhostscriptViewerViewEventArgs e)
         {
-            foreach (Control control in Controls)
+            pictureBox1.Invalidate();
+            pictureBox1.Update();
+        }
+
+        private void _viewer_DisplayPage(object sender, GhostscriptViewerViewEventArgs e)
+        {
+            pictureBox1.Invalidate();
+            pictureBox1.Update();
+        }
+
+        private void PdfForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Verificar si se presionó la tecla Shift
+            if (e.KeyCode == Keys.ShiftKey)
             {
-                // Excluir los botones de subir y bajar de la desactivación
-                if (control != btnSubir && control != btnBajar)
-                {
-                    DisableControl(control);
-                }
+                _shiftActivated = true;
+            }
+            if ( e.KeyCode == (Keys.ShiftKey))
+             {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                MessageBox.Show("Detecte shift", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
+            }
+            if( e.KeyCode == Keys.PrintScreen)
+            {
+                _imprActivated = true;
+            }
+            if (e.KeyCode == Keys.PrintScreen)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                MessageBox.Show("Prohibido tomar capturas de pantalla por derechos de autor.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Verificar si se presionó la combinación Windows + Shift + S
+            if (_shiftActivated && e.KeyCode == Keys.S && e.Modifiers == (Keys.Shift | Keys.Control))
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                MessageBox.Show("Prohibido tomar capturas de pantalla. Se detectó la combinación de teclas: Windows + Shift + S", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Bloquear combinación Alt + P
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                MessageBox.Show("Prohibido tomar capturas de pantalla. Se detectó la combinación de teclas: Alt + P", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void DisableControl(Control control)
+        private void PdfForm_KeyUp(object sender, KeyEventArgs e)
         {
-            // Deshabilitar el control y todos sus controles secundarios recursivamente
-            control.Enabled = false;
-            foreach (Control childControl in control.Controls)
+            // Verificar si se levantó la tecla Shift
+            if (e.KeyCode == Keys.ShiftKey)
             {
-                DisableControl(childControl);
+                _shiftActivated = false;
+              
             }
+            if (e.KeyCode == Keys.PrintScreen)
+            {
+                _imprActivated = false;
+            }
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            _viewer.ShowNextPage();
+        }
+
+        private void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            _viewer.ShowPreviousPage();
+        }
+
+        private void btnFirstPage_Click(object sender, EventArgs e)
+        {
+            _viewer.ShowFirstPage();
+        }
+
+        private void btnLastPage_Click(object sender, EventArgs e)
+        {
+            _viewer.ShowLastPage();
         }
     }
 }

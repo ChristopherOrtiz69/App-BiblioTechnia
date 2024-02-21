@@ -38,7 +38,7 @@
                     new Documento(0, "Renácér","DocumentosPDF/9789562828055.epub", Properties.Resources._5R6d_0001_1707415664p),
                     new Documento(1, "El Pecado de la Carne", "DocumentosPDF/KhLH-0001-1707415666.pdf", Properties.Resources.KhLH_0001_1707415666p),
                     new Documento(2, "Guía de Aves", "DocumentosPDF/QSK7-0001-1707415664.pdf", Properties.Resources.QSK7_0001_1707415664p),
-                    new Documento(3, "Encomio de Arte en la Medicina", "DocumentosPDF/sl1p-0001-1707415665.pdf", Properties.Resources.KhLH_0001_1707415666p),
+                    new Documento(3, "Encomio de Arte en la Medicina", "DocumentosPDF/sl1p-0001-1707415665.pdf", Properties.Resources.sl1p_0001_1707415665p),
                     new Documento(4, "Texto o titulo largisisisisimo de prueba lalalalalalalaala ","DocumentosPDF/KhLH-0001-1707415666.pdf", Properties.Resources.KhLH_0001_1707415666p),
                     new Documento(5, "gato ", "DocumentosPDF/KhLH-0001-1707415666.pdf", Properties.Resources.KhLH_0001_1707415666p),
                     new Documento(6, "sucio ","DocumentosPDF/KhLH-0001-1707415666.pdf", Properties.Resources.KhLH_0001_1707415666p),
