@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="App Bibliotechnia 1.0.exe.manifest" size="46487">
+    <dependentAssembly dependencyType="install" codebase="App Bibliotechnia 1.0.exe.manifest" size="45649">
       <assemblyIdentity name="App Bibliotechnia 1.0.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="amd64" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>y/vi+UoByQhb0Z+IiejK2rxvfbKcE4Xyrd0Op/I2jRo=</dsig:DigestValue>
+        <dsig:DigestValue>3o+LmYo5TiZTjVAIcVXnqKU4CIRieX8cMbx8mMigeVI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

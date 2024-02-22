@@ -35,7 +35,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -263,10 +263,8 @@
     <Content Include="icudt.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="DocumentosPDF\5R6d-0001-1707415664.pdf" />
-    <Content Include="DocumentosPDF\KhLH-0001-1707415666.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="DocumentosPDF\5R6d-0001-1707415664.pdf" />
+    <Resource Include="DocumentosPDF\KhLH-0001-1707415666.pdf" />
     <Content Include="DocumentosPDF\QSK7-0001-1707415664.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
