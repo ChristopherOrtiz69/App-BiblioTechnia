@@ -34,7 +34,7 @@ namespace Prueba_Libro
             {
                 documentos = new List<Documento>    
                 {
-                    new Documento(0, "Renácér","DocumentosPDF/9789562828055.epub", Properties.Resources._5R6d_0001_1707415664p),
+                    new Documento(0, "Renácér","DocumentosPDF/5R6d-0001-1707415664.pdf", Properties.Resources._5R6d_0001_1707415664p),
                     new Documento(1, "El Pecado de la Carne", "DocumentosPDF/KhLH-0001-1707415666.pdf", Properties.Resources.KhLH_0001_1707415666p),
                     new Documento(2, "Guía de Aves", "DocumentosPDF/QSK7-0001-1707415664.pdf", Properties.Resources.QSK7_0001_1707415664p),
                     new Documento(3, "Encomio de Arte en la Medicina", "DocumentosPDF/sl1p-0001-1707415665.pdf", Properties.Resources.sl1p_0001_1707415665p),
@@ -144,34 +144,9 @@ namespace Prueba_Libro
             return documentos.Select(doc => doc.Nombre).ToList();
         }
 
-        public List<System.Drawing.Image> ObtenerImagenesDocumentos()
+        public List<System.Drawing.Image> ObtenerImagenesDocumentos() // Usa System.Drawing.Image aquí
         {
-            var images = new List<System.Drawing.Image>();
-
-            // Obtiene todos los nombres de los recursos incrustados en el ensamblado
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceNames = assembly.GetManifestResourceNames();
-
-            // Itera sobre los nombres de los recursos incrustados
-            foreach (var resourceName in resourceNames)
-            {
-                // Verifica si el nombre del recurso cumple con la convención de nomenclatura
-                if (resourceName.StartsWith("Prueba_Libro.Resources.") && resourceName.EndsWith(".png")) // Ajusta la convención según tus necesidades
-                {
-                    // Carga el recurso incrustado desde el ensamblado de la aplicación
-                    var resourceStream = assembly.GetManifestResourceStream(resourceName);
-
-                    // Convierte el stream del recurso en una imagen
-                    using (var stream = new MemoryStream())
-                    {
-                        resourceStream.CopyTo(stream);
-                        var image = System.Drawing.Image.FromStream(stream);
-                        images.Add(image);
-                    }
-                }
-            }
-
-            return images;
+            return documentos.Select(doc => doc.Imagen).ToList();
         }
 
         public void CifrarDocumento(int documentoId, string userPassword, string ownerPassword, bool permitirImpresion)

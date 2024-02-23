@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="7812096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="1393664">
       <assemblyIdentity name="App Bibliotechnia 1.0" version="1.0.0.1" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3T0QhF/wSOwpQT8UO2SPEpiZb/6f2F8nEMTlfK3MrjU=</dsig:DigestValue>
+        <dsig:DigestValue>a/ipYDyhHtVh7Qb0AhEyDUi3UkzyF32lsn9TFw6tx68=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -670,6 +670,24 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>eFY6FBQKjIYt7DaCUrBaMDev6bpA1zojpxRbKqc3i2k=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="DocumentosPDF\5R6d-0001-1707415664.pdf" size="4535696">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Mvx++uVdIMN1SCEC+CF94++mTBiknrJKhw1oJRu2u7I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="DocumentosPDF\KhLH-0001-1707415666.pdf" size="1883017">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HpMXun6MIfXZewWaoc9jciDs6QqsmcX3i068rsHwwH8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="DocumentosPDF\pruebaEpub.epub" size="1255084">

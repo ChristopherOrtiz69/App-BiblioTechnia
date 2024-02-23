@@ -263,8 +263,12 @@
     <Content Include="icudt.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="DocumentosPDF\5R6d-0001-1707415664.pdf" />
-    <Resource Include="DocumentosPDF\KhLH-0001-1707415666.pdf" />
+    <Content Include="DocumentosPDF\5R6d-0001-1707415664.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DocumentosPDF\KhLH-0001-1707415666.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DocumentosPDF\QSK7-0001-1707415664.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
