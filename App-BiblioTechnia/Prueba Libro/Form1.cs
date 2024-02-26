@@ -358,6 +358,6 @@ namespace Prueba_Libro
                 MessageBox.Show("Documento no encontrado.");
             }
         }
-
+        
     }
 }

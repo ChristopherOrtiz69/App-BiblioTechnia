@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="1393664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="5933568">
       <assemblyIdentity name="App Bibliotechnia 1.0" version="1.0.0.1" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>a/ipYDyhHtVh7Qb0AhEyDUi3UkzyF32lsn9TFw6tx68=</dsig:DigestValue>
+        <dsig:DigestValue>lmIe1iEnRGA2cXxD1nibquHDSKa/TDEcgqtwBaUIwDA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -672,42 +672,6 @@
       <dsig:DigestValue>eFY6FBQKjIYt7DaCUrBaMDev6bpA1zojpxRbKqc3i2k=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="DocumentosPDF\5R6d-0001-1707415664.pdf" size="4535696">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Mvx++uVdIMN1SCEC+CF94++mTBiknrJKhw1oJRu2u7I=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="DocumentosPDF\KhLH-0001-1707415666.pdf" size="1883017">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HpMXun6MIfXZewWaoc9jciDs6QqsmcX3i068rsHwwH8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="DocumentosPDF\pruebaEpub.epub" size="1255084">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2sYKo5UTkNpsq6b+OCAXjDSBOJcxfiBBaX0Ilg+gUM8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="DocumentosPDF\pruebaEpub2.epub" size="4347998">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WvLGc4SERMgbdYm6P+qnvSuIc3Odn9vl2rPJZD4o0hg=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="DocumentosPDF\QSK7-0001-1707415664.pdf" size="73366216">
     <hash>
       <dsig:Transforms>
@@ -715,15 +679,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>rThhp/WYooF72z7N6qQvH6etMvQLD4P1sZiU452O3mU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="DocumentosPDF\sl1p-0001-1707415665.pdf" size="2384584">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EF2PPa0lz4y99qEHM3FZ82atC2nosHuMVI5q2WJseGc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Fonts\monofonto.otf" size="57320">
