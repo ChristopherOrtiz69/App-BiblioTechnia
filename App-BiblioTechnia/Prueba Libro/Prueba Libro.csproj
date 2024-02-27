@@ -278,9 +278,16 @@
       <DependentUpon>pruebaEPUB.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
+    <None Include="Resources\9788499108070.epub" />
     <None Include="Resources\Logo bibliotechnia 1200px_Mesa de trabajo 1.jpg" />
     <None Include="Resources\fondo.jpg" />
     <None Include="Resources\libro_fondo_ejemplo.jpg" />
+    <None Include="Images\FlechaAvance.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Images\FlechaRetroceso.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

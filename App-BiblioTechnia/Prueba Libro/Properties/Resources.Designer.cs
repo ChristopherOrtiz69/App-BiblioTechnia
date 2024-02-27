@@ -183,6 +183,16 @@ namespace Prueba_Libro.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
+        internal static byte[] ola {
+            get {
+                object obj = ResourceManager.GetObject("ola", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
         internal static byte[] perro1 {
             get {
                 object obj = ResourceManager.GetObject("perro1", resourceCulture);

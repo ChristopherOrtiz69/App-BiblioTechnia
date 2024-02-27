@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="6424576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="12249088">
       <assemblyIdentity name="App Bibliotechnia 1.0" version="1.0.0.1" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>F0SmqrYLj5jxkW25tDUkfZJ4u92/dJx3VlssVXAq2SE=</dsig:DigestValue>
+        <dsig:DigestValue>4v4qKZXp9aWyInw6dfX6AbyytZ4y1lSYa+jtUCsV7wo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -700,6 +700,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>8YhgHx9qOfRJdDjX9acvJm/j5sMONyK62JfNWn/b8nw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\FlechaRetroceso.png" size="4482">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R2RFSsz52COrDiq/njf/qmSufORNb0iw0Tn65Mk1KSc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="index.html" size="18416">

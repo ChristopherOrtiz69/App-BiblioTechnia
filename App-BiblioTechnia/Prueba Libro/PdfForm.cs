@@ -19,6 +19,8 @@ namespace Prueba_Libro
         private int _zoomOutCount = 0;
         private const int MaxZoomCount = 10;
         private Label lblPageCounter;
+        private bool _darkMode = false;
+
 
         public PdfForm(byte[] pdfContent)
         {
@@ -26,6 +28,7 @@ namespace Prueba_Libro
             InitializeViewer(pdfContent);
             InitializeNavigationButtons();
             InitializeZoomButtons();
+            InitializeDarkModeButton();
 
             // Obtener el número total de páginas del documento PDF
             using (MemoryStream ms = new MemoryStream(pdfContent))
@@ -58,24 +61,75 @@ namespace Prueba_Libro
                 _viewer.Open(ms, _gsVersion, false);
             }
         }
+        private void InitializeDarkModeButton()
+        {
+            Button btnDarkMode = new Button();
+            btnDarkMode.Text = "Modo Oscuro";
+            btnDarkMode.Location = new Point(1550, 10);
+            btnDarkMode.Size = new Size(200, 50);
+            btnDarkMode.Click += btnDarkMode_Click;
+            this.Controls.Add(btnDarkMode);
+        }
+
+        private void btnDarkMode_Click(object sender, EventArgs e)
+        {
+            _darkMode = !_darkMode; // Alternar entre modo oscuro y modo claro
+
+            if (_darkMode)
+            {
+                this.BackColor = Color.DarkGray;
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
+        }
+
 
         private void InitializeNavigationButtons()
         {
+
+
+
             // Botón Siguiente
             Button btnNextPage = new Button();
-            btnNextPage.Text = "Siguiente";
-            btnNextPage.Location = new Point(1300, 250);
+            btnNextPage.Location = new Point(1550, 250);
             btnNextPage.Size = new Size(400, 500); // Tamaño más grande       
+            // Cargar la imagen desde un archivo
+            Image image = Image.FromFile("Images/FlechaAvance.png");
+            // Redimensionar la imagen a un tamaño más pequeño
+            int newWidth = 50; // Ancho deseado
+            int newHeight = 50; // Alto deseado
+            Image resizedImage = new Bitmap(image, new Size(newWidth, newHeight));
+            // Establecer la imagen redimensionada en el botón
+            btnNextPage.Image = resizedImage;
+            // Centrar la imagen dentro del botón
+            btnNextPage.ImageAlign = ContentAlignment.MiddleCenter;
             btnNextPage.Click += btnNextPage_Click;
             this.Controls.Add(btnNextPage);
 
             // Botón Anterior
             Button btnPreviousPage = new Button();
-            btnPreviousPage.Text = "Anterior";
             btnPreviousPage.Location = new Point(10, 250);
             btnPreviousPage.Size = new Size(400, 500); // Tamaño más grande         
+
+            // Cargar la segunda imagen desde un archivo
+            Image image1 = Image.FromFile("Images/FlechaRetroceso.png");
+
+            // Redimensionar la segunda imagen a un tamaño más pequeño
+            int newWidth1 = 50; // Ancho deseado
+            int newHeight1 = 50; // Alto deseado
+            Image resizedImage1 = new Bitmap(image1, new Size(newWidth1, newHeight1));
+
+            // Establecer la imagen redimensionada en el botón
+            btnPreviousPage.Image = resizedImage1;
+
+            // Centrar la imagen dentro del botón
+            btnPreviousPage.ImageAlign = ContentAlignment.MiddleCenter;
             btnPreviousPage.Click += btnPreviousPage_Click;
             this.Controls.Add(btnPreviousPage);
+
+
 
             // Botón Primera Página
             Button btnFirstPage = new Button();
@@ -99,7 +153,7 @@ namespace Prueba_Libro
             Button btnZoomIn = new Button();
             btnZoomIn.Text = "+";
             btnZoomIn.Size = new Size(100, 50);
-            btnZoomIn.Location = new Point(1300, 10);
+            btnZoomIn.Location = new Point(1550, 950);
             btnZoomIn.Font = new Font("barlow", 20, FontStyle.Regular);
             btnZoomIn.Click += btnZoomIn_Click;
             this.Controls.Add(btnZoomIn);
@@ -107,7 +161,7 @@ namespace Prueba_Libro
             Button btnZoomOut = new Button();
             btnZoomOut.Text = "-";
             btnZoomOut.Size = new Size(100, 50);
-            btnZoomOut.Location = new Point(1400, 10);
+            btnZoomOut.Location = new Point(1650, 950);
             btnZoomOut.Font = new Font("barlow", 20, FontStyle.Regular);
             btnZoomOut.Click += btnZoomOut_Click;
             this.Controls.Add(btnZoomOut);
@@ -117,7 +171,7 @@ namespace Prueba_Libro
             lblPageCounter = new Label();
             lblPageCounter.Text = $"Página 1 de {totalPages}"; // Inicialmente en la página 1
             lblPageCounter.AutoSize = true;
-            lblPageCounter.Location = new Point(900, this.ClientSize.Height - lblPageCounter.Height - 40); // Ubicación del contador de páginas en la parte inferior
+            lblPageCounter.Location = new Point(900, this.ClientSize.Height - lblPageCounter.Height - -90); // Ubicación del contador de páginas en la parte inferior
             this.Controls.Add(lblPageCounter);
 
             // Suscribirse al evento MouseWheel del formulario
