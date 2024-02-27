@@ -20,7 +20,7 @@ namespace Prueba_Libro
         private const int MaxZoomCount = 10;
         private Label lblPageCounter;
         private bool _darkMode = false;
-
+        private bool _scrolling = false;
 
         public PdfForm(byte[] pdfContent)
         {
@@ -88,13 +88,10 @@ namespace Prueba_Libro
 
         private void InitializeNavigationButtons()
         {
-
-
-
             // Botón Siguiente
             Button btnNextPage = new Button();
-            btnNextPage.Location = new Point(1550, 250);
-            btnNextPage.Size = new Size(400, 500); // Tamaño más grande       
+            btnNextPage.Location = new Point(1400, 100);
+            btnNextPage.Size = new Size(500, 800); // Tamaño más grande       
             // Cargar la imagen desde un archivo
             Image image = Image.FromFile("Images/FlechaAvance.png");
             // Redimensionar la imagen a un tamaño más pequeño
@@ -110,8 +107,8 @@ namespace Prueba_Libro
 
             // Botón Anterior
             Button btnPreviousPage = new Button();
-            btnPreviousPage.Location = new Point(10, 250);
-            btnPreviousPage.Size = new Size(400, 500); // Tamaño más grande         
+            btnPreviousPage.Location = new Point(10, 100);
+            btnPreviousPage.Size = new Size(500, 800); // Tamaño más grande         
 
             // Cargar la segunda imagen desde un archivo
             Image image1 = Image.FromFile("Images/FlechaRetroceso.png");
@@ -171,7 +168,7 @@ namespace Prueba_Libro
             lblPageCounter = new Label();
             lblPageCounter.Text = $"Página 1 de {totalPages}"; // Inicialmente en la página 1
             lblPageCounter.AutoSize = true;
-            lblPageCounter.Location = new Point(900, this.ClientSize.Height - lblPageCounter.Height - -90); // Ubicación del contador de páginas en la parte inferior
+            lblPageCounter.Location = new Point(900, this.ClientSize.Height - lblPageCounter.Height - -10); // Ubicación del contador de páginas en la parte inferior
             this.Controls.Add(lblPageCounter);
 
             // Suscribirse al evento MouseWheel del formulario
@@ -180,17 +177,35 @@ namespace Prueba_Libro
 
         private void PdfForm_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (e.Delta > 0)
+            if (!_scrolling) // Verificar si no se está realizando ya un cambio de página por scroll
             {
-                _viewer.ShowPreviousPage(); // Scroll hacia arriba
+                _scrolling = true; // Marcar que se está realizando un cambio de página por scroll
+
+                if (e.Delta > 0)
+                {
+                    _viewer.ShowPreviousPage(); // Mostrar página anterior al hacer scroll hacia arriba
+                }
+                else
+                {
+                    _viewer.ShowNextPage(); // Mostrar página siguiente al hacer scroll hacia abajo
+                }
+
+                // Manejar el evento MouseWheel para evitar el desplazamiento de la ventana
+                ((HandledMouseEventArgs)e).Handled = true;
+
+                // Restablecer la variable _scrolling después de un breve tiempo para permitir el siguiente cambio de página por scroll
+                Timer timer = new Timer();
+                timer.Interval = 500; // Tiempo de espera en milisegundos
+                timer.Tick += (senderObj, args) =>
+                {
+                    _scrolling = false;
+                    timer.Stop();
+                    timer.Dispose();
+                };
+                timer.Start();
             }
-            else
-            {
-                _viewer.ShowNextPage(); // Scroll hacia abajo
-            }
-            // Manejar el evento MouseWheel para evitar el desplazamiento de la ventana
-            ((HandledMouseEventArgs)e).Handled = true;
         }
+
 
         private void _viewer_DisplaySize(object sender, GhostscriptViewerViewEventArgs e)
         {

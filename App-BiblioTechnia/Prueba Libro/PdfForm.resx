@@ -123,10 +123,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>635, 12</value>
+    <value>641, 10</value>
+  </data>
+  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="pictureBox1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>600, 900</value>
+    <value>650, 950</value>
   </data>
   <data name="pictureBox1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>541, 857</value>

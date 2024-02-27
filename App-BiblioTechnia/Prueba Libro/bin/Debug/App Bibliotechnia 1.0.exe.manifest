@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="12249088">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="12249600">
       <assemblyIdentity name="App Bibliotechnia 1.0" version="1.0.0.1" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4v4qKZXp9aWyInw6dfX6AbyytZ4y1lSYa+jtUCsV7wo=</dsig:DigestValue>
+        <dsig:DigestValue>VT8BoIDt1imAr5XCnDLxToHqWcV+PAEQELgZe/LC9/Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
