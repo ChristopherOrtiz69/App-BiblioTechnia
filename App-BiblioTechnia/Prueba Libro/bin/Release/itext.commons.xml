@@ -965,6 +965,24 @@
             </summary>
             <param name="event">to handle</param>
         </member>
+        <member name="T:iText.Commons.Actions.ProductNameConstant">
+            <summary>Class which contains open source product name constants.</summary>
+        </member>
+        <member name="F:iText.Commons.Actions.ProductNameConstant.ITEXT_CORE">
+            <summary>itext-core constant.</summary>
+        </member>
+        <member name="F:iText.Commons.Actions.ProductNameConstant.PDF_HTML">
+            <summary>pdfhtml constant.</summary>
+        </member>
+        <member name="F:iText.Commons.Actions.ProductNameConstant.PDF_SWEEP">
+            <summary>pdfsweep constant.</summary>
+        </member>
+        <member name="F:iText.Commons.Actions.ProductNameConstant.PDF_OCR_TESSERACT4">
+            <summary>pdfocr-tesseract4 constant.</summary>
+        </member>
+        <member name="F:iText.Commons.Actions.ProductNameConstant.PRODUCT_NAMES">
+            <summary>set of product names.</summary>
+        </member>
         <member name="T:iText.Commons.Actions.ProductProcessorFactoryKeeper">
             <summary>Helper class which allow to change used product processor factory instance.</summary>
         </member>
@@ -1290,6 +1308,30 @@
             </summary>
             <param name="element">AlgorithmIdentifier wrapper.</param>
         </member>
+        <member name="M:iText.Commons.Bouncycastle.Asn1.IAsn1EncodableVector.AddOptional(iText.Commons.Bouncycastle.Asn1.IAsn1Object)">
+            <summary>
+            Calls actual
+            <c>add</c>
+            method for the wrapped ASN1EncodableVector object if the primitive is not null.
+            </summary>
+            <param name="primitive">ASN1Primitive wrapper.</param>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.Asn1.IAsn1EncodableVector.AddOptional(iText.Commons.Bouncycastle.Asn1.Cms.IAttribute)">
+            <summary>
+            Calls actual
+            <c>add</c>
+            method for the wrapped ASN1EncodableVector object if the attribute is not null.
+            </summary>
+            <param name="attribute">Attribute wrapper.</param>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.Asn1.IAsn1EncodableVector.AddOptional(iText.Commons.Bouncycastle.Asn1.X509.IAlgorithmIdentifier)">
+            <summary>
+            Calls actual
+            <c>add</c>
+            method for the wrapped ASN1EncodableVector object if the element is not null.
+            </summary>
+            <param name="element">AlgorithmIdentifier wrapper.</param>
+        </member>
         <member name="T:iText.Commons.Bouncycastle.Asn1.IAsn1Encoding">
             <summary>
             This interface represents the wrapper for ASN1Encoding that provides the ability
@@ -1505,6 +1547,14 @@
             This interface represents the wrapper for ASN1Enumerated that provides the ability
             to switch between bouncy-castle and bouncy-castle FIPS implementations.
             </summary>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.Asn1.IDerEnumerated.IntValueExact">
+            <summary>
+            Calls actual
+            <c>intValueExact()</c>
+            method for the wrapped ASN1Enumerated object.
+            </summary>
+            <returns>integer value of the wrapped ASN1Enumerated object.</returns>
         </member>
         <member name="T:iText.Commons.Bouncycastle.Asn1.IDerGeneralizedTime">
             <summary>
@@ -2298,6 +2348,18 @@
             </summary>
             <returns>Public key wrapper.</returns>
         </member>
+        <member name="M:iText.Commons.Bouncycastle.Cert.IX509Certificate.GetSigAlgOID">
+            <summary>
+            Get the Signature Algorithms Object ID.
+            </summary>
+            <returns>A string containg a '.' separated object id.</returns>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.Cert.IX509Certificate.GetSigAlgParams">
+            <summary>
+            Get the signature algorithms parameters. (EG DSA Parameters)
+            </summary>
+            <returns>A byte array containing the Der encoded version of the parameters or null if there are none.</returns>
+        </member>
         <member name="M:iText.Commons.Bouncycastle.Cert.IX509Certificate.GetEncoded">
             <summary>
             Calls actual
@@ -2426,6 +2488,14 @@
             method for the wrapped X509Crl object.
             </summary>
             <returns>encoded array</returns>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.Cert.IX509Crl.GetExtensionValue(System.String)">
+            <summary>
+            Calls actual
+            <c>GetExtensionValue</c>
+            method for the wrapped X509Crl object.
+            </summary>
+            <returns>the DER-encoded octet string of the extension value.</returns>
         </member>
         <member name="T:iText.Commons.Bouncycastle.Cert.IX509V2CrlGenerator">
             <summary>
@@ -2964,6 +3034,12 @@
             byte array.
             </returns>
         </member>
+        <member name="M:iText.Commons.Bouncycastle.Crypto.IDigest.GetDigestLength">
+            <summary>
+            Gets byte length of wrapped digest algorithm.
+            </summary>
+            <returns>digest length</returns>
+        </member>
         <member name="M:iText.Commons.Bouncycastle.Crypto.IDigest.Update(System.Byte[],System.Int32,System.Int32)">
             <summary>
             Calls actual
@@ -3100,6 +3176,13 @@
         <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.GetAlgorithmOid(System.String)">
             <summary>
             Get signing algorithm oid from its name.
+            </summary>
+            <param name="name">name of the algorithm</param>
+            <returns>algorithm oid</returns>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.GetDigestAlgorithmOid(System.String)">
+            <summary>
+            Get hash algorithm oid from its name.
             </summary>
             <param name="name">name of the algorithm</param>
             <returns>algorithm oid</returns>
@@ -3449,6 +3532,19 @@
             </param>
             <returns>created ASN1 Enumerated wrapper</returns>
         </member>
+        <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateASN1Enumerated(iText.Commons.Bouncycastle.Asn1.IAsn1Encodable)">
+            <summary>
+            Create ASN1 Enumerated wrapper from
+            <c>IASN1Encodable</c>
+            value.
+            </summary>
+            <param name="object">
+            
+            <c>IASN1Encodable</c>
+            to create ASN1 Enumerated wrapper from
+            </param>
+            <returns>created ASN1 Enumerated wrapper.</returns>
+        </member>
         <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateASN1Encoding">
             <summary>Create ASN1 Encoding without parameters.</summary>
             <returns>created ASN1 Encoding</returns>
@@ -3497,6 +3593,11 @@
         <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateBasicOCSPResponse(iText.Commons.Bouncycastle.Asn1.IAsn1Object)">
             <summary>Create basic OCSP Response wrapper from ASN1 Primitive wrapper.</summary>
             <param name="primitive">ASN1 Primitive wrapper to create basic OCSP response wrapper from</param>
+            <returns>created basic OCSP response wrapper</returns>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateBasicOCSPResponse(System.Byte[])">
+            <summary>Create basic OCSP Response wrapper from bytes array.</summary>
+            <param name="bytes">bytes array to create basic OCSP response wrapper from</param>
             <returns>created basic OCSP response wrapper</returns>
         </member>
         <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateBasicOCSPResponse(System.Object)">
@@ -3804,6 +3905,11 @@
         <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateTBSCertificate(iText.Commons.Bouncycastle.Asn1.IAsn1Encodable)">
             <summary>Create TBS Certificate wrapper from ASN1 Encodable wrapper.</summary>
             <param name="encodable">ASN1 Encodable wrapper to create TBS Certificate wrapper from</param>
+            <returns>created TBS Certificate wrapper</returns>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateTBSCertificate(System.Byte[])">
+            <summary>Create TBS Certificate wrapper from ASN1 Encoded data.</summary>
+            <param name="bytes">encoded TBS Certificate</param>
             <returns>created TBS Certificate wrapper</returns>
         </member>
         <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateIssuerAndSerialNumber(iText.Commons.Bouncycastle.Asn1.X500.IX500Name,iText.Commons.Bouncycastle.Math.IBigInteger)">
@@ -4148,6 +4254,18 @@
              to create X509 Crl wrapper from
              </param>
              <returns>created X509 Crl wrapper</returns>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateX509Crls(System.IO.Stream)">
+             <summary>
+             Create collection of the X509 Crl wrappers from
+             <see cref="T:System.IO.Stream"/>.
+             </summary>
+             <param name="input">
+            
+             <see cref="T:System.IO.Stream"/>
+             to create X509 Crl wrapper from
+             </param>
+             <returns>created collection of the X509 Crl wrappers</returns>
         </member>
         <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.CreateIDigest(System.String)">
              <summary>
@@ -4520,6 +4638,12 @@
                         AES_256 = 5</param>
             <param name="withCertificate"> true when used with a certificate, false otherwise</param>        
         </member>
+        <member name="M:iText.Commons.Bouncycastle.IBouncyCastleFactory.GetBouncyCastleUtil">
+            <summary>
+            Get Bouncy-Castle Util instance implementation related to this <see cref="T:iText.Commons.Bouncycastle.IBouncyCastleFactory"/>
+            </summary>
+            <returns><see cref="T:iText.Commons.Bouncycastle.IBouncyCastleUtil"/> instance implementation</returns>
+        </member>
         <member name="T:iText.Commons.Bouncycastle.IBouncyCastleTestConstantsFactory">
             <summary>
             <see cref="T:iText.Commons.Bouncycastle.IBouncyCastleTestConstantsFactory"/>
@@ -4530,6 +4654,12 @@
             <summary>Get constant for certificate info.</summary>
             <returns>constant for certificate info</returns>
         </member>
+        <member name="T:iText.Commons.Bouncycastle.IBouncyCastleUtil">
+            <summary>
+            This class contains util methods, which use bouncy-castle objects.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:iText.Commons.Bouncycastle.IBouncyCastleUtil.ReadPkcs7Certs(System.IO.Stream)" -->
         <member name="T:iText.Commons.Bouncycastle.Math.IBigInteger">
             <summary>
             This interface represents the wrapper for BigInteger that provides the ability
@@ -4645,6 +4775,24 @@
             The abstract class constructor gets executed from a derived class.
             </summary>
             <param name="format">Exception message</param>
+        </member>
+        <member name="T:iText.Commons.Bouncycastle.Security.AbstractCrlException">
+            <summary>
+            This class represents the wrapper for the CrlException that provides the ability
+            to switch between bouncy-castle and bouncy-castle FIPS implementations.
+            </summary>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.Security.AbstractCrlException.#ctor">
+            <summary>
+            Base constructor for <see cref="!:CertificateExpiredException"/>.
+            </summary>
+        </member>
+        <member name="M:iText.Commons.Bouncycastle.Security.AbstractCrlException.#ctor(System.String)">
+            <summary>
+            Creates new wrapper instance for <see cref="T:iText.Commons.Bouncycastle.Security.AbstractCrlException"/>.
+            The abstract class constructor gets executed from a derived class.
+            </summary>
+            <param name="message">Exception message</param>
         </member>
         <member name="T:iText.Commons.Bouncycastle.Tsp.AbstractTSPException">
             <summary>
@@ -5059,6 +5207,31 @@
             <summary>Gets the value.</summary>
             <returns>the value</returns>
         </member>
+        <member name="T:iText.Commons.Datastructures.Tuple2`2">
+            <summary>Simple tuple container that holds two elements.</summary>
+            <typeparam name="T1">type of the first element</typeparam>
+            <typeparam name="T2">type of the second element</typeparam>
+        </member>
+        <member name="M:iText.Commons.Datastructures.Tuple2`2.#ctor(`0,`1)">
+            <summary>
+            Creates a new instance of
+            <see cref="T:iText.Commons.Datastructures.Tuple2`2"/>
+            with given elements.
+            </summary>
+            <param name="first">the first element</param>
+            <param name="second">the second element</param>
+        </member>
+        <member name="M:iText.Commons.Datastructures.Tuple2`2.GetFirst">
+            <summary>Get the first element.</summary>
+            <returns>the first element</returns>
+        </member>
+        <member name="M:iText.Commons.Datastructures.Tuple2`2.GetSecond">
+            <summary>Get the second element.</summary>
+            <returns>the second element</returns>
+        </member>
+        <member name="M:iText.Commons.Datastructures.Tuple2`2.ToString">
+            <summary><inheritDoc/></summary>
+        </member>
         <member name="T:iText.Commons.Exceptions.AggregatedException">
             <summary>Composite exception class.</summary>
         </member>
@@ -5434,6 +5607,22 @@
             <param name="clazz">the class</param>
             <typeparam name="T">the type of the class</typeparam>
             <returns>the instance</returns>
+        </member>
+        <member name="M:iText.Commons.Utils.DIContainer.IsRegistered(System.Type)">
+            <summary>Checks if an instance is registered for a class.</summary>
+            <remarks>
+            Checks if an instance is registered for a class.
+            If the class is registered but the value is null, it will still return
+            <see langword="true"/>.
+            </remarks>
+            <param name="clazz">the class</param>
+            <returns>
+            
+            <see langword="true"/>
+            if an instance is registered,
+            <see langword="false"/>
+            otherwise
+            </returns>
         </member>
         <member name="T:iText.Commons.Utils.EncodingUtil">
             <summary>

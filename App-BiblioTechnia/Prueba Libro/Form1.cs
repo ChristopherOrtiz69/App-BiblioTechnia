@@ -290,7 +290,10 @@ namespace Prueba_Libro
 
             return label;
         }
-        private void InicializarPDFEncriptado()
+    
+
+
+        /*private void InicializarPDFEncriptado()
         {
             // Obtener el primer documento en la lista de documentos
             var documentos = documentManager.ObtenerDocumentos();
@@ -312,7 +315,7 @@ namespace Prueba_Libro
             {
                 MessageBox.Show("No hay documentos disponibles.");
             }
-        }
+        }*/
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
@@ -350,7 +353,7 @@ namespace Prueba_Libro
             if (documento != null)
             {
                 // Crear una instancia del formulario de visor de PDF y mostrarlo
-                PdfForm pdfForm = new PdfForm(documento.Ruta);
+                PdfForm pdfForm = new PdfForm(documento.Ruta); // Utiliza el contenido del PDF en lugar de la ruta
                 pdfForm.Show();
             }
             else
@@ -358,6 +361,7 @@ namespace Prueba_Libro
                 MessageBox.Show("Documento no encontrado.");
             }
         }
-        
+
+
     }
 }

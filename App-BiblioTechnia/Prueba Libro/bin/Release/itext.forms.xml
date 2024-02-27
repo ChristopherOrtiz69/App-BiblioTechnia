@@ -305,6 +305,10 @@
             <see cref="T:iText.Forms.Fields.AbstractPdfFormField"/>.
             </returns>
         </member>
+        <member name="M:iText.Forms.Fields.AbstractPdfFormField.IsTerminalFormField">
+            <summary>Determines whether current form field is terminal or not.</summary>
+            <returns>true if this form field is a terminal one, false otherwise.</returns>
+        </member>
         <member name="M:iText.Forms.Fields.AbstractPdfFormField.Equals(System.Object)">
             <summary>Indicate whether some other object is "equal to" this one.</summary>
             <remarks>Indicate whether some other object is "equal to" this one. Compares wrapped objects.</remarks>
@@ -728,6 +732,46 @@
             If false, the buttons are mutually exclusive.
             </remarks>
         </member>
+        <member name="M:iText.Forms.Fields.PdfButtonFormField.#ctor(iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a minimal
+            <see cref="T:iText.Forms.Fields.PdfButtonFormField"/>.
+            </summary>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfButtonFormField.#ctor(iText.Kernel.Pdf.Annot.PdfWidgetAnnotation,iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a button form field as a parent of a
+            <see cref="T:iText.Kernel.Pdf.Annot.PdfWidgetAnnotation"/>.
+            </summary>
+            <param name="widget">
+            The widget which will be a kid of the
+            <see cref="T:iText.Forms.Fields.PdfButtonFormField"/>.
+            </param>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfButtonFormField.#ctor(iText.Kernel.Pdf.PdfDictionary)">
+            <summary>
+            Creates a button form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            </summary>
+            <remarks>
+            Creates a button form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            This
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>
+            must be an indirect object.
+            </remarks>
+            <param name="pdfObject">the dictionary to be wrapped, must have an indirect reference.</param>
+        </member>
         <member name="M:iText.Forms.Fields.PdfButtonFormField.GetFormType">
             <summary>Returns <c>Btn</c>, the form type for choice form fields.</summary>
             <returns>
@@ -905,6 +949,46 @@
         <member name="F:iText.Forms.Fields.PdfChoiceFormField.FF_COMMIT_ON_SEL_CHANGE">
             <summary>If true, the new value shall be committed as soon as a selection is made (commonly with the pointing device).
                 </summary>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfChoiceFormField.#ctor(iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a minimal
+            <see cref="T:iText.Forms.Fields.PdfChoiceFormField"/>.
+            </summary>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfChoiceFormField.#ctor(iText.Kernel.Pdf.Annot.PdfWidgetAnnotation,iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a choice form field as a parent of a
+            <see cref="T:iText.Kernel.Pdf.Annot.PdfWidgetAnnotation"/>.
+            </summary>
+            <param name="widget">
+            The widget which will be a kid of the
+            <see cref="T:iText.Forms.Fields.PdfChoiceFormField"/>.
+            </param>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfChoiceFormField.#ctor(iText.Kernel.Pdf.PdfDictionary)">
+            <summary>
+            Creates a choice form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            </summary>
+            <remarks>
+            Creates a choice form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            This
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>
+            must be an indirect object.
+            </remarks>
+            <param name="pdfObject">the dictionary to be wrapped, must have an indirect reference.</param>
         </member>
         <member name="M:iText.Forms.Fields.PdfChoiceFormField.GetFormType">
             <summary>Returns <c>Ch</c>, the form type for choice form fields.</summary>
@@ -3042,17 +3126,69 @@
             <param name="throwExceptionOnError">true if the exception is expected after the merge failed, false if log is expected.
                 </param>
         </member>
+        <member name="M:iText.Forms.Fields.PdfFormFieldMergeUtil.MergeFormFields(iText.Forms.Fields.PdfFormField,iText.Forms.Fields.PdfFormField,System.Boolean)">
+            <summary>This method combines two form fields.</summary>
+            <param name="firstField">first form field to be merged</param>
+            <param name="secondField">second form field to be merged</param>
+            <param name="throwExceptionOnError">
+            define whether exception (true) or log (false) is expected in case kid with
+            the same name exists and merge of two kids failed.
+            </param>
+        </member>
         <member name="T:iText.Forms.Fields.PdfSignatureFormField">
             <summary>An AcroForm field containing signature data.</summary>
         </member>
         <member name="F:iText.Forms.Fields.PdfSignatureFormField.reuseAppearance">
             <summary>Indicates if we need to reuse the existing appearance as a background layer.</summary>
         </member>
+        <member name="F:iText.Forms.Fields.PdfSignatureFormField.ignorePageRotation">
+            <summary>Indicates if we need to ignore page rotation for the signature field annotation.</summary>
+        </member>
         <member name="F:iText.Forms.Fields.PdfSignatureFormField.n0">
             <summary>Background level of the signature appearance.</summary>
         </member>
         <member name="F:iText.Forms.Fields.PdfSignatureFormField.n2">
             <summary>Signature appearance layer that contains information about the signature.</summary>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfSignatureFormField.#ctor(iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a minimal
+            <see cref="T:iText.Forms.Fields.PdfSignatureFormField"/>.
+            </summary>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfSignatureFormField.#ctor(iText.Kernel.Pdf.Annot.PdfWidgetAnnotation,iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a signature form field as a parent of a
+            <see cref="T:iText.Kernel.Pdf.Annot.PdfWidgetAnnotation"/>.
+            </summary>
+            <param name="widget">
+            The widget which will be a kid of the
+            <see cref="T:iText.Forms.Fields.PdfSignatureFormField"/>.
+            </param>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfSignatureFormField.#ctor(iText.Kernel.Pdf.PdfDictionary)">
+            <summary>
+            Creates a signature form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            </summary>
+            <remarks>
+            Creates a signature form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            This
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>
+            must be an indirect object.
+            </remarks>
+            <param name="pdfObject">the dictionary to be wrapped, must have an indirect reference.</param>
         </member>
         <member name="M:iText.Forms.Fields.PdfSignatureFormField.GetFormType">
             <summary>Returns <c>Sig</c>, the form type for signature form fields.</summary>
@@ -3106,6 +3242,22 @@
             instance.
             </returns>
         </member>
+        <member name="M:iText.Forms.Fields.PdfSignatureFormField.SetIgnorePageRotation(System.Boolean)">
+            <summary>Sets the boolean value which indicates if page rotation should be ignored for the signature appearance.
+                </summary>
+            <remarks>
+            Sets the boolean value which indicates if page rotation should be ignored for the signature appearance.
+            <para />
+            Default value is
+            <see langword="true"/>.
+            </remarks>
+            <param name="ignore">boolean value to set.</param>
+            <returns>
+            this same
+            <see cref="T:iText.Forms.Fields.PdfSignatureFormField"/>
+            instance.
+            </returns>
+        </member>
         <member name="M:iText.Forms.Fields.PdfSignatureFormField.GetBackgroundLayer">
             <summary>Gets the background layer that is present when creating the signature field if it was set.</summary>
             <returns>n0 layer xObject.</returns>
@@ -3118,8 +3270,68 @@
             <summary>Indicates if the existing appearances needs to be reused as a background.</summary>
             <returns>appearances reusing flag value.</returns>
         </member>
+        <member name="M:iText.Forms.Fields.PdfSignatureFormField.IsPageRotationIgnored">
+            <summary>Indicates if page rotation should be ignored for the signature appearance.</summary>
+            <returns>the boolean value which indicates if we need to ignore page rotation for the signature appearance.
+                </returns>
+        </member>
         <member name="T:iText.Forms.Fields.PdfTextFormField">
             <summary>An AcroForm field containing textual data.</summary>
+        </member>
+        <member name="F:iText.Forms.Fields.PdfTextFormField.FF_FILE_SELECT">
+            <summary>constant which determines whether field currently represents a path.</summary>
+        </member>
+        <member name="F:iText.Forms.Fields.PdfTextFormField.FF_DO_NOT_SPELL_CHECK">
+            <summary>constant which determines whether spell-checking is currently enabled</summary>
+        </member>
+        <member name="F:iText.Forms.Fields.PdfTextFormField.FF_DO_NOT_SCROLL">
+            <summary>constant which determines whether longer texts are currently allowed.</summary>
+        </member>
+        <member name="F:iText.Forms.Fields.PdfTextFormField.FF_COMB">
+            <summary>constant which determines maximum length of the field's text.</summary>
+        </member>
+        <member name="F:iText.Forms.Fields.PdfTextFormField.FF_RICH_TEXT">
+            <summary>constant which determines whether text is currently represented as rich text.</summary>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfTextFormField.#ctor(iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a minimal
+            <see cref="T:iText.Forms.Fields.PdfTextFormField"/>.
+            </summary>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfTextFormField.#ctor(iText.Kernel.Pdf.Annot.PdfWidgetAnnotation,iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Creates a text form field as a parent of a
+            <see cref="T:iText.Kernel.Pdf.Annot.PdfWidgetAnnotation"/>.
+            </summary>
+            <param name="widget">
+            The widget which will be a kid of the
+            <see cref="T:iText.Forms.Fields.PdfTextFormField"/>.
+            </param>
+            <param name="pdfDocument">
+            The
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            instance.
+            </param>
+        </member>
+        <member name="M:iText.Forms.Fields.PdfTextFormField.#ctor(iText.Kernel.Pdf.PdfDictionary)">
+            <summary>
+            Creates a text form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            </summary>
+            <remarks>
+            Creates a text form field as a wrapper object around a
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>.
+            This
+            <see cref="T:iText.Kernel.Pdf.PdfDictionary"/>
+            must be an indirect object.
+            </remarks>
+            <param name="pdfObject">the dictionary to be wrapped, must have an indirect reference.</param>
         </member>
         <member name="M:iText.Forms.Fields.PdfTextFormField.GetFormType">
             <summary>Returns <c>Tx</c>, the form type for textual form fields.</summary>
@@ -3302,6 +3514,13 @@
         </member>
         <member name="M:iText.Forms.Fields.Properties.SignedAppearanceText.SetReasonLine(System.String)">
             <summary>Sets the signing reason.</summary>
+            <remarks>
+            Sets the signing reason.
+            <para />
+            Note, that this reason won't be passed to the signature dictionary. If none is set, value set by
+            <c>PdfSigner#setReason</c>
+            will be used.
+            </remarks>
             <param name="reason">signing reason.</param>
             <returns>
             this same
@@ -3315,6 +3534,13 @@
         </member>
         <member name="M:iText.Forms.Fields.Properties.SignedAppearanceText.SetLocationLine(System.String)">
             <summary>Sets the signing location.</summary>
+            <remarks>
+            Sets the signing location.
+            <para />
+            Note, that this location won't be passed to the signature dictionary. If none is set, value set by
+            <c>PdfSigner#setLocation</c>
+            will be used.
+            </remarks>
             <param name="location">new signing location.</param>
             <returns>
             this same
@@ -3324,6 +3550,11 @@
         </member>
         <member name="M:iText.Forms.Fields.Properties.SignedAppearanceText.SetSignedBy(System.String)">
             <summary>Sets the name of the signer from the certificate.</summary>
+            <remarks>
+            Sets the name of the signer from the certificate.
+            <para />
+            Note, that the signer name will be replaced by the one from the signing certificate during the actual signing.
+            </remarks>
             <param name="signedBy">name of the signer.</param>
             <returns>
             this same
@@ -3341,6 +3572,13 @@
         </member>
         <member name="M:iText.Forms.Fields.Properties.SignedAppearanceText.SetSignDate(System.DateTime)">
             <summary>Sets the signature date.</summary>
+            <remarks>
+            Sets the signature date.
+            <para />
+            Note, that the signing date will be replaced by the one from the
+            <c>PdfSigner</c>
+            during the signing.
+            </remarks>
             <param name="signDate">new signature date.</param>
             <returns>
             this same
@@ -3482,6 +3720,21 @@
             for widget placement
             </param>
             <returns>this builder</returns>
+        </member>
+        <member name="M:iText.Forms.Fields.TerminalFormFieldBuilder`1.SetFont(iText.Kernel.Font.PdfFont)">
+            <summary>Set font to be used for form field creation.</summary>
+            <param name="font">
+            instance of
+            <see cref="T:iText.Kernel.Font.PdfFont"/>.
+            </param>
+            <returns>this builder</returns>
+        </member>
+        <member name="M:iText.Forms.Fields.TerminalFormFieldBuilder`1.GetFont">
+            <summary>Get font to be used for form field creation.</summary>
+            <returns>
+            instance of
+            <see cref="T:iText.Kernel.Font.PdfFont"/>.
+            </returns>
         </member>
         <member name="T:iText.Forms.Fields.TextFormFieldBuilder">
             <summary>Builder for text form field.</summary>
@@ -4282,11 +4535,7 @@
         <member name="M:iText.Forms.Form.Element.SignatureFieldAppearance.SetContent(System.String,System.String)">
             <summary>Sets the content for this signature.</summary>
             <param name="signerName">the name of the signer from the certificate.</param>
-            <param name="description">
-            
-            <see cref="T:iText.Forms.Fields.Properties.SignedAppearanceText"/>
-            instance representing the signature text identifying the signer.
-            </param>
+            <param name="description">the signature text identifying the signer.</param>
             <returns>
             this same
             <see cref="T:iText.Forms.Form.Element.SignatureFieldAppearance"/>
@@ -4303,8 +4552,29 @@
             </returns>
         </member>
         <member name="M:iText.Forms.Form.Element.SignatureFieldAppearance.GetContentElements">
-            <summary>Gets the content for this signature.</summary>
+            <summary>Gets the final content for this signature.</summary>
             <returns>collection of the layout elements which will be rendered as a signature content.</returns>
+        </member>
+        <member name="M:iText.Forms.Form.Element.SignatureFieldAppearance.GetSignedAppearanceText">
+            <summary>
+            Gets the
+            <see cref="T:iText.Forms.Fields.Properties.SignedAppearanceText"/>
+            instance for this signature.
+            </summary>
+            <returns>
+            
+            <see cref="T:iText.Forms.Fields.Properties.SignedAppearanceText"/>
+            instance if it was set by
+            <see cref="M:iText.Forms.Form.Element.SignatureFieldAppearance.SetContent(iText.Forms.Fields.Properties.SignedAppearanceText)"/>
+            , null otherwise.
+            </returns>
+        </member>
+        <member name="M:iText.Forms.Form.Element.SignatureFieldAppearance.SetSignerName(System.String)">
+            <summary>
+            Replaces the signer name for this signature if it was set by
+            <see cref="M:iText.Forms.Form.Element.SignatureFieldAppearance.SetContent(iText.Forms.Fields.Properties.SignedAppearanceText)"/>.
+            </summary>
+            <param name="signerName">signer name to set.</param>
         </member>
         <member name="M:iText.Forms.Form.Element.SignatureFieldAppearance.GetId">
             <summary><inheritDoc/></summary>
@@ -4483,6 +4753,13 @@
             <summary>Gets the accessibility language.</summary>
             <returns>the accessibility language</returns>
         </member>
+        <member name="M:iText.Forms.Form.Renderer.AbstractFormFieldRenderer.GetConformanceLevel(iText.Kernel.Pdf.PdfDocument)">
+            <summary>Gets the conformance level.</summary>
+            <remarks>Gets the conformance level. If the conformance level is not set, the conformance level of the document is used.
+                </remarks>
+            <param name="document">the document</param>
+            <returns>the conformance level or null if the conformance level is not set.</returns>
+        </member>
         <member name="M:iText.Forms.Form.Renderer.AbstractFormFieldRenderer.IsLayoutBasedOnFlatRenderer">
             <summary>Determines, whether the layout is based in the renderer itself or flat renderer.</summary>
             <returns>
@@ -4505,15 +4782,6 @@
         <member name="M:iText.Forms.Form.Renderer.AbstractFormFieldRenderer.ApplyProperties(System.Collections.Generic.IDictionary{System.Int32,System.Object})">
             <summary>Applies the properties to the model element.</summary>
             <param name="properties">the properties to apply</param>
-        </member>
-        <member name="M:iText.Forms.Form.Renderer.AbstractFormFieldRenderer.ApplyBorderProperty(iText.Forms.Fields.PdfFormAnnotation)">
-            <summary>Applies the border property.</summary>
-            <param name="annotation">the annotation to set border characteristics to.</param>
-        </member>
-        <member name="M:iText.Forms.Form.Renderer.AbstractFormFieldRenderer.ApplyBorderProperty(iText.Layout.Renderer.IRenderer,iText.Forms.Fields.PdfFormAnnotation)">
-            <summary>Applies the border property to the renderer.</summary>
-            <param name="renderer">renderer to apply border properties to.</param>
-            <param name="annotation">the annotation to set border characteristics to.</param>
         </member>
         <member name="T:iText.Forms.Form.Renderer.AbstractOneLineTextFieldRenderer">
             <summary>
@@ -4588,6 +4856,13 @@
             <see cref="T:iText.Forms.Form.Element.AbstractSelectField"/>
             to retrieve the options from.
             </param>
+        </member>
+        <member name="M:iText.Forms.Form.Renderer.AbstractSelectFieldRenderer.GetConformanceLevel(iText.Kernel.Pdf.PdfDocument)">
+            <summary>Gets the conformance level.</summary>
+            <remarks>Gets the conformance level. If the conformance level is not set, the conformance level of the document is used.
+                </remarks>
+            <param name="document">the document</param>
+            <returns>the conformance level or null if the conformance level is not set.</returns>
         </member>
         <member name="T:iText.Forms.Form.Renderer.AbstractTextFieldRenderer">
             <summary>
@@ -5969,6 +6244,18 @@
             </remarks>
         </member>
         <!-- Badly formed XML comment ignored for member "T:iText.Forms.PdfSigFieldLock.LockPermissions" -->
+        <member name="T:iText.Forms.Util.BorderStyleUtil">
+            <summary>This file is a helper class for the internal usage only.</summary>
+            <remarks>
+            This file is a helper class for the internal usage only.
+            Be aware that its API and functionality may be changed in the future.
+            </remarks>
+        </member>
+        <member name="M:iText.Forms.Util.BorderStyleUtil.ApplyBorderProperty(iText.Layout.IPropertyContainer,iText.Forms.Fields.PdfFormAnnotation)">
+            <summary>Applies the border property to the annotation.</summary>
+            <param name="container">property container to apply border properties from.</param>
+            <param name="annotation">the annotation to set border characteristics to.</param>
+        </member>
         <member name="T:iText.Forms.Util.DrawingUtil">
             <summary>
             Utility class to draw form fields

@@ -217,15 +217,91 @@
             <param name="url">the URL where the CRL is located</param>
             <returns>CRL object</returns>
         </member>
+        <member name="M:iText.Signatures.CertificateUtil.GetIssuerCertURL(iText.Commons.Bouncycastle.Cert.IX509Crl)">
+            <summary>Retrieves the URL for the issuer certificate for the given CRL.</summary>
+            <param name="crl">the CRL response</param>
+            <returns>the URL or null.</returns>
+        </member>
         <member name="M:iText.Signatures.CertificateUtil.GetOCSPURL(iText.Commons.Bouncycastle.Cert.IX509Certificate)">
             <summary>Retrieves the OCSP URL from the given certificate.</summary>
             <param name="certificate">the certificate</param>
             <returns>the URL or null</returns>
         </member>
+        <member name="M:iText.Signatures.CertificateUtil.GetIssuerCertURL(iText.Commons.Bouncycastle.Cert.IX509Certificate)">
+            <summary>Retrieves the URL for the issuer lists certificates for the given certificate.</summary>
+            <param name="certificate">the certificate</param>
+            <returns>the URL or null.</returns>
+        </member>
         <member name="M:iText.Signatures.CertificateUtil.GetTSAURL(iText.Commons.Bouncycastle.Cert.IX509Certificate)">
             <summary>Gets the URL of the TSA if it's available on the certificate</summary>
             <param name="certificate">a certificate</param>
             <returns>a TSA URL</returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.GenerateCertificate(System.IO.Stream)">
+            <summary>Generates a certificate object and initializes it with the data read from the input stream inStream.
+                </summary>
+            <param name="data">the input stream with the certificates.</param>
+            <returns>a certificate object initialized with the data from the input stream.</returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.RetrieveRevocationInfoFromSignedData(iText.Commons.Bouncycastle.Asn1.IAsn1TaggedObject,System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Cert.IX509Crl},System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Asn1.Ocsp.IBasicOcspResponse},System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Asn1.IAsn1Sequence})">
+            <summary>Try to retrieve CRL and OCSP responses from the signed data crls field.</summary>
+            <param name="taggedObj">
+            signed data crls field as
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1TaggedObject"/>.
+            </param>
+            <param name="crls">collection to store retrieved CRL responses.</param>
+            <param name="ocsps">
+            collection of
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.Ocsp.IBasicOcspResponse"/>
+            wrappers to store retrieved
+            OCSP responses.
+            </param>
+            <param name="otherRevocationInfoFormats">
+            collection of revocation info other than OCSP and CRL responses,
+            e.g. SCVP Request and Response, stored as
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Sequence"/>.
+            </param>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.CreateRevocationInfoChoices(System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Cert.IX509Crl},System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Asn1.Ocsp.IBasicOcspResponse},System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Asn1.IAsn1Sequence})">
+            <summary>
+            Creates the revocation info (crls field) for SignedData structure:
+            RevocationInfoChoices ::= SET OF RevocationInfoChoice
+            RevocationInfoChoice ::= CHOICE {
+            crl CertificateList,
+            other [1] IMPLICIT OtherRevocationInfoFormat }
+            OtherRevocationInfoFormat ::= SEQUENCE {
+            otherRevInfoFormat OBJECT IDENTIFIER,
+            otherRevInfo ANY DEFINED BY otherRevInfoFormat }
+            CertificateList  ::=  SEQUENCE  {
+            tbsCertList          TBSCertList,
+            signatureAlgorithm   AlgorithmIdentifier,
+            signatureValue       BIT STRING  }
+            </summary>
+            <seealso><a href="https://datatracker.ietf.org/doc/html/rfc5652#section-10.2.1">RFC 5652 §10.2.1</a></seealso>
+            <param name="crls">collection of CRL revocation status information.</param>
+            <param name="ocsps">collection of OCSP revocation status information.</param>
+            <param name="otherRevocationInfoFormats">
+            collection of revocation info other than OCSP and CRL responses,
+            e.g. SCVP Request and Response, stored as
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Sequence"/>.
+            </param>
+            <returns>
+            
+            <c>crls [1] RevocationInfoChoices</c>
+            field of SignedData structure. Null if SignedData has
+            no revocation data.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.IsIssuerCertificate(iText.Commons.Bouncycastle.Cert.IX509Certificate,iText.Commons.Bouncycastle.Cert.IX509Certificate)">
+            <summary>Checks if the certificate is signed by provided issuer certificate.</summary>
+            <param name="subjectCertificate">a certificate to check</param>
+            <param name="issuerCertificate">an issuer certificate to check</param>
+            <returns>true if the first passed certificate is signed by next passed certificate.</returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.IsSelfSigned(iText.Commons.Bouncycastle.Cert.IX509Certificate)">
+            <summary>Checks if the certificate is self-signed.</summary>
+            <param name="certificate">a certificate to check</param>
+            <returns>true if the certificate is self-signed.</returns>
         </member>
         <member name="M:iText.Signatures.CertificateUtil.GetExtensionValue(iText.Commons.Bouncycastle.Cert.IX509Certificate,System.String)">
             <param name="certificate">the certificate from which we need the ExtensionValue</param>
@@ -233,7 +309,29 @@
             <returns>
             the extension value as an
             <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Object"/>
-            object
+            object.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.GetExtensionValue(iText.Commons.Bouncycastle.Cert.IX509Crl,System.String)">
+            <param name="crl">the CRL from which we need the ExtensionValue</param>
+            <param name="oid">the Object Identifier value for the extension.</param>
+            <returns>
+            the extension value as an
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Object"/>
+            object.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.GetExtensionValueFromByteArray(System.Byte[])">
+            <summary>
+            Converts extension value represented as byte array to
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Object"/>
+            object.
+            </summary>
+            <param name="extensionValue">the extension value as byte array</param>
+            <returns>
+            the extension value as an
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Object"/>
+            object.
             </returns>
         </member>
         <member name="M:iText.Signatures.CertificateUtil.GetStringFromGeneralName(iText.Commons.Bouncycastle.Asn1.IAsn1Object)">
@@ -244,6 +342,26 @@
             primitive wrapper
             </param>
             <returns>a human-readable String</returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.GetValueFromAIAExtension(iText.Commons.Bouncycastle.Asn1.IAsn1Object,System.String)">
+            <summary>Retrieves accessLocation value for specified accessMethod from the Authority Information Access extension.
+                </summary>
+            <param name="extensionValue">Authority Information Access extension value</param>
+            <param name="accessMethod">accessMethod OID; usually id-ad-caIssuers or id-ad-ocsp</param>
+            <returns>the location (URI) of the information.</returns>
+        </member>
+        <member name="M:iText.Signatures.CertificateUtil.CreateOcsp(iText.Commons.Bouncycastle.Asn1.IAsn1Sequence)">
+            <summary>
+            Helper method that creates the
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.Ocsp.IBasicOcspResponse"/>
+            object from the response bytes.
+            </summary>
+            <param name="seq">response bytes.</param>
+            <returns>
+            
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.Ocsp.IBasicOcspResponse"/>
+            object.
+            </returns>
         </member>
         <member name="T:iText.Signatures.CertificateVerification">
             <summary>This class consists of some methods that allow you to verify certificates.</summary>
@@ -363,6 +481,391 @@
             <param name="signDate">the date the certificate needs to be valid</param>
             <returns>a list of <c>VerificationOK</c> objects. The list will be empty if the certificate couldn't be verified.
                 </returns>
+        </member>
+        <member name="T:iText.Signatures.Cms.AlgorithmIdentifier">
+            <summary>This class represents algorithm identifier structure.</summary>
+        </member>
+        <member name="M:iText.Signatures.Cms.AlgorithmIdentifier.#ctor(System.String)">
+            <summary>Creates an Algorithm identifier structure without parameters.</summary>
+            <param name="algorithmId">the Object id of the algorithm</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.AlgorithmIdentifier.#ctor(System.String,iText.Commons.Bouncycastle.Asn1.IAsn1Object)">
+            <summary>Creates an Algorithm identifier structure with parameters.</summary>
+            <param name="algorithmId">the Object id of the algorithm</param>
+            <param name="parameters">the algorithm parameters as an ASN1 structure</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.AlgorithmIdentifier.#ctor(iText.Commons.Bouncycastle.Asn1.IAsn1Encodable)">
+            <summary>Creates an Algorithm identifier structure with parameters.</summary>
+            <param name="asnStruct">asn1 encodable to retrieve algorithm identifier</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.AlgorithmIdentifier.GetAlgorithmOid">
+            <summary>Return the OID of the algorithm.</summary>
+            <returns>the OID of the algorithm.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.AlgorithmIdentifier.GetParameters">
+            <summary>Return the parameters for the algorithm.</summary>
+            <returns>the parameters for the algorithm.</returns>
+        </member>
+        <member name="T:iText.Signatures.Cms.CmsAttribute">
+            <summary>This class represents Attribute structure.</summary>
+        </member>
+        <member name="M:iText.Signatures.Cms.CmsAttribute.#ctor(System.String,iText.Commons.Bouncycastle.Asn1.IAsn1Object)">
+            <summary>Creates an attribute.</summary>
+            <param name="type">the type of the attribute</param>
+            <param name="value">the value</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CmsAttribute.GetType">
+            <summary>Returns the type of the attribute.</summary>
+            <returns>the type of the attribute.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CmsAttribute.GetValue">
+            <summary>Returns the value of the attribute.</summary>
+            <returns>the value of the attribute.</returns>
+        </member>
+        <member name="T:iText.Signatures.Cms.CMSContainer">
+            <summary>
+            The CMS container which represents SignedData structure from
+            <a href="https://datatracker.ietf.org/doc/html/rfc5652#section-5.1">rfc5652 Cryptographic Message Syntax (CMS)</a>
+            </summary>
+        </member>
+        <member name="F:iText.Signatures.Cms.CMSContainer.otherRevocationInfo">
+            <summary>Collection to store revocation info other than OCSP and CRL responses, e.g. SCVP Request and Response.
+                </summary>
+        </member>
+        <member name="F:iText.Signatures.Cms.CMSContainer.crls">
+            <summary>Optional.</summary>
+            <remarks>
+            Optional.
+            <para />
+            It is a collection of CRL revocation status information.
+            </remarks>
+        </member>
+        <member name="F:iText.Signatures.Cms.CMSContainer.ocsps">
+            <summary>Optional.</summary>
+            <remarks>
+            Optional.
+            <para />
+            It is a collection of CRL revocation status information.
+            </remarks>
+        </member>
+        <member name="F:iText.Signatures.Cms.CMSContainer.encapContentInfo">
+            <summary>This represents the signed content.</summary>
+            <remarks>
+            This represents the signed content.
+            In the case of a signed PDF document this will of type data with no content.
+            </remarks>
+        </member>
+        <member name="F:iText.Signatures.Cms.CMSContainer.certificates">
+            <summary>Optional.</summary>
+            <remarks>
+            Optional.
+            <para />
+            It is intended to add all certificates to be able to validate the entire chain.
+            </remarks>
+        </member>
+        <member name="F:iText.Signatures.Cms.CMSContainer.signerInfo">
+            <summary>This class only supports one signer per signature field.</summary>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.#ctor">
+            <summary>Creates an empty SignedData structure.</summary>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.#ctor(System.Byte[])">
+            <summary>Creates a SignedData structure from a serialized ASN1 structure.</summary>
+            <param name="encodedCMSdata">the serialized CMS container</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.SetSignerInfo(iText.Signatures.Cms.SignerInfo)">
+            <summary>This class only supports one signer per signature field.</summary>
+            <param name="signerInfo">the singerInfo</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetSignerInfo">
+            <summary>This class only supports one signer per signature field.</summary>
+            <returns>the singerInfo</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetSizeEstimation">
+            <summary>
+            When all fields except for signer.signedAttributes.digest and signer.signature are completed
+            it is possible to calculate the eventual size of the signature by serializing except for the signature
+            (that depends on the digest and cypher but is set at 1024 bytes) and later added unsigned attributes like
+            timestamps.
+            </summary>
+            <returns>
+            the estimated size of the complete CMS container before signature is added, size for the signature is
+            added, size for other attributes like timestamps is not.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetCmsVersion">
+            <summary>Only version 1 is supported by this class.</summary>
+            <returns>1 as CMSversion</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetDigestAlgorithm">
+            <summary>The digest algorithm OID and parameters used by the signer.</summary>
+            <remarks>
+            The digest algorithm OID and parameters used by the signer.
+            This class only supports one signer for use in pdf signatures, so only one digest algorithm is supported.
+            <para />
+            This field is set when adding the signerInfo.
+            </remarks>
+            <returns>
+            
+            <see cref="T:iText.Signatures.Cms.AlgorithmIdentifier"/>
+            digest algorithm.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetEncapContentInfo">
+            <summary>This represents the signed content.</summary>
+            <remarks>
+            This represents the signed content.
+            In the case of a signed PDF document this will be of type data with no content.
+            </remarks>
+            <returns>a representation of the data to be signed.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.SetEncapContentInfo(iText.Signatures.Cms.EncapsulatedContentInfo)">
+            <summary>This represents the signed content.</summary>
+            <remarks>
+            This represents the signed content.
+            In the case of a signed PDF document this will be of type data with no content.
+            Defaults to 1.2.840.113549.1.7.1 {iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs-7(7) id-data(1)}
+            </remarks>
+            <param name="encapContentInfo">a representation of the data to be signed.</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.AddCertificate(iText.Commons.Bouncycastle.Cert.IX509Certificate)">
+            <summary>Adds a certificate.</summary>
+            <param name="cert">the certificate to be added</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.AddCertificates(iText.Commons.Bouncycastle.Cert.IX509Certificate[])">
+            <summary>Adds a set of certificates.</summary>
+            <param name="certs">the certificates to be added</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetCertificates">
+            <summary>Retrieves a copy of the list of certificates.</summary>
+            <returns>the list of certificates to be used for signing and certificate validation</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetCrls">
+            <summary>Retrieves a copy of the list of CRLs.</summary>
+            <returns>the list of CRL revocation info.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.AddCrl(iText.Commons.Bouncycastle.Cert.IX509Crl)">
+            <summary>Adds a CRL response to the CMS container.</summary>
+            <param name="crl">the CRL response to be added.</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetOcsps">
+            <summary>Retrieves a copy of the list of OCSPs.</summary>
+            <returns>the list of OCSP revocation info.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.AddOcsp(iText.Commons.Bouncycastle.Asn1.Ocsp.IBasicOcspResponse)">
+            <summary>Adds an OCSP response to the CMS container.</summary>
+            <param name="ocspResponse">the OCSP response to be added.</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.SetSerializedSignedAttributes(System.Byte[])">
+            <summary>Sets the  Signed Attributes of the signer info to this serialized version.</summary>
+            <remarks>
+            Sets the  Signed Attributes of the signer info to this serialized version.
+            The signed attributes will become read-only.
+            </remarks>
+            <param name="signedAttributesData">the serialized Signed Attributes</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.GetSerializedSignedAttributes">
+            <summary>Retrieves the encoded signed attributes of the signer info.</summary>
+            <remarks>
+            Retrieves the encoded signed attributes of the signer info.
+            This makes the signed attributes read only.
+            </remarks>
+            <returns>the encoded signed attributes of the signer info.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.CMSContainer.Serialize">
+            <summary>Serializes the SignedData structure and makes the signer infos signed attributes read only.</summary>
+            <returns>the encoded DignedData structure.</returns>
+        </member>
+        <member name="T:iText.Signatures.Cms.EncapsulatedContentInfo">
+            <summary>This class represents the signed content.</summary>
+        </member>
+        <member name="F:iText.Signatures.Cms.EncapsulatedContentInfo.eContentType">
+            <summary>Object identifier of the content field</summary>
+        </member>
+        <member name="F:iText.Signatures.Cms.EncapsulatedContentInfo.eContent">
+            <summary>Optional.</summary>
+            <remarks>
+            Optional.
+            <para />
+            The actual content as an octet string. Does not have to be DER encoded.
+            </remarks>
+        </member>
+        <member name="M:iText.Signatures.Cms.EncapsulatedContentInfo.#ctor(System.String,iText.Commons.Bouncycastle.Asn1.IAsn1OctetString)">
+            <summary>Creates an EncapsulatedContentInfo with contenttype and content.</summary>
+            <param name="eContentType">the content type Oid (object id)</param>
+            <param name="eContent">the content</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.EncapsulatedContentInfo.#ctor(System.String)">
+            <summary>Creates an EncapsulatedContentInfo with contenttype.</summary>
+            <param name="eContentType">the content type Oid (object id)</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.EncapsulatedContentInfo.#ctor">
+            <summary>Creates a default EncapsulatedContentInfo.</summary>
+        </member>
+        <member name="M:iText.Signatures.Cms.EncapsulatedContentInfo.GetContentType">
+            <summary>Returns the contenttype oid.</summary>
+            <returns>the contenttype oid.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.EncapsulatedContentInfo.GetContent">
+            <summary>Returns the content.</summary>
+            <returns>the content.</returns>
+        </member>
+        <member name="T:iText.Signatures.Cms.SignerInfo">
+            <summary>
+            This class represents the SignerInfo structure from
+            <a href="https://datatracker.ietf.org/doc/html/rfc5652#section-5.3">rfc5652   Cryptographic Message Syntax (CMS)</a>
+            </summary>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.#ctor">
+            <summary>Creates an empty SignerInfo structure.</summary>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.#ctor(iText.Commons.Bouncycastle.Asn1.IAsn1Encodable,System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Cert.IX509Certificate})">
+            <summary>Creates a SignerInfo structure from an ASN1 structure.</summary>
+            <param name="signerInfoStructure">the ASN1 structure containing signerInfo</param>
+            <param name="certificates">the certificates of the CMS, it should contain the signing certificate</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetDigestAlgorithm">
+            <summary>Returns the algorithmId to create the digest of the data to sign.</summary>
+            <returns>the OID of the digest algorithm.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetDigestAlgorithm(iText.Signatures.Cms.AlgorithmIdentifier)">
+            <summary>Sets the algorithmId to create the digest of the data to sign.</summary>
+            <param name="algorithmId">the OID of the algorithm</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetMessageDigest(System.Byte[])">
+            <summary>Adds or replaces the message digest signed attribute.</summary>
+            <param name="digest">ASN.1 type MessageDigest</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetSigningCertificate(iText.Commons.Bouncycastle.Cert.IX509Certificate)">
+            <summary>Sets the certificate that is used to sign.</summary>
+            <param name="certificate">the certificate that is used to sign</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetSigningCertificate">
+            <summary>Gets the certificate that is used to sign.</summary>
+            <returns>the certificate that is used to sign.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetSigningCertificateAndAddToSignedAttributes(iText.Commons.Bouncycastle.Cert.IX509Certificate,System.String)">
+            <summary>Sets the certificate that is used to sign a document and adds it to the signed attributes.</summary>
+            <param name="certificate">the certificate that is used to sign</param>
+            <param name="digestAlgorithmOid">the oid of the digest algorithm to be added to the signed attributes</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetOcspResponses(System.Collections.Generic.ICollection{System.Byte[]})">
+            <summary>Adds a set of OCSP responses as signed attributes.</summary>
+            <param name="ocspResponses">a set of binary representations of OCSP responses.</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetCrlResponses(System.Collections.Generic.ICollection{System.Byte[]})">
+            <summary>Adds a set of CRL responses as signed attributes.</summary>
+            <param name="crlResponses">a set of binary representations of CRL responses.</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.AddSignerCertificateToSignedAttributes(iText.Commons.Bouncycastle.Cert.IX509Certificate,System.String)">
+            <summary>Adds the signer certificate to the signed attributes as a SigningCertificateV2 structure.</summary>
+            <param name="cert">the certificate to add</param>
+            <param name="digestAlgorithmOid">the digest algorithm oid that will be used</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetSignature(System.Byte[])">
+            <summary>Sets the actual signature.</summary>
+            <param name="signatureData">a byte array containing the signature</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetSignatureAlgorithm(iText.Signatures.Cms.AlgorithmIdentifier)">
+            <summary>Optional.</summary>
+            <remarks>
+            Optional.
+            Sets the OID and parameters of the algorithm that will be used to create the signature.
+            This will be overwritten when setting the signing certificate.
+            </remarks>
+            <param name="algorithm">The OID and parameters of the algorithm that will be used to create the signature.
+                </param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetCmsVersion">
+            <summary>Value 0 when no signerIdentifier is available.</summary>
+            <remarks>
+            Value 0 when no signerIdentifier is available.
+            Value 1 when signerIdentifier is of type issuerAndSerialNumber.
+            Value 3 when signerIdentifier is of type subjectKeyIdentifier.
+            </remarks>
+            <returns>CMS version.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetSignedAttributes">
+            <summary>Optional.</summary>
+            <remarks>
+            Optional.
+            <para />
+            Attributes that should be part of the signed content
+            optional, but it MUST be present if the content type of
+            the EncapsulatedContentInfo value being signed is not id-data.
+            In that case it must at least contain the following two attributes:
+            <para />
+            A content-type attribute having as its value the content type
+            of the EncapsulatedContentInfo value being signed.  Section
+            11.1 defines the content-type attribute.  However, the
+            content-type attribute MUST NOT be used as part of a
+            countersignature unsigned attribute as defined in Section 11.4.
+            <para />
+            A message-digest attribute, having as its value the message
+            digest of the content.  Section 11.2 defines the message-digest
+            attribute.
+            </remarks>
+            <returns>collection of the signed attributes.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.AddSignedAttribute(iText.Signatures.Cms.CmsAttribute)">
+            <summary>Adds a new attribute to the signed attributes.</summary>
+            <remarks>
+            Adds a new attribute to the signed attributes.
+            This become readonly after retrieving the serialized version
+            <see cref="M:iText.Signatures.Cms.SignerInfo.SerializeSignedAttributes"/>.
+            </remarks>
+            <param name="attribute">the attribute to add</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetUnSignedAttributes">
+            <summary>Retrieves the optional unsigned attributes.</summary>
+            <returns>the optional unsigned attributes.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.AddUnSignedAttribute(iText.Signatures.Cms.CmsAttribute)">
+            <summary>Optional.</summary>
+            <remarks>
+            Optional.
+            <para />
+            Adds attribute that should not or can not be part of the signed content.
+            </remarks>
+            <param name="attribute">the attribute to add</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SerializeSignedAttributes">
+            <summary>Retrieves the encoded signed attributes of the signer info.</summary>
+            <remarks>
+            Retrieves the encoded signed attributes of the signer info.
+            This makes the signed attributes read only.
+            </remarks>
+            <returns>the encoded signed attributes of the signer info.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.SetSerializedSignedAttributes(System.Byte[])">
+            <summary>Sets the signed attributes from a serialized version.</summary>
+            <remarks>
+            Sets the signed attributes from a serialized version.
+            This makes the signed attributes read only.
+            </remarks>
+            <param name="serializedSignedAttributes">the encoded signed attributes.</param>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetEstimatedSize">
+            <summary>Calculates an estimate size for the SignerInfo structure.</summary>
+            <remarks>
+            Calculates an estimate size for the SignerInfo structure.
+            This takes into account the values added including the signature, but does not account for unset items like
+            a timestamp response added after actual signing.
+            </remarks>
+            <returns>the estimated size of the structure.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetAsDerSequence">
+            <summary>Serializes the SignerInfo structure and makes the signed attributes readonly.</summary>
+            <returns>the encoded SignerInfo structure.</returns>
+        </member>
+        <member name="M:iText.Signatures.Cms.SignerInfo.GetAsDerSequence(System.Boolean)">
+            <summary>Serializes the SignerInfo structure and makes the signed attributes readonly.</summary>
+            <remarks>
+            Serializes the SignerInfo structure and makes the signed attributes readonly.
+            With the possibility to skip making the signed attributes read only for estimation purposes.
+            </remarks>
+            <param name="estimationRun">set to true to not make signed attributes read only</param>
+            <returns>the encoded SignerInfo structure.</returns>
         </member>
         <member name="T:iText.Signatures.CrlClientOffline">
             <summary>
@@ -512,6 +1015,49 @@
             <param name="crlIssuer">the trusted anchor</param>
             <returns>true if the CRL can be trusted</returns>
         </member>
+        <member name="T:iText.Signatures.DefaultIssuingCertificateRetriever">
+            <summary>
+            Empty
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            implementation for compatibility with the older code.
+            </summary>
+        </member>
+        <member name="M:iText.Signatures.DefaultIssuingCertificateRetriever.#ctor">
+            <summary>
+            Creates
+            <see cref="T:iText.Signatures.DefaultIssuingCertificateRetriever"/>
+            instance.
+            </summary>
+        </member>
+        <member name="M:iText.Signatures.DefaultIssuingCertificateRetriever.RetrieveMissingCertificates(iText.Commons.Bouncycastle.Cert.IX509Certificate[])">
+            <summary><inheritDoc/></summary>
+            <param name="chain">
+            
+            <inheritDoc/>
+            </param>
+            <returns>
+            
+            <inheritDoc/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.DefaultIssuingCertificateRetriever.GetCrlIssuerCertificates(iText.Commons.Bouncycastle.Cert.IX509Crl)">
+            <summary><inheritDoc/></summary>
+            <param name="crl">
+            
+            <inheritDoc/>
+            </param>
+            <returns>
+            
+            <inheritDoc/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.DefaultIssuingCertificateRetriever.SetTrustedCertificates(System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Cert.IX509Certificate})">
+            <summary><inheritDoc/></summary>
+            <param name="certificates">
+            
+            <inheritDoc/>
+            </param>
+        </member>
         <member name="T:iText.Signatures.DigestAlgorithms">
             <summary>Class that contains a map with the different message digest algorithms.</summary>
         </member>
@@ -595,7 +1141,7 @@
             <returns>digest of the data</returns>
         </member>
         <member name="M:iText.Signatures.DigestAlgorithms.GetDigest(System.String)">
-            <summary>Gets the digest name for a certain id</summary>
+            <summary>Gets the digest name for a certain id.</summary>
             <param name="oid">an id (for instance "1.2.840.113549.2.5")</param>
             <returns>a digest name (for instance "MD5")</returns>
         </member>
@@ -725,6 +1271,38 @@
             </remarks>
             <param name="signDic">the signature dictionary</param>
         </member>
+        <member name="T:iText.Signatures.IIssuingCertificateRetriever">
+            <summary>
+            Interface helper to support retrieving CAIssuers certificates from Authority Information Access (AIA) Extension in
+            order to support certificate chains with missing certificates and getting CRL response issuer certificates.
+            </summary>
+        </member>
+        <member name="M:iText.Signatures.IIssuingCertificateRetriever.RetrieveMissingCertificates(iText.Commons.Bouncycastle.Cert.IX509Certificate[])">
+            <summary>Retrieves missing certificates in chain using certificate Authority Information Access (AIA) Extension.
+                </summary>
+            <param name="chain">certificate chain to restore with at least signing certificate.</param>
+            <returns>
+            full chain of trust or maximum chain that could be restored in case missing certificates cannot be
+            retrieved from AIA extension.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.IIssuingCertificateRetriever.GetCrlIssuerCertificates(iText.Commons.Bouncycastle.Cert.IX509Crl)">
+            <summary>
+            Retrieves certificates that can be used to verify the signature on the CRL response using CRL
+            Authority Information Access (AIA) Extension.
+            </summary>
+            <param name="crl">CRL response to retrieve issuer for.</param>
+            <returns>certificates retrieved from CRL AIA extension or an empty list in case certificates cannot be retrieved.
+                </returns>
+        </member>
+        <member name="M:iText.Signatures.IIssuingCertificateRetriever.SetTrustedCertificates(System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Cert.IX509Certificate})">
+            <summary>Sets trusted certificate list to be used for the missing certificates retrieving by the issuer name.
+                </summary>
+            <param name="certificates">
+            certificate list for getting missing certificates in chain
+            or CRL response issuer certificates.
+            </param>
+        </member>
         <member name="T:iText.Signatures.IOcspClient">
             <summary>Interface for the Online Certificate Status Protocol (OCSP) Client.</summary>
         </member>
@@ -770,6 +1348,69 @@
             <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Encodable"/>
             object
             </returns>
+        </member>
+        <member name="T:iText.Signatures.IssuingCertificateRetriever">
+            <summary>
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            default implementation.
+            </summary>
+        </member>
+        <member name="M:iText.Signatures.IssuingCertificateRetriever.#ctor">
+            <summary>
+            Creates
+            <see cref="T:iText.Signatures.IssuingCertificateRetriever"/>
+            instance.
+            </summary>
+        </member>
+        <member name="M:iText.Signatures.IssuingCertificateRetriever.RetrieveMissingCertificates(iText.Commons.Bouncycastle.Cert.IX509Certificate[])">
+            <summary><inheritDoc/></summary>
+            <param name="chain">
+            
+            <inheritDoc/>
+            </param>
+            <returns>
+            
+            <inheritDoc/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.IssuingCertificateRetriever.GetCrlIssuerCertificates(iText.Commons.Bouncycastle.Cert.IX509Crl)">
+            <summary><inheritDoc/></summary>
+            <param name="crl">
+            
+            <inheritDoc/>
+            </param>
+            <returns>
+            
+            <inheritDoc/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.IssuingCertificateRetriever.SetTrustedCertificates(System.Collections.Generic.ICollection{iText.Commons.Bouncycastle.Cert.IX509Certificate})">
+            <summary><inheritDoc/></summary>
+            <param name="certificates">
+            
+            <inheritDoc/>
+            </param>
+        </member>
+        <member name="M:iText.Signatures.IssuingCertificateRetriever.GetIssuerCertByURI(System.String)">
+            <summary>
+            Get CA issuers certificates represented as
+            <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="uri">
+            
+            <see cref="T:System.Uri"/>
+            URI, which is expected to be used to get issuer certificates from. Usually
+            CA Issuers value from Authority Information Access (AIA) certificate extension.
+            </param>
+            <returns>
+            CA issuer certificate (or chain) bytes, represented as
+            <see cref="T:System.IO.Stream"/>.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.IssuingCertificateRetriever.ParseCertificates(System.IO.Stream)">
+            <summary>Parses certificates represented as byte array.</summary>
+            <param name="certsData">stream which contains one or more X509 certificates.</param>
+            <returns>a (possibly empty) collection of the certificates read from the given byte array.</returns>
         </member>
         <member name="T:iText.Signatures.ITSAClient">
             <summary>Time Stamp Authority client (caller) interface.</summary>
@@ -855,6 +1496,12 @@
         <member name="F:iText.Signatures.LtvVerification.CertificateOption.WHOLE_CHAIN">
             <summary>Include verification for the whole chain of certificates.</summary>
         </member>
+        <member name="F:iText.Signatures.LtvVerification.CertificateOption.ALL_CERTIFICATES">
+            <summary>
+            Include verification for the whole certificates chain, certificates used to create OCSP responses,
+            CRL response certificates and timestamp certificates included in the signatures.
+            </summary>
+        </member>
         <member name="T:iText.Signatures.LtvVerification.CertificateInclusion">
             <summary>
             Certificate inclusion in the DSS and VRI dictionaries in the CERT and CERTS
@@ -866,6 +1513,15 @@
         </member>
         <member name="F:iText.Signatures.LtvVerification.CertificateInclusion.NO">
             <summary>Do not include certificates in the DSS and VRI dictionaries.</summary>
+        </member>
+        <member name="T:iText.Signatures.LtvVerification.RevocationDataNecessity">
+            <summary>Option to determine whether revocation information is required for the signing certificate.</summary>
+        </member>
+        <member name="F:iText.Signatures.LtvVerification.RevocationDataNecessity.REQUIRED_FOR_SIGNING_CERTIFICATE">
+            <summary>Require revocation information for the signing certificate.</summary>
+        </member>
+        <member name="F:iText.Signatures.LtvVerification.RevocationDataNecessity.OPTIONAL">
+            <summary>Revocation data for the signing certificate may be optional.</summary>
         </member>
         <member name="M:iText.Signatures.LtvVerification.#ctor(iText.Kernel.Pdf.PdfDocument)">
             <summary>The verification constructor.</summary>
@@ -879,6 +1535,56 @@
             <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
             to apply the validation to.
             </param>
+        </member>
+        <member name="M:iText.Signatures.LtvVerification.SetRevocationDataNecessity(iText.Signatures.LtvVerification.RevocationDataNecessity)">
+            <summary>
+            Sets
+            <see cref="T:iText.Signatures.LtvVerification.RevocationDataNecessity"/>
+            option to specify the necessity of revocation data.
+            </summary>
+            <remarks>
+            Sets
+            <see cref="T:iText.Signatures.LtvVerification.RevocationDataNecessity"/>
+            option to specify the necessity of revocation data.
+            <para />
+            Default value is
+            <see cref="F:iText.Signatures.LtvVerification.RevocationDataNecessity.OPTIONAL"/>.
+            </remarks>
+            <param name="revocationDataNecessity">
+            
+            <see cref="T:iText.Signatures.LtvVerification.RevocationDataNecessity"/>
+            value to set
+            </param>
+            <returns>
+            this
+            <see cref="T:iText.Signatures.LtvVerification"/>
+            instance.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.LtvVerification.SetIssuingCertificateRetriever(iText.Signatures.IIssuingCertificateRetriever)">
+            <summary>
+            Sets
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            instance needed to get CRL issuer certificates (using AIA extension).
+            </summary>
+            <remarks>
+            Sets
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            instance needed to get CRL issuer certificates (using AIA extension).
+            <para />
+            Default value is
+            <see cref="T:iText.Signatures.DefaultIssuingCertificateRetriever"/>.
+            </remarks>
+            <param name="issuingCertificateRetriever">
+            
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            instance to set
+            </param>
+            <returns>
+            this
+            <see cref="T:iText.Signatures.LtvVerification"/>
+            instance.
+            </returns>
         </member>
         <member name="M:iText.Signatures.LtvVerification.AddVerification(System.String,iText.Signatures.IOcspClient,iText.Signatures.ICrlClient,iText.Signatures.LtvVerification.CertificateOption,iText.Signatures.LtvVerification.Level,iText.Signatures.LtvVerification.CertificateInclusion)">
             <summary>Add verification for a particular signature.</summary>
@@ -898,12 +1604,6 @@
             <param name="certs">collection of DER-encoded certificates</param>
             <returns>boolean</returns>
         </member>
-        <member name="M:iText.Signatures.LtvVerification.GetParent(iText.Commons.Bouncycastle.Cert.IX509Certificate,iText.Commons.Bouncycastle.Cert.IX509Certificate[])">
-            <summary>Get the issuing certificate for a child certificate.</summary>
-            <param name="cert">the certificate for which we search the parent</param>
-            <param name="certs">an array with certificates that contains the parent</param>
-            <returns>the parent certificate</returns>
-        </member>
         <member name="M:iText.Signatures.LtvVerification.Merge">
             <summary>Merges the validation with any validation already in the document or creates a new one.</summary>
         </member>
@@ -911,6 +1611,12 @@
             <summary>Converts an array of bytes to a String of hexadecimal values</summary>
             <param name="bytes">a byte array</param>
             <returns>the same bytes expressed as hexadecimal values</returns>
+        </member>
+        <member name="M:iText.Signatures.LtvVerification.GetParent(iText.Commons.Bouncycastle.Cert.IX509Certificate,iText.Commons.Bouncycastle.Cert.IX509Certificate[])">
+            <summary>Get the issuing certificate for a child certificate.</summary>
+            <param name="cert">the certificate for which we search the parent</param>
+            <param name="certs">an array with certificates that contains the parent</param>
+            <returns>the parent certificate</returns>
         </member>
         <member name="T:iText.Signatures.LtvVerifier">
             <summary>Verifies the signatures in an LTV document.</summary>
@@ -1311,6 +2017,9 @@
             from https://www.ietf.org/rfc/rfc2560.txt.
             </summary>
         </member>
+        <member name="F:iText.Signatures.OID.X509Extensions.VALIDITY_ASSURED_SHORT_TERM">
+            <summary>Extension for certificates from ETSI EN 319 412-1 V1.4.4.</summary>
+        </member>
         <member name="F:iText.Signatures.OID.X509Extensions.SUPPORTED_CRITICAL_EXTENSIONS">
             <summary>According to https://tools.ietf.org/html/rfc5280 4.2.</summary>
             <remarks>
@@ -1321,6 +2030,288 @@
             This set consists of standard extensions which are defined in RFC specifications and are not mentioned
             as forbidden to be marked as critical.
             </remarks>
+        </member>
+        <member name="T:iText.Signatures.PadesTwoPhaseSigningHelper">
+            <summary>Helper class to perform signing operation in two steps.</summary>
+            <remarks>
+            Helper class to perform signing operation in two steps.
+            <para />
+            Firstly
+            <see cref="M:iText.Signatures.PadesTwoPhaseSigningHelper.CreateCMSContainerWithoutSignature(iText.Commons.Bouncycastle.Cert.IX509Certificate[],System.String,iText.Kernel.Pdf.PdfReader,System.IO.Stream,iText.Signatures.SignerProperties)"/>
+            prepares document and placeholder
+            for future signature without actual signing process.
+            <para />
+            Secondly follow-up step signs prepared document with corresponding PAdES Baseline profile.
+            </remarks>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.#ctor">
+            <summary>
+            Create instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>.
+            </summary>
+            <remarks>
+            Create instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>.
+            <para />
+            Same instance shall not be used for different signing operations, but can be used for both
+            <see cref="M:iText.Signatures.PadesTwoPhaseSigningHelper.CreateCMSContainerWithoutSignature(iText.Commons.Bouncycastle.Cert.IX509Certificate[],System.String,iText.Kernel.Pdf.PdfReader,System.IO.Stream,iText.Signatures.SignerProperties)"/>
+            and follow-up signing.
+            </remarks>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetOcspClient(iText.Signatures.IOcspClient)">
+            <summary>
+            Set
+            <see cref="T:iText.Signatures.IOcspClient"/>
+            to be used for LTV Verification.
+            </summary>
+            <remarks>
+            Set
+            <see cref="T:iText.Signatures.IOcspClient"/>
+            to be used for LTV Verification.
+            <para />
+            This setter is only relevant if Baseline-LT Profile level or higher is used.
+            <para />
+            If none is set, there will be an attempt to create default OCSP Client instance using the certificate chain.
+            </remarks>
+            <param name="ocspClient">
+            
+            <see cref="T:iText.Signatures.IOcspClient"/>
+            instance to be used for LTV Verification
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetTrustedCertificates(System.Collections.Generic.IList{iText.Commons.Bouncycastle.Cert.IX509Certificate})">
+            <summary>
+            Set certificate list to be used by the
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            to retrieve missing certificates.
+            </summary>
+            <param name="certificateList">
+            certificate list for getting missing certificates in chain
+            or CRL response issuer certificates.
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetCrlClient(iText.Signatures.ICrlClient)">
+            <summary>
+            Set
+            <see cref="T:iText.Signatures.ICrlClient"/>
+            to be used for LTV Verification.
+            </summary>
+            <remarks>
+            Set
+            <see cref="T:iText.Signatures.ICrlClient"/>
+            to be used for LTV Verification.
+            <para />
+            This setter is only relevant if Baseline-LT Profile level or higher is used.
+            <para />
+            If none is set, there will be an attempt to create default CRL Client instance using the certificate chain.
+            </remarks>
+            <param name="crlClient">
+            
+            <see cref="T:iText.Signatures.ICrlClient"/>
+            instance to be used for LTV Verification
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetTSAClient(iText.Signatures.ITSAClient)">
+            <summary>
+            Set
+            <see cref="T:iText.Signatures.ITSAClient"/>
+            to be used for timestamp signature creation.
+            </summary>
+            <remarks>
+            Set
+            <see cref="T:iText.Signatures.ITSAClient"/>
+            to be used for timestamp signature creation.
+            <para />
+            This client has to be set for Baseline-T Profile level and higher.
+            </remarks>
+            <param name="tsaClient">
+            
+            <see cref="T:iText.Signatures.ITSAClient"/>
+            instance to be used for timestamp signature creation.
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetIssuingCertificateRetriever(iText.Signatures.IIssuingCertificateRetriever)">
+            <summary>
+            Set
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            to be used before main signing operation.
+            </summary>
+            <remarks>
+            Set
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            to be used before main signing operation.
+            <para />
+            If none is set,
+            <see cref="T:iText.Signatures.IssuingCertificateRetriever"/>
+            instance will be used instead.
+            </remarks>
+            <param name="issuingCertificateRetriever">
+            
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            instance to be used for getting missing
+            certificates in chain or CRL response issuer certificates.
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetEstimatedSize(System.Int32)">
+            <summary>Set estimated size of a signature to be applied.</summary>
+            <remarks>
+            Set estimated size of a signature to be applied.
+            <para />
+            This parameter represents estimated amount of bytes to be preserved for the signature.
+            <para />
+            If none is set, 0 will be used and the required space will be calculated during the signing.
+            </remarks>
+            <param name="estimatedSize">amount of bytes to be used as estimated value</param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetTemporaryDirectoryPath(System.String)">
+            <summary>Set temporary directory to be used for temporary files creation.</summary>
+            <remarks>
+            Set temporary directory to be used for temporary files creation.
+            <para />
+            If none is set, temporary documents will be created in memory.
+            </remarks>
+            <param name="temporaryDirectoryPath">
+            
+            <see cref="T:System.String"/>
+            representing relative or absolute path to the directory
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetTimestampSignatureName(System.String)">
+            <summary>Set the name to be used for timestamp signature creation.</summary>
+            <remarks>
+            Set the name to be used for timestamp signature creation.
+            <para />
+            This setter is only relevant if
+            <see cref="M:iText.Signatures.PdfPadesSigner.SignWithBaselineLTAProfile(iText.Signatures.SignerProperties,iText.Commons.Bouncycastle.Cert.IX509Certificate[],iText.Signatures.IExternalSignature,iText.Signatures.ITSAClient)"/>
+            or
+            <see cref="M:iText.Signatures.PdfPadesSigner.ProlongSignatures"/>
+            methods are used.
+            <para />
+            If none is set, randomly generated signature name will be used.
+            </remarks>
+            <param name="timestampSignatureName">
+            
+            <see cref="T:System.String"/>
+            representing the name of a timestamp signature to be applied
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SetStampingProperties(iText.Kernel.Pdf.StampingProperties)">
+            <summary>Set stamping properties to be used during main signing operation.</summary>
+            <remarks>
+            Set stamping properties to be used during main signing operation.
+            <para />
+            If none is set, stamping properties with append mode enabled will be used
+            </remarks>
+            <param name="stampingProperties">
+            
+            <see cref="T:iText.Kernel.Pdf.StampingProperties"/>
+            instance to be used during main signing operation
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PadesTwoPhaseSigningHelper"/>
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.CreateCMSContainerWithoutSignature(iText.Commons.Bouncycastle.Cert.IX509Certificate[],System.String,iText.Kernel.Pdf.PdfReader,System.IO.Stream,iText.Signatures.SignerProperties)">
+            <summary>Creates CMS container compliant with PAdES level.</summary>
+            <remarks>
+            Creates CMS container compliant with PAdES level. Prepares document and placeholder for the future signature
+            without actual signing process.
+            </remarks>
+            <param name="certificates">certificates to be added to the CMS container</param>
+            <param name="digestAlgorithm">the algorithm to generate the digest with</param>
+            <param name="inputDocument">
+            reader
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            instance to read original PDF file
+            </param>
+            <param name="outputStream">
+            
+            <see cref="T:System.IO.Stream"/>
+            output stream to write the resulting PDF file into
+            </param>
+            <param name="signerProperties">properties to be used in the signing operations</param>
+            <returns>prepared CMS container without signature.</returns>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SignCMSContainerWithBaselineBProfile(iText.Signatures.IExternalSignature,iText.Kernel.Pdf.PdfReader,System.IO.Stream,System.String,iText.Signatures.Cms.CMSContainer)">
+            <summary>Follow-up step that signs prepared document with PAdES Baseline-B profile.</summary>
+            <param name="externalSignature">external signature to do the actual signing</param>
+            <param name="inputDocument">
+            reader
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            instance to read prepared document
+            </param>
+            <param name="outputStream">the output PDF</param>
+            <param name="signatureFieldName">the field to sign</param>
+            <param name="cmsContainer">the finalized CMS container (e.g. created in the first step)</param>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SignCMSContainerWithBaselineTProfile(iText.Signatures.IExternalSignature,iText.Kernel.Pdf.PdfReader,System.IO.Stream,System.String,iText.Signatures.Cms.CMSContainer)">
+            <summary>Follow-up step that signs prepared document with PAdES Baseline-T profile.</summary>
+            <param name="externalSignature">external signature to do the actual signing</param>
+            <param name="inputDocument">
+            reader
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            instance to read prepared document
+            </param>
+            <param name="outputStream">the output PDF</param>
+            <param name="signatureFieldName">the field to sign</param>
+            <param name="cmsContainer">the finalized CMS container (e.g. created in the first step)</param>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SignCMSContainerWithBaselineLTProfile(iText.Signatures.IExternalSignature,iText.Kernel.Pdf.PdfReader,System.IO.Stream,System.String,iText.Signatures.Cms.CMSContainer)">
+            <summary>Follow-up step that signs prepared document with PAdES Baseline-LT profile.</summary>
+            <param name="externalSignature">external signature to do the actual signing</param>
+            <param name="inputDocument">
+            reader
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            instance to read prepared document
+            </param>
+            <param name="outputStream">the output PDF</param>
+            <param name="signatureFieldName">the field to sign</param>
+            <param name="cmsContainer">the finalized CMS container (e.g. created in the first step)</param>
+        </member>
+        <member name="M:iText.Signatures.PadesTwoPhaseSigningHelper.SignCMSContainerWithBaselineLTAProfile(iText.Signatures.IExternalSignature,iText.Kernel.Pdf.PdfReader,System.IO.Stream,System.String,iText.Signatures.Cms.CMSContainer)">
+            <summary>Follow-up step that signs prepared document with PAdES Baseline-LTA profile.</summary>
+            <param name="externalSignature">external signature to do the actual signing</param>
+            <param name="inputDocument">
+            reader
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            instance to read prepared document
+            </param>
+            <param name="outputStream">the output PDF</param>
+            <param name="signatureFieldName">the field to sign</param>
+            <param name="cmsContainer">the finalized CMS container (e.g. created in the first step)</param>
         </member>
         <member name="T:iText.Signatures.PdfPadesSigner">
             <summary>This class performs signing with PaDES related profiles using provided parameters.</summary>
@@ -1651,6 +2642,47 @@
             <see cref="T:iText.Signatures.PdfPadesSigner"/>
             </returns>
         </member>
+        <member name="M:iText.Signatures.PdfPadesSigner.SetIssuingCertificateRetriever(iText.Signatures.IIssuingCertificateRetriever)">
+            <summary>
+            Set
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            to be used before main signing operation.
+            </summary>
+            <remarks>
+            Set
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            to be used before main signing operation.
+            <para />
+            If none is set,
+            <see cref="T:iText.Signatures.IssuingCertificateRetriever"/>
+            instance will be used instead.
+            </remarks>
+            <param name="issuingCertificateRetriever">
+            
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            instance to be used for getting missing
+            certificates in chain or CRL response issuer certificates.
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PdfPadesSigner"/>.
+            </returns>
+        </member>
+        <member name="M:iText.Signatures.PdfPadesSigner.SetTrustedCertificates(System.Collections.Generic.IList{iText.Commons.Bouncycastle.Cert.IX509Certificate})">
+            <summary>
+            Set certificate list to be used by the
+            <see cref="T:iText.Signatures.IIssuingCertificateRetriever"/>
+            to retrieve missing certificates.
+            </summary>
+            <param name="certificateList">
+            certificate list for getting missing certificates in chain
+            or CRL response issuer certificates.
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PdfPadesSigner"/>.
+            </returns>
+        </member>
         <member name="T:iText.Signatures.PdfPKCS7">
             <summary>
             This class does all the processing related to signing
@@ -1668,6 +2700,10 @@
         </member>
         <member name="F:iText.Signatures.PdfPKCS7.signDate">
             <summary>Holds value of property signDate.</summary>
+        </member>
+        <member name="F:iText.Signatures.PdfPKCS7.signedDataRevocationInfo">
+            <summary>Collection to store revocation info other than OCSP and CRL responses, e.g. SCVP Request and Response.
+                </summary>
         </member>
         <member name="M:iText.Signatures.PdfPKCS7.#ctor(iText.Commons.Bouncycastle.Crypto.IPrivateKey,iText.Commons.Bouncycastle.Cert.IX509Certificate[],System.String,System.Boolean)">
             <summary>Assembles all the elements needed to create a signature, except for the data.</summary>
@@ -2008,6 +3044,14 @@
             </remarks>
             <returns>the X.509 certificates associated with this PKCS#7 object</returns>
         </member>
+        <member name="M:iText.Signatures.PdfPKCS7.GetTimestampCertificates">
+            <summary>Get all X.509 certificates associated with this PKCS#7 object timestamp in no particular order.</summary>
+            <returns>
+            
+            <see>Certificate[]</see>
+            array
+            </returns>
+        </member>
         <member name="M:iText.Signatures.PdfPKCS7.GetSignCertificateChain">
             <summary>Get the X.509 sign certificate chain associated with this PKCS#7 object.</summary>
             <remarks>
@@ -2029,8 +3073,13 @@
             </summary>
         </member>
         <member name="M:iText.Signatures.PdfPKCS7.GetCRLs">
-            <summary>Get the X.509 certificate revocation lists associated with this PKCS#7 object</summary>
-            <returns>the X.509 certificate revocation lists associated with this PKCS#7 object</returns>
+            <summary>Get the X.509 certificate revocation lists associated with this PKCS#7 object (stored in Signer Info).
+                </summary>
+            <returns>the X.509 certificate revocation lists associated with this PKCS#7 object.</returns>
+        </member>
+        <member name="M:iText.Signatures.PdfPKCS7.GetSignedDataCRLs">
+            <summary>Get the X.509 certificate revocation lists associated with this PKCS#7 Signed Data object.</summary>
+            <returns>the X.509 certificate revocation lists associated with this PKCS#7 Signed Data object.</returns>
         </member>
         <member name="M:iText.Signatures.PdfPKCS7.FindCRL(iText.Commons.Bouncycastle.Asn1.IAsn1Sequence)">
             <summary>Helper method that tries to construct the CRLs.</summary>
@@ -2038,9 +3087,13 @@
         <member name="F:iText.Signatures.PdfPKCS7.basicResp">
             <summary>BouncyCastle IBasicOCSPResponse</summary>
         </member>
+        <member name="M:iText.Signatures.PdfPKCS7.GetSignedDataOcsps">
+            <summary>Gets the OCSP basic response collection retrieved from SignedData structure.</summary>
+            <returns>the OCSP basic response collection.</returns>
+        </member>
         <member name="M:iText.Signatures.PdfPKCS7.GetOcsp">
-            <summary>Gets the OCSP basic response if there is one.</summary>
-            <returns>the OCSP basic response or null</returns>
+            <summary>Gets the OCSP basic response from the SignerInfo if there is one.</summary>
+            <returns>the OCSP basic response or null.</returns>
         </member>
         <member name="M:iText.Signatures.PdfPKCS7.IsRevocationValid">
             <summary>Checks if OCSP revocation refers to the document signing certificate.</summary>
@@ -2048,7 +3101,11 @@
         </member>
         <member name="M:iText.Signatures.PdfPKCS7.FindOcsp(iText.Commons.Bouncycastle.Asn1.IAsn1Sequence)">
             <summary>Helper method that creates the IBasicOCSPResp object.</summary>
-            <param name="seq"/>
+            <param name="seq">
+            
+            <see cref="T:iText.Commons.Bouncycastle.Asn1.IAsn1Sequence"/>
+            wrapper
+            </param>
         </member>
         <member name="F:iText.Signatures.PdfPKCS7.isTsp">
             <summary>True if there's a PAdES LTV time stamp.</summary>
@@ -2638,6 +3695,18 @@
             </summary>
             <returns>an appearances reusing flag value.</returns>
         </member>
+        <member name="M:iText.Signatures.PdfSignatureAppearance.IsReuseAppearanceSet">
+            <summary>
+            Checks if reuseAppearance value was set using
+            <see>this#setReuseAppearance(boolean)</see>.
+            </summary>
+            <remarks>
+            Checks if reuseAppearance value was set using
+            <see>this#setReuseAppearance(boolean)</see>.
+            Used for backward compatibility.
+            </remarks>
+            <returns>boolean value.</returns>
+        </member>
         <member name="M:iText.Signatures.PdfSignatureAppearance.GetBackgroundLayer">
             <summary>Gets the background layer that is present when creating the signature field if it was set.</summary>
             <returns>n0 layer xObject.</returns>
@@ -2775,6 +3844,9 @@
         <member name="F:iText.Signatures.PdfSigner.closed">
             <summary>Boolean to check if this PdfSigner instance has been closed already or not.</summary>
         </member>
+        <member name="F:iText.Signatures.PdfSigner.acroForm">
+            <summary>AcroForm for the PdfDocument.</summary>
+        </member>
         <member name="M:iText.Signatures.PdfSigner.#ctor(iText.Kernel.Pdf.PdfReader,System.IO.Stream,iText.Kernel.Pdf.StampingProperties)">
             <summary>Creates a PdfSigner instance.</summary>
             <remarks>
@@ -2789,6 +3861,28 @@
             <see cref="T:iText.Kernel.Pdf.StampingProperties"/>
             for the signing document. Note that encryption will be
             preserved regardless of what is set in properties.
+            </param>
+        </member>
+        <member name="M:iText.Signatures.PdfSigner.#ctor(iText.Kernel.Pdf.PdfReader,System.IO.Stream,System.String,iText.Kernel.Pdf.StampingProperties,iText.Signatures.SignerProperties)">
+            <summary>Creates a PdfSigner instance.</summary>
+            <remarks>
+            Creates a PdfSigner instance. Uses a
+            <see cref="T:System.IO.MemoryStream"/>
+            instead of a temporary file.
+            </remarks>
+            <param name="reader">PdfReader that reads the PDF file</param>
+            <param name="outputStream">OutputStream to write the signed PDF file</param>
+            <param name="path">File to which the output is temporarily written</param>
+            <param name="stampingProperties">
+            
+            <see cref="T:iText.Kernel.Pdf.StampingProperties"/>
+            for the signing document. Note that encryption will be
+            preserved regardless of what is set in properties.
+            </param>
+            <param name="signerProperties">
+            
+            <see cref="T:iText.Signatures.SignerProperties"/>
+            bundled properties to be used in signing operations.
             </param>
         </member>
         <member name="M:iText.Signatures.PdfSigner.#ctor(iText.Kernel.Pdf.PdfReader,System.IO.Stream,System.String,iText.Kernel.Pdf.StampingProperties)">
@@ -3011,6 +4105,43 @@
             <param name="contact">A new signing contact.</param>
             <returns>this instance to support fluent interface.</returns>
         </member>
+        <member name="M:iText.Signatures.PdfSigner.GetReason">
+            <summary>Returns the signing reason.</summary>
+            <returns>The signing reason.</returns>
+        </member>
+        <member name="M:iText.Signatures.PdfSigner.SetReason(System.String)">
+            <summary>Sets the signing reason.</summary>
+            <param name="reason">A new signing reason.</param>
+            <returns>this instance to support fluent interface.</returns>
+        </member>
+        <member name="M:iText.Signatures.PdfSigner.GetLocation">
+            <summary>Returns the signing location.</summary>
+            <returns>The signing location.</returns>
+        </member>
+        <member name="M:iText.Signatures.PdfSigner.SetLocation(System.String)">
+            <summary>Sets the signing location.</summary>
+            <param name="location">A new signing location.</param>
+            <returns>this instance to support fluent interface.</returns>
+        </member>
+        <member name="M:iText.Signatures.PdfSigner.GetSignatureField">
+            <summary>Gets the signature field to be signed.</summary>
+            <remarks>
+            Gets the signature field to be signed. The field can already be presented in the document. If the field is
+            not presented in the document, it will be created.
+            <para />
+            This field instance is expected to be used for setting appearance related properties such as
+            <see cref="M:iText.Forms.Fields.PdfSignatureFormField.SetReuseAppearance(System.Boolean)"/>
+            ,
+            <see cref="M:iText.Forms.Fields.PdfSignatureFormField.SetBackgroundLayer(iText.Kernel.Pdf.Xobject.PdfFormXObject)"/>
+            and
+            <see cref="M:iText.Forms.Fields.PdfSignatureFormField.SetSignatureAppearanceLayer(iText.Kernel.Pdf.Xobject.PdfFormXObject)"/>.
+            </remarks>
+            <returns>
+            the
+            <see cref="T:iText.Forms.Fields.PdfSignatureFormField"/>
+            instance.
+            </returns>
+        </member>
         <member name="M:iText.Signatures.PdfSigner.SignDetached(iText.Signatures.IExternalSignature,iText.Commons.Bouncycastle.Cert.IX509Certificate[],System.Collections.Generic.ICollection{iText.Signatures.ICrlClient},iText.Signatures.IOcspClient,iText.Signatures.ITSAClient,System.Int32,iText.Signatures.PdfSigner.CryptoStandard)">
             <summary>Signs the document using the detached mode, CMS or CAdES equivalent.</summary>
             <remarks>
@@ -3120,7 +4251,8 @@
             </remarks>
             <param name="exclusionSizes">
             Map with names and sizes to be excluded in the signature
-            calculation. The key is a PdfName and the value an Integer. At least the /Contents must be present
+            calculation. The key is a PdfName and the value an Integer.
+            At least the /Contents must be present
             </param>
         </member>
         <member name="M:iText.Signatures.PdfSigner.PopulateExistingSignatureFormField(iText.Forms.PdfAcroForm)">
@@ -3228,6 +4360,54 @@
         <member name="M:iText.Signatures.PdfSigner.ISignatureEvent.GetSignatureDictionary(iText.Signatures.PdfSignature)">
             <summary>Allows modification of the signature dictionary.</summary>
             <param name="sig">The signature dictionary</param>
+        </member>
+        <member name="M:iText.Signatures.PdfTwoPhaseSigner.PrepareDocumentForSignature(iText.Signatures.SignerProperties,System.String,iText.Kernel.Pdf.PdfName,iText.Kernel.Pdf.PdfName,System.Int32,System.Boolean)">
+            <summary>Prepares document for signing, calculates the document digest to sign and closes the document.</summary>
+            <param name="signerProperties">
+            
+            <see cref="T:iText.Signatures.SignerProperties"/>
+            properties to be used for main signing operation
+            </param>
+            <param name="digestAlgorithm">the algorithm to generate the digest with</param>
+            <param name="filter">PdfName of the signature handler to use when validating this signature</param>
+            <param name="subFilter">PdfName that describes the encoding of the signature</param>
+            <param name="estimatedSize">
+            the estimated size of the signature, this is the size of the space reserved for
+            the Cryptographic Message Container
+            </param>
+            <param name="includeDate">specifies if the signing date should be set to the signature dictionary</param>
+            <returns>the message digest of the prepared document.</returns>
+        </member>
+        <member name="M:iText.Signatures.PdfTwoPhaseSigner.AddSignatureToPreparedDocument(iText.Kernel.Pdf.PdfDocument,System.String,System.IO.Stream,iText.Signatures.Cms.CMSContainer)">
+            <summary>Adds an existing signature to a PDF where space was already reserved.</summary>
+            <param name="document">the original PDF</param>
+            <param name="fieldName">the field to sign. It must be the last field</param>
+            <param name="outs">the output PDF</param>
+            <param name="cmsContainer">the finalized CMS container</param>
+        </member>
+        <member name="M:iText.Signatures.PdfTwoPhaseSigner.AddSignatureToPreparedDocument(iText.Kernel.Pdf.PdfDocument,System.String,System.IO.Stream,System.Byte[])">
+            <summary>Adds an existing signature to a PDF where space was already reserved.</summary>
+            <param name="document">the original PDF</param>
+            <param name="fieldName">the field to sign. It must be the last field</param>
+            <param name="outs">the output PDF</param>
+            <param name="signedContent">the bytes for the signed data</param>
+        </member>
+        <member name="M:iText.Signatures.PdfTwoPhaseSigner.SetStampingProperties(iText.Kernel.Pdf.StampingProperties)">
+            <summary>Set stamping properties to be used during main signing operation.</summary>
+            <remarks>
+            Set stamping properties to be used during main signing operation.
+            <para />
+            If none is set, stamping properties with append mode enabled will be used
+            </remarks>
+            <param name="stampingProperties">
+            
+            <see cref="T:iText.Kernel.Pdf.StampingProperties"/>
+            instance to be used during main signing operation
+            </param>
+            <returns>
+            same instance of
+            <see cref="T:iText.Signatures.PdfTwoPhaseSigner"/>
+            </returns>
         </member>
         <member name="M:iText.Signatures.PKCS7ExternalSignatureContainer.#ctor(iText.Commons.Bouncycastle.Crypto.IPrivateKey,iText.Commons.Bouncycastle.Cert.IX509Certificate[],System.String)">
             <summary>Creates an instance of PKCS7ExternalSignatureContainer</summary>
@@ -3625,11 +4805,12 @@
         </member>
         <member name="M:iText.Signatures.SignerProperties.GetSignDate">
             <summary>Gets the signature date.</summary>
-            <returns>Calendar set to the signature date</returns>
+            <returns>Calendar set to the signature date.</returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.SetSignDate(System.DateTime)">
             <summary>Sets the signature date.</summary>
-            <param name="signDate">the signature date</param>
+            <param name="signDate">the signature date.</param>
+            <returns>this instance to support fluent interface.</returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.SetSignatureAppearance(iText.Forms.Form.Element.SignatureFieldAppearance)">
             <summary>Sets the signature field layout element to customize the appearance of the signature.</summary>
@@ -3642,13 +4823,14 @@
             <see cref="T:iText.Forms.Form.Element.SignatureFieldAppearance"/>
             layout element.
             </param>
+            <returns>this instance to support fluent interface.</returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.GetSignatureAppearance">
             <summary>Gets signature field layout element, which customizes the appearance of a signature.</summary>
             <returns>
             
             <see cref="T:iText.Forms.Form.Element.SignatureFieldAppearance"/>
-            layout element
+            layout element.
             </returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.GetCertificationLevel">
@@ -3679,10 +4861,11 @@
             </description></item>
             </list>
             </param>
+            <returns>this instance to support fluent interface.</returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.GetFieldName">
             <summary>Gets the field name.</summary>
-            <returns>the field name</returns>
+            <returns>the field name.</returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.SetFieldName(System.String)">
             <summary>Sets the name indicating the field to be signed.</summary>
@@ -3691,6 +4874,7 @@
             document but shall not be signed. If the field is not presented in the document, it will be created.
             </remarks>
             <param name="fieldName">The name indicating the field to be signed.</param>
+            <returns>this instance to support fluent interface.</returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.GetPageNumber">
             <summary>
@@ -3752,7 +4936,8 @@
             <strong>Be aware:</strong> if a signature is created on an existing signature field,
             then its /Lock dictionary takes the precedence (if it exists).
             </remarks>
-            <param name="fieldLock">Field lock dictionary</param>
+            <param name="fieldLock">Field lock dictionary.</param>
+            <returns>this instance to support fluent interface.</returns>
         </member>
         <member name="M:iText.Signatures.SignerProperties.GetSignatureCreator">
             <summary>Returns the signature creator.</summary>
@@ -3770,6 +4955,24 @@
         <member name="M:iText.Signatures.SignerProperties.SetContact(System.String)">
             <summary>Sets the signing contact.</summary>
             <param name="contact">A new signing contact.</param>
+            <returns>this instance to support fluent interface.</returns>
+        </member>
+        <member name="M:iText.Signatures.SignerProperties.GetReason">
+            <summary>Returns the signing reason.</summary>
+            <returns>The signing reason.</returns>
+        </member>
+        <member name="M:iText.Signatures.SignerProperties.SetReason(System.String)">
+            <summary>Sets the signing reason.</summary>
+            <param name="reason">A new signing reason.</param>
+            <returns>this instance to support fluent interface.</returns>
+        </member>
+        <member name="M:iText.Signatures.SignerProperties.GetLocation">
+            <summary>Returns the signing location.</summary>
+            <returns>The signing location.</returns>
+        </member>
+        <member name="M:iText.Signatures.SignerProperties.SetLocation(System.String)">
+            <summary>Sets the signing location.</summary>
+            <param name="location">A new signing location.</param>
             <returns>this instance to support fluent interface.</returns>
         </member>
         <member name="M:iText.Signatures.SignUtils.ParseCrlFromStream(System.IO.Stream)">
@@ -3817,7 +5020,7 @@
             <summary>The default value for the hash algorithm</summary>
         </member>
         <member name="F:iText.Signatures.TSAClientBouncyCastle.DEFAULTTOKENSIZE">
-            <summary>The default value for the hash algorithm</summary>
+            <summary>The default value for token size estimation.</summary>
         </member>
         <member name="F:iText.Signatures.TSAClientBouncyCastle.LOGGER">
             <summary>The Logger instance.</summary>

@@ -13323,6 +13323,12 @@
         <member name="F:iText.Kernel.Pdf.Canvas.Parser.PdfCanvasProcessor.markedContentStack">
             <summary>A stack containing marked content info.</summary>
         </member>
+        <member name="F:iText.Kernel.Pdf.Canvas.Parser.PdfCanvasProcessor.memoryLimitsHandler">
+            <summary>A memory limits handler.</summary>
+        </member>
+        <member name="F:iText.Kernel.Pdf.Canvas.Parser.PdfCanvasProcessor.pageSize">
+            <summary>Page size in bytes.</summary>
+        </member>
         <member name="M:iText.Kernel.Pdf.Canvas.Parser.PdfCanvasProcessor.#ctor(iText.Kernel.Pdf.Canvas.Parser.Listener.IEventListener)">
             <summary>
             Creates a new PDF Content Stream Processor that will send its output to the
@@ -15038,7 +15044,7 @@
             <param name="e">an element of the transformation matrix</param>
             <param name="f">an element of the transformation matrix</param>
             <returns>the current canvas</returns>
-            <seealso cref="M:iText.Kernel.Pdf.Canvas.PdfCanvas.ConcatMatrix(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)"></seealso>
+            <seealso cref="M:iText.Kernel.Pdf.Canvas.PdfCanvas.ConcatMatrix(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)"/>
         </member>
         <member name="M:iText.Kernel.Pdf.Canvas.PdfCanvas.AddXObjectAt(iText.Kernel.Pdf.Xobject.PdfXObject,System.Single,System.Single)">
             <summary>
@@ -20676,6 +20682,16 @@
             <param name="dictionary">a dictionary object</param>
             <returns>a map containing the entries in the tree</returns>
         </member>
+        <member name="T:iText.Kernel.Pdf.IConformanceLevel">
+            <summary>Interface for PDF conformance level.</summary>
+            <remarks>
+            Interface for PDF conformance level.
+            <para />
+            Conformance levels are extended PDF specifications that define subsets of PDF
+            functionality. An example of a conformance level is PDF/A, which is used for long-term archiving
+            and PDF/UA, which is used for accessible documents.
+            </remarks>
+        </member>
         <member name="T:iText.Kernel.Pdf.IPdfNameTreeAccess">
             <summary>Abstract access interface to a PDF name tree.</summary>
         </member>
@@ -21399,6 +21415,14 @@
             <summary>Gets maximum number of elements in xref structure.</summary>
             <returns>maximum number of elements in xref structure.</returns>
         </member>
+        <member name="M:iText.Kernel.Pdf.MemoryLimitsAwareHandler.GetMaxXObjectsSizePerPage">
+            <summary>Gets maximum page size.</summary>
+            <returns>maximum page size.</returns>
+        </member>
+        <member name="M:iText.Kernel.Pdf.MemoryLimitsAwareHandler.SetMaxXObjectsSizePerPage(System.Int64)">
+            <summary>Sets maximum page size.</summary>
+            <param name="maxPageSize">maximum page size.</param>
+        </member>
         <member name="M:iText.Kernel.Pdf.MemoryLimitsAwareHandler.SetMaxNumberOfElementsInXrefStructure(System.Int32)">
             <summary>Sets maximum number of elements in xref structure.</summary>
             <param name="maxNumberOfElementsInXrefStructure">maximum number of elements in xref structure.</param>
@@ -21406,6 +21430,12 @@
         <member name="M:iText.Kernel.Pdf.MemoryLimitsAwareHandler.CheckIfXrefStructureExceedsTheLimit(System.Int32)">
             <summary>Performs a check of possible extension of xref structure.</summary>
             <param name="requestedCapacity">capacity to which we need to expand xref array.</param>
+        </member>
+        <member name="M:iText.Kernel.Pdf.MemoryLimitsAwareHandler.CalculateMaxElementsInXref(System.Int64)">
+            <summary>Calculate max number of elements allowed in xref table based on the size of the document, achieving max limit at 100MB.
+                </summary>
+            <param name="documentSizeInBytes">document size in bytes.</param>
+            <returns>calculated limit.</returns>
         </member>
         <member name="M:iText.Kernel.Pdf.MemoryLimitsAwareHandler.ConsiderBytesOccupiedByDecompressedPdfStream(System.Int64)">
             <summary>Considers the number of bytes which are occupied by the decompressed pdf stream.</summary>
@@ -23438,6 +23468,14 @@
             <summary>Gets the last page of the document.</summary>
             <returns>last page.</returns>
         </member>
+        <member name="M:iText.Kernel.Pdf.PdfDocument.GetMemoryLimitsAwareHandler">
+            <summary>Gets current memory limits handler</summary>
+            <returns>
+            
+            <c>MemoryLimitsAwareHandler</c>
+            instance
+            </returns>
+        </member>
         <member name="M:iText.Kernel.Pdf.PdfDocument.MarkStreamAsEmbeddedFile(iText.Kernel.Pdf.PdfStream)">
             <summary>
             Marks
@@ -23733,6 +23771,17 @@
             <param name="toDocument">a document to copy pages to.</param>
             <param name="insertBeforePage">a position where to insert copied pages.</param>
             <returns>list of copied pages</returns>
+        </member>
+        <member name="M:iText.Kernel.Pdf.PdfDocument.GetConformanceLevel">
+            <summary>
+            Get the
+            <see cref="T:iText.Kernel.Pdf.IConformanceLevel"/>
+            </summary>
+            <returns>
+            the
+            <see cref="T:iText.Kernel.Pdf.IConformanceLevel"/>
+            will be null if the document does not have a conformance level specified
+            </returns>
         </member>
         <member name="M:iText.Kernel.Pdf.PdfDocument.CopyPagesTo(System.Int32,System.Int32,iText.Kernel.Pdf.PdfDocument,System.Int32,iText.Kernel.Pdf.IPdfPageExtraCopier)">
             <summary>
@@ -24091,19 +24140,11 @@
         </member>
         <member name="M:iText.Kernel.Pdf.PdfDocument.CheckIsoConformance(System.Object,iText.Kernel.Pdf.IsoKey)">
             <summary>Checks whether PDF document conforms a specific standard.</summary>
-            <remarks>
-            Checks whether PDF document conforms a specific standard.
-            Shall be overridden.
-            </remarks>
             <param name="obj">An object to conform.</param>
             <param name="key">type of object to conform.</param>
         </member>
         <member name="M:iText.Kernel.Pdf.PdfDocument.CheckIsoConformance(System.Object,iText.Kernel.Pdf.IsoKey,iText.Kernel.Pdf.PdfResources,iText.Kernel.Pdf.PdfStream)">
             <summary>Checks whether PDF document conforms a specific standard.</summary>
-            <remarks>
-            Checks whether PDF document conforms a specific standard.
-            Shall be overridden.
-            </remarks>
             <param name="obj">an object to conform.</param>
             <param name="key">type of object to conform.</param>
             <param name="resources">
@@ -24115,10 +24156,6 @@
         </member>
         <member name="M:iText.Kernel.Pdf.PdfDocument.CheckIsoConformance(System.Object,iText.Kernel.Pdf.IsoKey,iText.Kernel.Pdf.PdfResources,iText.Kernel.Pdf.PdfStream,System.Object)">
             <summary>Checks whether PDF document conforms a specific standard.</summary>
-            <remarks>
-            Checks whether PDF document conforms a specific standard.
-            Shall be overridden.
-            </remarks>
             <param name="obj">an object to conform.</param>
             <param name="key">type of object to conform.</param>
             <param name="resources">
@@ -24344,11 +24381,7 @@
             </param>
         </member>
         <member name="M:iText.Kernel.Pdf.PdfDocument.CheckIsoConformance">
-            <summary>Checks whether PDF document conforms a specific standard.</summary>
-            <remarks>
-            Checks whether PDF document conforms a specific standard.
-            Shall be overridden.
-            </remarks>
+            <summary>Checks whether PDF document conforms to a specific standard.</summary>
         </member>
         <member name="M:iText.Kernel.Pdf.PdfDocument.MarkObjectAsMustBeFlushed(iText.Kernel.Pdf.PdfObject)">
             <summary>
@@ -24642,6 +24675,18 @@
             </remarks>
             <param name="firstId">the first id</param>
             <param name="secondId">the second id</param>
+            <returns>PdfObject containing the two entries.</returns>
+        </member>
+        <member name="M:iText.Kernel.Pdf.PdfEncryption.CreateInfoId(System.Byte[],System.Byte[],System.Boolean)">
+            <summary>Creates a PdfLiteral that contains an array of two id entries.</summary>
+            <remarks>
+            Creates a PdfLiteral that contains an array of two id entries. These entries are both hexadecimal
+            strings containing up to 16 hex characters. The first entry is the original id, the second entry
+            should be different from the first one if the document has changed.
+            </remarks>
+            <param name="firstId">the first id</param>
+            <param name="secondId">the second id</param>
+            <param name="preserveEncryption">the encryption preserve</param>
             <returns>PdfObject containing the two entries.</returns>
         </member>
         <member name="M:iText.Kernel.Pdf.PdfEncryption.GetPermissions">
@@ -28311,6 +28356,36 @@
             <param name="c">the Collection of PdfObjects to be added</param>
             <seealso cref="!:System.Collections.IList&lt;E&gt;.AddAll(System.Collections.ICollection&lt;E&gt;)"/>
         </member>
+        <member name="T:iText.Kernel.Pdf.PdfUAConformanceLevel">
+            <summary>
+            Implementation of
+            <see cref="T:iText.Kernel.Pdf.IConformanceLevel"/>
+            interface for PDF/UA conformance level.
+            </summary>
+            <remarks>
+            Implementation of
+            <see cref="T:iText.Kernel.Pdf.IConformanceLevel"/>
+            interface for PDF/UA conformance level.
+            <para />
+            PDF/UA is a conformance level for PDF files that ensures the files are accessible.
+            It contains an enumeration of all the PDF/UA conformance levels currently supported by iText.
+            </remarks>
+        </member>
+        <member name="F:iText.Kernel.Pdf.PdfUAConformanceLevel.PDFUA_1">
+            <summary>PDF/UA conformance level PDF/UA-1.</summary>
+        </member>
+        <member name="M:iText.Kernel.Pdf.PdfUAConformanceLevel.#ctor(System.Int32)">
+            <summary>
+            Creates a new
+            <see cref="T:iText.Kernel.Pdf.PdfUAConformanceLevel"/>
+            instance.
+            </summary>
+            <param name="version">the version of the PDF/UA conformance level</param>
+        </member>
+        <member name="M:iText.Kernel.Pdf.PdfUAConformanceLevel.GetVersion">
+            <summary>Get the version of the PDF/UA conformance level.</summary>
+            <returns>the version of the PDF/UA conformance level</returns>
+        </member>
         <member name="T:iText.Kernel.Pdf.PdfVersion">
             <summary>This class represents all official PDF versions.</summary>
         </member>
@@ -28833,6 +28908,16 @@
         </member>
         <member name="T:iText.Kernel.Pdf.PdfXrefTable">
             <summary>A representation of a cross-referenced table of a PDF document.</summary>
+        </member>
+        <member name="F:iText.Kernel.Pdf.PdfXrefTable.MAX_OFFSET_IN_CROSS_REFERENCE_STREAM">
+            <summary>The maximum offset in a cross-reference stream.</summary>
+            <remarks>
+            The maximum offset in a cross-reference stream. This is a limitation of the PDF specification.
+            SPEC1.7: 7.5.4 Cross reference trailer
+            <para />
+            It states that the offset should be a 10-digit byte, so the maximum value is 9999999999.
+            This is the max value that can be represented in 10 bytes.
+            </remarks>
         </member>
         <member name="F:iText.Kernel.Pdf.PdfXrefTable.freeReferencesLinkedList">
             <summary>
@@ -30524,6 +30609,21 @@
             role is not mapped.
             </returns>
         </member>
+        <member name="T:iText.Kernel.Pdf.Tagutils.ITagTreeIteratorHandler">
+            <summary>
+            Handler for
+            <see cref="T:iText.Kernel.Pdf.Tagutils.TagTreeIterator"/>.
+            </summary>
+            <remarks>
+            Handler for
+            <see cref="T:iText.Kernel.Pdf.Tagutils.TagTreeIterator"/>.
+            Is used to handle specific events during the traversal.
+            </remarks>
+        </member>
+        <member name="M:iText.Kernel.Pdf.Tagutils.ITagTreeIteratorHandler.NextElement(iText.Kernel.Pdf.Tagging.IStructureNode)">
+            <summary>Called when the next element is reached during the traversal.</summary>
+            <param name="elem">the next element</param>
+        </member>
         <member name="T:iText.Kernel.Pdf.Tagutils.TagReference">
             <summary>
             The class is used to provide connection between structure element of
@@ -31103,6 +31203,38 @@
             a new
             <see cref="T:iText.Kernel.Pdf.Tagutils.TagTreePointer"/>.
             </returns>
+        </member>
+        <member name="T:iText.Kernel.Pdf.Tagutils.TagTreeIterator">
+            <summary>This class is used to traverse the tag tree.</summary>
+            <remarks>
+            This class is used to traverse the tag tree.
+            <para />
+            There is a possibility to add a handler that will be called for specific events during the traversal.
+            </remarks>
+        </member>
+        <member name="M:iText.Kernel.Pdf.Tagutils.TagTreeIterator.#ctor(iText.Kernel.Pdf.Tagging.IStructureNode)">
+            <summary>
+            Creates a new instance of
+            <see cref="T:iText.Kernel.Pdf.Tagutils.TagTreeIterator"/>.
+            </summary>
+            <param name="tagTreePointer">the tag tree pointer.</param>
+        </member>
+        <member name="M:iText.Kernel.Pdf.Tagutils.TagTreeIterator.AddHandler(iText.Kernel.Pdf.Tagutils.ITagTreeIteratorHandler)">
+            <summary>Adds a handler that will be called for specific events during the traversal.</summary>
+            <param name="handler">the handler.</param>
+            <returns>
+            this
+            <see cref="T:iText.Kernel.Pdf.Tagutils.TagTreeIterator"/>
+            instance.
+            </returns>
+        </member>
+        <member name="M:iText.Kernel.Pdf.Tagutils.TagTreeIterator.Traverse">
+            <summary>Traverses the tag tree in the order of the document structure.</summary>
+            <remarks>
+            Traverses the tag tree in the order of the document structure.
+            <para />
+            Make sure the correct handlers are added before calling this method.
+            </remarks>
         </member>
         <member name="T:iText.Kernel.Pdf.Tagutils.TagTreePointer">
             <summary>
@@ -32930,6 +33062,72 @@
             for the content of the cmpDoc and "but was" part stands for the content of the outDoc.
             </remarks>
         </member>
+        <member name="M:iText.Kernel.Utils.CompareTool.CreateTestPdfWriter(System.String)">
+            <summary>
+            Create
+            <see cref="T:iText.Kernel.Pdf.PdfWriter"/>
+            optimized for tests.
+            </summary>
+            <param name="filename">File to write to when necessary.</param>
+            <returns>
+            
+            <see cref="T:iText.Kernel.Pdf.PdfWriter"/>
+            to be used in tests.
+            </returns>
+        </member>
+        <member name="M:iText.Kernel.Utils.CompareTool.CreateTestPdfWriter(System.String,iText.Kernel.Pdf.WriterProperties)">
+            <summary>
+            Create
+            <see cref="T:iText.Kernel.Pdf.PdfWriter"/>
+            optimized for tests.
+            </summary>
+            <param name="filename">File to write to when necessary.</param>
+            <param name="properties">
+            
+            <see cref="T:iText.Kernel.Pdf.WriterProperties"/>
+            to use.
+            </param>
+            <returns>
+            
+            <see cref="T:iText.Kernel.Pdf.PdfWriter"/>
+            to be used in tests.
+            </returns>
+        </member>
+        <member name="M:iText.Kernel.Utils.CompareTool.CreateOutputReader(System.String)">
+            <summary>
+            Create
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            out of the data created recently or read from disk.
+            </summary>
+            <param name="filename">File to read the data from when necessary.</param>
+            <returns>
+            
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            to be used in tests.
+            </returns>
+        </member>
+        <member name="M:iText.Kernel.Utils.CompareTool.CreateOutputReader(System.String,iText.Kernel.Pdf.ReaderProperties)">
+            <summary>
+            Create
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            out of the data created recently or read from disk.
+            </summary>
+            <param name="filename">File to read the data from when necessary.</param>
+            <param name="properties">
+            
+            <see cref="T:iText.Kernel.Pdf.ReaderProperties"/>
+            to use.
+            </param>
+            <returns>
+            
+            <see cref="T:iText.Kernel.Pdf.PdfReader"/>
+            to be used in tests.
+            </returns>
+        </member>
+        <member name="M:iText.Kernel.Utils.CompareTool.Cleanup(System.String)">
+            <summary>Clean up memory occupied for the tests.</summary>
+            <param name="path">Path to clean up memory for.</param>
+        </member>
         <member name="M:iText.Kernel.Utils.CompareTool.CompareByCatalog(iText.Kernel.Pdf.PdfDocument,iText.Kernel.Pdf.PdfDocument)">
             <summary>
             Compares two PDF documents by content starting from Catalog dictionary and then recursively comparing
@@ -33648,6 +33846,55 @@
             <param name="value">the PdfObject toi be checked</param>
             <returns>true, the PdfObject will be copied, false it will not be copied</returns>
         </member>
+        <member name="T:iText.Kernel.Utils.IValidationChecker">
+            <summary>Used to check if a PDF document is compliant to a specific validation profile.</summary>
+        </member>
+        <member name="M:iText.Kernel.Utils.IValidationChecker.ValidateDocument(iText.Kernel.Utils.ValidationContext)">
+            <summary>
+            Validate the provided
+            <see cref="T:iText.Kernel.Utils.ValidationContext"/>.
+            </summary>
+            <remarks>
+            Validate the provided
+            <see cref="T:iText.Kernel.Utils.ValidationContext"/>.
+            <para />
+            This method is called by the
+            <see cref="M:iText.Kernel.Pdf.PdfDocument.Close"/>
+            to check for additional conformance requirements.
+            </remarks>
+            <param name="validationContext">
+            the
+            <see cref="T:iText.Kernel.Utils.ValidationContext"/>
+            to validate
+            </param>
+        </member>
+        <member name="M:iText.Kernel.Utils.IValidationChecker.ValidateObject(System.Object,iText.Kernel.Pdf.IsoKey,iText.Kernel.Pdf.PdfResources,iText.Kernel.Pdf.PdfStream,System.Object)">
+            <summary>Check the provided object for conformance.</summary>
+            <remarks>
+            Check the provided object for conformance.
+            <para />
+            This method is called by the
+            <see cref="M:iText.Kernel.Pdf.PdfDocument.CheckIsoConformance(System.Object,iText.Kernel.Pdf.IsoKey,iText.Kernel.Pdf.PdfResources,iText.Kernel.Pdf.PdfStream,System.Object)"/>
+            to check for additional conformance requirements.
+            </remarks>
+            <param name="obj">the object to check</param>
+            <param name="key">
+            the
+            <see cref="T:iText.Kernel.Pdf.IsoKey"/>
+            of the object
+            </param>
+            <param name="resources">
+            the
+            <see cref="T:iText.Kernel.Pdf.PdfResources"/>
+            of the object
+            </param>
+            <param name="contentStream">
+            the
+            <see cref="T:iText.Kernel.Pdf.PdfStream"/>
+            of the object
+            </param>
+            <param name="extra">additional information</param>
+        </member>
         <member name="T:iText.Kernel.Utils.IXmlParserFactory">
             <summary>The interface in which methods for creating xml parsers are declared.</summary>
         </member>
@@ -33665,6 +33912,14 @@
             </summary>
             <param name="textReader">the text reader from which to read the XML data.</param>
             <returns>an object that is used to read the XML data in the stream.</returns>
+        </member>
+        <member name="T:iText.Kernel.Utils.MemoryFirstPdfWriter">
+            <summary>PdfWriter implementation which allows to create documents in memory and dump them on disk on purpose.
+                </summary>
+            <remarks>
+            PdfWriter implementation which allows to create documents in memory and dump them on disk on purpose.
+            Currently it's private and used in automated tests only.
+            </remarks>
         </member>
         <member name="T:iText.Kernel.Utils.NullCopyFilter">
             <summary>
@@ -34699,6 +34954,130 @@
             <param name="s">the string to be escaped</param>
             <param name="onlyASCII">codes above 127 will always be escaped with &amp;#nn; if <c>true</c></param>
             <returns>the escaped string</returns>
+        </member>
+        <member name="T:iText.Kernel.Utils.ValidationContainer">
+            <summary>
+            This class is a container for one or more
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations.
+            </summary>
+            <remarks>
+            This class is a container for one or more
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations.
+            <para />
+            It is used in the
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            to check for additional conformance requirements.
+            </remarks>
+        </member>
+        <member name="M:iText.Kernel.Utils.ValidationContainer.#ctor">
+            <summary>
+            Create a new
+            <see cref="T:iText.Kernel.Utils.ValidationContainer"/>
+            instance.
+            </summary>
+            <remarks>
+            Create a new
+            <see cref="T:iText.Kernel.Utils.ValidationContainer"/>
+            instance.
+            <para />
+            By default, no
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations are added.
+            </remarks>
+        </member>
+        <member name="M:iText.Kernel.Utils.ValidationContainer.Validate(iText.Kernel.Utils.ValidationContext)">
+            <summary>
+            Validate the provided
+            <see cref="T:iText.Kernel.Utils.ValidationContext"/>
+            with all the
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations.
+            </summary>
+            <remarks>
+            Validate the provided
+            <see cref="T:iText.Kernel.Utils.ValidationContext"/>
+            with all the
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations.
+            <para />
+            </remarks>
+            <param name="context">
+            the
+            <see cref="T:iText.Kernel.Utils.ValidationContext"/>
+            to validate
+            </param>
+        </member>
+        <member name="M:iText.Kernel.Utils.ValidationContainer.Validate(System.Object,iText.Kernel.Pdf.IsoKey,iText.Kernel.Pdf.PdfResources,iText.Kernel.Pdf.PdfStream,System.Object)">
+            <summary>
+            Check the provided object for conformance with all the
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations.
+            </summary>
+            <remarks>
+            Check the provided object for conformance with all the
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations.
+            <para />
+            </remarks>
+            <param name="obj">the object to check</param>
+            <param name="key">
+            the
+            <see cref="T:iText.Kernel.Pdf.IsoKey"/>
+            of the object
+            </param>
+            <param name="resources">
+            the
+            <see cref="T:iText.Kernel.Pdf.PdfResources"/>
+            of the object
+            </param>
+            <param name="contentStream">
+            the
+            <see cref="T:iText.Kernel.Pdf.PdfStream"/>
+            of the object
+            </param>
+            <param name="extra">additional information</param>
+        </member>
+        <member name="M:iText.Kernel.Utils.ValidationContainer.AddChecker(iText.Kernel.Utils.IValidationChecker)">
+            <summary>
+            Add an
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementation to the container.
+            </summary>
+            <param name="checker">
+            the
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementation to add
+            </param>
+        </member>
+        <member name="M:iText.Kernel.Utils.ValidationContainer.ContainsChecker(iText.Kernel.Utils.IValidationChecker)">
+            <summary>
+            Check if the container contains the provided
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementation.
+            </summary>
+            <param name="checker">
+            the
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementation to check
+            </param>
+            <returns>
+            
+            <see langword="true"/>
+            if the container contains the provided
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementation,
+            <see langword="false"/>
+            otherwise
+            </returns>
+        </member>
+        <member name="T:iText.Kernel.Utils.ValidationContext">
+            <summary>
+            This class is used to pass additional information to the
+            <see cref="T:iText.Kernel.Utils.IValidationChecker"/>
+            implementations.
+            </summary>
         </member>
         <member name="T:iText.Kernel.Utils.XmlProcessorCreator">
             <summary>

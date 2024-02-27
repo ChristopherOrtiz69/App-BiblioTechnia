@@ -93,16 +93,6 @@ namespace Prueba_Libro.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap KhLH_0001_1707415666p {
-            get {
-                object obj = ResourceManager.GetObject("KhLH_0001_1707415666p", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Libro {
             get {
                 object obj = ResourceManager.GetObject("Libro", resourceCulture);
@@ -186,6 +176,26 @@ namespace Prueba_Libro.Properties {
         internal static byte[] monofonto {
             get {
                 object obj = ResourceManager.GetObject("monofonto", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] perro1 {
+            get {
+                object obj = ResourceManager.GetObject("perro1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] prueba {
+            get {
+                object obj = ResourceManager.GetObject("prueba", resourceCulture);
                 return ((byte[])(obj));
             }
         }

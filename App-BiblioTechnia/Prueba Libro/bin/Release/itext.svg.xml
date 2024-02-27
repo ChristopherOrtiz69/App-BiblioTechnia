@@ -1170,6 +1170,48 @@
             <summary>Sets the root font size.</summary>
             <param name="fontSizeStr">the new root font size</param>
         </member>
+        <member name="T:iText.Svg.Css.SvgStrokeParameterConverter">
+            <summary>This class converts stroke related SVG parameters and attributes into those from PDF specification.
+                </summary>
+        </member>
+        <member name="M:iText.Svg.Css.SvgStrokeParameterConverter.ConvertStrokeDashParameters(System.String,System.String,System.Single,iText.Svg.Renderers.SvgDrawContext)">
+            <summary>Convert stroke related SVG parameters and attributes into PDF line dash parameters.</summary>
+            <param name="strokeDashArray">'stroke-dasharray' css property value.</param>
+            <param name="strokeDashOffset">'stroke-dashoffset' css property value.</param>
+            <param name="fontSize">font size of the current element.</param>
+            <param name="context">the svg draw context.</param>
+            <returns>
+            PDF line dash parameters represented by
+            <see cref="T:iText.Svg.Css.SvgStrokeParameterConverter.PdfLineDashParameters"/>.
+            </returns>
+        </member>
+        <member name="T:iText.Svg.Css.SvgStrokeParameterConverter.PdfLineDashParameters">
+            <summary>This class represents PDF dash parameters.</summary>
+        </member>
+        <member name="M:iText.Svg.Css.SvgStrokeParameterConverter.PdfLineDashParameters.#ctor(System.Single[],System.Single)">
+            <summary>Construct PDF dash parameters.</summary>
+            <param name="dashArray">
+            Numbers that specify the lengths of alternating dashes and gaps;
+            the numbers shall be nonnegative and not all zero.
+            </param>
+            <param name="dashPhase">A number that specifies the distance into the dash pattern at which to start the dash.
+                </param>
+        </member>
+        <member name="M:iText.Svg.Css.SvgStrokeParameterConverter.PdfLineDashParameters.GetDashArray">
+            <summary>Return dash array.</summary>
+            <returns>dash array.</returns>
+        </member>
+        <member name="M:iText.Svg.Css.SvgStrokeParameterConverter.PdfLineDashParameters.GetDashPhase">
+            <summary>Return dash phase.</summary>
+            <returns>dash phase.</returns>
+        </member>
+        <member name="M:iText.Svg.Css.SvgStrokeParameterConverter.PdfLineDashParameters.Equals(System.Object)">
+            <summary>Check if some object is equal to the given object.</summary>
+        </member>
+        <member name="M:iText.Svg.Css.SvgStrokeParameterConverter.PdfLineDashParameters.GetHashCode">
+            <summary>Generate a hash code for this object.</summary>
+            <returns>hash code.</returns>
+        </member>
         <member name="T:iText.Svg.Element.SvgImage">
             <summary>A layout element that represents SVG image for inclusion in the document model.</summary>
         </member>
@@ -1940,13 +1982,13 @@
             <param name="context">the svg draw context</param>
         </member>
         <member name="M:iText.Svg.Renderers.Impl.AbstractSvgNodeRenderer.ParseAbsoluteLength(System.String,System.Single,System.Single,iText.Svg.Renderers.SvgDrawContext)">
-            <summary>Parse absolute length.</summary>
+            <summary>Parse length attributes.</summary>
             <param name="length">
             
             <see cref="T:System.String"/>
             for parsing
             </param>
-            <param name="percentRelativeValue">the value on which percent length is based on</param>
+            <param name="percentBaseValue">the value on which percent length is based on</param>
             <param name="defaultValue">default value if length is not recognized</param>
             <param name="context">
             current

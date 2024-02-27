@@ -9462,6 +9462,18 @@
             as its potential keys.
             </remarks>
         </member>
+        <member name="F:iText.Layout.Properties.Property.DESTINATION">
+            <summary>
+            Can be either destination name (id) as String or
+            a Tuple2(String, PdfDictionary) where String is destination name (id) and PdfDictionary is a dictionary of
+            goto PdfAction.
+            </summary>
+            <remarks>
+            Can be either destination name (id) as String or
+            a Tuple2(String, PdfDictionary) where String is destination name (id) and PdfDictionary is a dictionary of
+            goto PdfAction. This second variant allow to create structure destination in tagged pdf.
+            </remarks>
+        </member>
         <member name="F:iText.Layout.Properties.Property.FONT">
             <summary>Font family as String or PdfFont shall be set.</summary>
             <seealso cref="T:iText.IO.Font.Constants.StandardFontFamilies"/>
@@ -11159,6 +11171,33 @@
             <see cref="T:iText.Kernel.Pdf.Canvas.PdfCanvas"/>
             to draw on
             </param>
+        </member>
+        <member name="M:iText.Layout.Renderer.BlockRenderer.GetResolvedFont(iText.Kernel.Pdf.PdfDocument)">
+            <summary>
+            Get the font set in properties, if it is not set, then resolves the first
+            <see cref="T:iText.Kernel.Font.PdfFont"/>
+            from
+            <see cref="T:iText.Layout.Font.FontProvider"/>.
+            </summary>
+            <remarks>
+            Get the font set in properties, if it is not set, then resolves the first
+            <see cref="T:iText.Kernel.Font.PdfFont"/>
+            from
+            <see cref="T:iText.Layout.Font.FontProvider"/>.
+            If
+            <see cref="T:iText.Layout.Font.FontProvider"/>
+            is not set, then returns null.
+            </remarks>
+            <param name="pdfDocument">
+            the
+            <see cref="T:iText.Kernel.Pdf.PdfDocument"/>
+            to get default font from.
+            </param>
+            <returns>
+            the font or null if it is not set and
+            <see cref="T:iText.Layout.Font.FontProvider"/>
+            is not set.
+            </returns>
         </member>
         <member name="M:iText.Layout.Renderer.BlockRenderer.GetMinMaxWidth">
             <summary><inheritDoc/></summary>
@@ -13725,6 +13764,153 @@
             <see cref="T:iText.Layout.Tagging.IAccessibleElement"/>.
             </remarks>
             <returns>an interface that allows to specify properties of a tagged element in Tagged PDF.</returns>
+        </member>
+        <member name="T:iText.Layout.Tagging.ITaggingRule">
+            <summary>
+            Implementation of the interface is used to create required children
+            structure for the specified role.
+            </summary>
+            <remarks>
+            Implementation of the interface is used to create required children
+            structure for the specified role. E.g. table must have TRs as children.
+            </remarks>
+        </member>
+        <member name="M:iText.Layout.Tagging.ITaggingRule.OnTagFinish(iText.Layout.Tagging.LayoutTaggingHelper,iText.Layout.Tagging.TaggingHintKey)">
+            <summary>Action which creates required children structure for the role.</summary>
+            <param name="taggingHelper">tagging helper.</param>
+            <param name="taggingHintKey">element for which children structure will be created.</param>
+            <returns>
+            
+            <see langword="true"/>
+            if the structure was created successfully,
+            <see langword="false"/>
+            otherwise.
+            </returns>
+        </member>
+        <member name="T:iText.Layout.Tagging.LayoutTaggingHelper">
+            <summary>
+            The class is a helper which is used to correctly create structure
+            tree for layout element (with keeping right order for tags).
+            </summary>
+        </member>
+        <member name="T:iText.Layout.Tagging.TaggingDummyElement">
+            <summary>
+            Instances of the class are used for
+            <see cref="T:iText.Layout.Tagging.TaggingHintKey"/>
+            which don't have model element
+            e.g. TR or THEAD in the table.
+            </summary>
+            <remarks>
+            Instances of the class are used for
+            <see cref="T:iText.Layout.Tagging.TaggingHintKey"/>
+            which don't have model element
+            e.g. TR or THEAD in the table. Nobody will call
+            <see cref="M:iText.Layout.Tagging.LayoutTaggingHelper.FinishTaggingHint(iText.Layout.IPropertyContainer)"/>
+            for them, it is why they should be handled separately.
+            </remarks>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.#ctor(System.String)">
+            <summary>
+            Instantiate a new
+            <see cref="T:iText.Layout.Tagging.TaggingDummyElement"/>
+            instance.
+            </summary>
+            <param name="role">the role.</param>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.GetAccessibilityProperties">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.GetProperty``1(System.Int32)">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.SetProperty(System.Int32,System.Object)">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.HasProperty(System.Int32)">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.HasOwnProperty(System.Int32)">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.GetOwnProperty``1(System.Int32)">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.GetDefaultProperty``1(System.Int32)">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingDummyElement.DeleteOwnProperty(System.Int32)">
+            <summary><inheritDoc/></summary>
+        </member>
+        <member name="T:iText.Layout.Tagging.TaggingHintKey">
+            <summary>
+            TaggingHintKey instances are created in the scope of
+            <see cref="M:iText.Layout.Renderer.RootRenderer.AddChild(iText.Layout.Renderer.IRenderer)"/>
+            to preserve logical order of layout elements from model elements.
+            </summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.#ctor(iText.Layout.Tagging.IAccessibleElement,System.Boolean)">
+            <summary>
+            Instantiate a new
+            <see cref="T:iText.Layout.Tagging.TaggingHintKey"/>
+            instance.
+            </summary>
+            <param name="elem">element this hint key will be created for.</param>
+            <param name="createdElementBased">
+            
+            <see langword="true"/>
+            if element implements
+            <see cref="T:iText.Layout.Element.IElement"/>.
+            </param>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.GetAccessibleElement">
+            <summary>Get accessible element.</summary>
+            <returns>the accessible element.</returns>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.IsFinished">
+            <summary>Retrieve hint key finished flag.</summary>
+            <returns>
+            
+            <see langword="true"/>
+            if hint key is finished,
+            <see langword="false"/>
+            otherwise.
+            </returns>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.SetFinished">
+            <summary>Set finished flag for hint key instance.</summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.IsArtifact">
+            <summary>Retrieve information whether this hint key is artifact or not.</summary>
+            <returns>
+            
+            <see langword="true"/>
+            if hint key corresponds to artifact,
+            <see langword="false"/>
+            otherwise.
+            </returns>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.SetArtifact">
+            <summary>Specify that hint key instance corresponds to artifact.</summary>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.GetOverriddenRole">
+            <summary>Get overridden role.</summary>
+            <returns>the overridden role.</returns>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.SetOverriddenRole(System.String)">
+            <summary>Set the overridden role.</summary>
+            <param name="overriddenRole">overridden role.</param>
+        </member>
+        <member name="M:iText.Layout.Tagging.TaggingHintKey.IsElementBasedFinishingOnly">
+            <summary>
+            Retrieve information whether the element backed by this hint key implements
+            <see cref="T:iText.Layout.Element.IElement"/>.
+            </summary>
+            <returns>
+            
+            <c/>
+            true if element implements
+            <see cref="T:iText.Layout.Element.IElement"/>.
+            </returns>
         </member>
     </members>
 </doc>

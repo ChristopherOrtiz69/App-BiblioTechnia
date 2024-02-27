@@ -347,11 +347,9 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\x86\pdfium.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\libpdfium.dylib
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\DocumentosPDF\5R6d-0001-1707415664.pdf
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Fonts\monofonto.otf
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\index.html
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Resources\LibroCerrado.jpg
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Prueba_1.pdf
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Fonts\chris.otf
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe.config
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe.manifest
@@ -369,6 +367,7 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.kernel.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.layout.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.pdfa.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.pdfua.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.sign.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.styledxmlparser.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.svg.dll
@@ -416,6 +415,7 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.kernel.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.layout.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.pdfa.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.pdfua.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.sign.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.styledxmlparser.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.svg.xml

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="5933568">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="6423552">
       <assemblyIdentity name="App Bibliotechnia 1.0" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>v/pVnp1h91e6LY09NbxE/kWaUBhsZmmPxw2zmladR8A=</dsig:DigestValue>
+        <dsig:DigestValue>YBoPoLNPC5Ruek0jAKQALPZL10UeuCKs5UKOW2TLsL8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -92,133 +92,145 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.barcodes.dll" size="155136">
-      <assemblyIdentity name="itext.barcodes" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="itext.barcodes" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Hm1L6VbKrHtcNbWZQ4umUmQOUYGA1WV7vefRfnFFWqE=</dsig:DigestValue>
+        <dsig:DigestValue>6wOGvhXWxD9GNzo+H6NUjvxV0ej/otpvVkq6KOkpSnY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.bouncy-castle-connector.dll" size="21504">
-      <assemblyIdentity name="itext.bouncy-castle-connector" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.bouncy-castle-connector.dll" size="22016">
+      <assemblyIdentity name="itext.bouncy-castle-connector" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2jGNkJiIeHsHsxNTMSEDtGZceHtH6NvZA/P1xwkhIYo=</dsig:DigestValue>
+        <dsig:DigestValue>o2neYggE+UbFqRDMCp7XDwFa4gFK8ElX1K85kGhPbOo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.commons.dll" size="270336">
-      <assemblyIdentity name="itext.commons" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.commons.dll" size="271872">
+      <assemblyIdentity name="itext.commons" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>otiCUgCID4SQeF1vjyGfOOvU1GwDUIJ2BJBVKt7Lw5U=</dsig:DigestValue>
+        <dsig:DigestValue>RZLCKCrxa2RHh0ciHV34M9DbprbKzHy/vDn3Zmsp5ho=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.forms.dll" size="194048">
-      <assemblyIdentity name="itext.forms" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.forms.dll" size="195584">
+      <assemblyIdentity name="itext.forms" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NwAocw5LFdXTgtOiV3z/o2taAkDwhDi345d5LCW2jGs=</dsig:DigestValue>
+        <dsig:DigestValue>DppE4KWjffTYeR9kDoqJ8d0+r3p7RHlgebe0e4Dr/I4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.io.dll" size="1543680">
-      <assemblyIdentity name="itext.io" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="itext.io" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>RzryLYkytZT8Y6C3ZWEjsgyK6WLKEv5wb+Xyjaa1two=</dsig:DigestValue>
+        <dsig:DigestValue>317D2uZ+KccYJpm9herGDO73TKP62WxWSLcNIWtPUmo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.kernel.dll" size="972800">
-      <assemblyIdentity name="itext.kernel" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.kernel.dll" size="979968">
+      <assemblyIdentity name="itext.kernel" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1xhsoDcEFBeFnyBFZ7kmusBN0IdnA2pKI14hM6OnK0M=</dsig:DigestValue>
+        <dsig:DigestValue>aPB/IXxClB7BC56swRy5xemY2RXLhxZkN3ag8wS/ggw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.layout.dll" size="400896">
-      <assemblyIdentity name="itext.layout" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.layout.dll" size="402432">
+      <assemblyIdentity name="itext.layout" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3aOHJBJ3hBVO/lUWEoZintMugGND1Kkoh2LIOZwuWCk=</dsig:DigestValue>
+        <dsig:DigestValue>TZUORTu/1FOfglBkmBJLK4XOztYMN1QpwM9PpMAdKI0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.pdfa.dll" size="123392">
-      <assemblyIdentity name="itext.pdfa" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.pdfa.dll" size="125440">
+      <assemblyIdentity name="itext.pdfa" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GgEgLFJu/UnoJCWWJtmD6+W77jhtusxqhRbYyeruURA=</dsig:DigestValue>
+        <dsig:DigestValue>dLbJ4YUmFwPcY8WetGbkku8YdMaEmBU0cRsPkU7z5QA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.sign.dll" size="121344">
-      <assemblyIdentity name="itext.sign" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.pdfua.dll" size="21504">
+      <assemblyIdentity name="itext.pdfua" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>OzeY7CeIimcSMwHmcdz65z/d1SUMGfYhVYsr64w0KoQ=</dsig:DigestValue>
+        <dsig:DigestValue>KjQzdv+BTrH3Fi8/GDckf2d+Ttcq4yn0f8PM2HM6dDo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.styledxmlparser.dll" size="391168">
-      <assemblyIdentity name="itext.styledxmlparser" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.sign.dll" size="151552">
+      <assemblyIdentity name="itext.sign" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QaMSle3Crp3VQ4oOKF4LK1LHS1n/0cOV+S7uu6u1FXs=</dsig:DigestValue>
+        <dsig:DigestValue>Yqp4PSRYw3i6iPwn+cK//AfyANsq30K0q1/QT0GoFrE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.svg.dll" size="126464">
-      <assemblyIdentity name="itext.svg" version="8.0.2.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.styledxmlparser.dll" size="391680">
+      <assemblyIdentity name="itext.styledxmlparser" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6N/unZM2l5Yp6CRvMJGYQnrOovtXL4PrISgk0Gbf0AY=</dsig:DigestValue>
+        <dsig:DigestValue>BwMZUt+afNYZoZYHSxRnMNSpatK91UJfsVv6bNGZ5i8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.svg.dll" size="127488">
+      <assemblyIdentity name="itext.svg" version="8.0.3.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>OKI7ud2JJoMZPk7gix7iZ9L+P/RnNLafZG1wNSkZhs8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -672,15 +684,6 @@
       <dsig:DigestValue>eFY6FBQKjIYt7DaCUrBaMDev6bpA1zojpxRbKqc3i2k=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="DocumentosPDF\QSK7-0001-1707415664.pdf" size="73366216">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rThhp/WYooF72z7N6qQvH6etMvQLD4P1sZiU452O3mU=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Fonts\monofonto.otf" size="57320">
     <hash>
       <dsig:Transforms>
@@ -724,15 +727,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>8ZouNfotUaYDfYMkJpceEQ0AiQ7+ppfFV+P+j2XJnqw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Prueba_1.pdf" size="135395">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7ReQ/bOeY6PInByH1cLynYRaGR8YHH21u7sBniMTsjA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\LibroCerrado.jpg" size="2680">

@@ -4005,6 +4005,19 @@
             <param name="remValue">the root em value</param>
             <returns>the unit value</returns>
         </member>
+        <member name="M:iText.StyledXmlParser.Css.Util.CssDimensionParsingUtils.ParseLength(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>Parse length attributes.</summary>
+            <param name="length">
+            
+            <see cref="T:System.String"/>
+            for parsing
+            </param>
+            <param name="percentBaseValue">the value on which percent length is based on</param>
+            <param name="defaultValue">default value if length is not recognized</param>
+            <param name="fontSize">font size of the current element</param>
+            <param name="rootFontSize">root element font size</param>
+            <returns>absolute value in points</returns>
+        </member>
         <member name="M:iText.StyledXmlParser.Css.Util.CssDimensionParsingUtils.ParseAbsoluteFontSize(System.String,System.String)">
             <summary>Parses the absolute font size.</summary>
             <remarks>

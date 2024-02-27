@@ -2820,6 +2820,18 @@
             <summary>This encoding will base on font encoding (FontSpecific encoding in Type 1 terminology)</summary>
             <returns>created font specific encoding</returns>
         </member>
+        <member name="M:iText.IO.Font.FontEncoding.FillFontEncoding(iText.IO.Font.FontEncoding)">
+            <summary>
+            Fill
+            <see cref="T:iText.IO.Font.FontEncoding"/>
+            object with default data.
+            </summary>
+            <param name="encoding">
+            
+            <see cref="T:iText.IO.Font.FontEncoding"/>
+            to fill.
+            </param>
+        </member>
         <member name="M:iText.IO.Font.FontEncoding.GetUnicode(System.Int32)">
             <summary>Gets unicode value for corresponding font's char code.</summary>
             <param name="index">font's char code</param>
