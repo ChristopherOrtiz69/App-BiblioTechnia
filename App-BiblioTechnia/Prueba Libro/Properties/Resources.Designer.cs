@@ -91,6 +91,26 @@ namespace Prueba_Libro.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] KhLH_0001_1707415666 {
+            get {
+                object obj = ResourceManager.GetObject("KhLH_0001_1707415666", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KhLH_0001_1707415666p {
+            get {
+                object obj = ResourceManager.GetObject("KhLH_0001_1707415666p", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Libro {
@@ -211,12 +231,32 @@ namespace Prueba_Libro.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] QSK7_0001_1707415664 {
+            get {
+                object obj = ResourceManager.GetObject("QSK7_0001_1707415664", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap QSK7_0001_1707415664p {
             get {
                 object obj = ResourceManager.GetObject("QSK7_0001_1707415664p", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] sl1p_0001_1707415665 {
+            get {
+                object obj = ResourceManager.GetObject("sl1p_0001_1707415665", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

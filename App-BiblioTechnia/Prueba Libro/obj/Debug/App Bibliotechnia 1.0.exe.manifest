@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="12249600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="App Bibliotechnia 1.0.exe" size="89912832">
       <assemblyIdentity name="App Bibliotechnia 1.0" version="1.0.0.1" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VT8BoIDt1imAr5XCnDLxToHqWcV+PAEQELgZe/LC9/Q=</dsig:DigestValue>
+        <dsig:DigestValue>F4OcFxmmAxIZQsdaYO1FgpnZkRIGcP+IRHtDHI24I/s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -702,6 +702,24 @@
       <dsig:DigestValue>8YhgHx9qOfRJdDjX9acvJm/j5sMONyK62JfNWn/b8nw=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Images\DarkMode.png" size="17442">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>o+B3Ga+DWpYarAZDVxdOyVXeTHTrBg6tt80VhiDhWIg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\delete.png" size="16021">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>BEt/L9FVc3Alow4GSPQne0M3PQizOlICnIeEEQimmfs=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Images\FlechaRetroceso.png" size="4482">
     <hash>
       <dsig:Transforms>
@@ -709,6 +727,33 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>R2RFSsz52COrDiq/njf/qmSufORNb0iw0Tn65Mk1KSc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\mode.png" size="29979">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>noJe9lo9trZM357HjmazmBR4XAp3A4iucSJUiuwTpJY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\plus.png" size="16571">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>3n0KcFYOnjoH/q/Ii47lXcEwMc25heOfBEvbE+GjzxA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\zoom-in.png" size="13430">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Dc4m6Tqf+4dLbi6hC0Hk28BSGp5utp2fo0Nb417dMJo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="index.html" size="18416">

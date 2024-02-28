@@ -279,13 +279,29 @@
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Resources\9788499108070.epub" />
+    <None Include="Resources\KhLH-0001-1707415666.pdf" />
     <None Include="Resources\Logo bibliotechnia 1200px_Mesa de trabajo 1.jpg" />
     <None Include="Resources\fondo.jpg" />
     <None Include="Resources\libro_fondo_ejemplo.jpg" />
     <None Include="Images\FlechaAvance.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Images\delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\mode.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\DarkMode.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\FlechaRetroceso.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\plus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\zoom-in.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="index.html">
@@ -297,10 +313,13 @@
     <None Include="Resources\monofonto rg.otf" />
     <None Include="Resources\perro1.pdf" />
     <None Include="Resources\prueba.pdf" />
+    <None Include="Resources\QSK7-0001-1707415664.pdf" />
     <None Include="Resources\QSK7-0001-1707415664p.png" />
+    <None Include="Resources\sl1p-0001-1707415665.pdf" />
     <None Include="Resources\sl1p-0001-1707415665p.png" />
     <None Include="Resources\Lupa.png" />
     <None Include="Resources\TextFile1.txt" />
+    <None Include="Resources\KhLH-0001-1707415666p.png" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
