@@ -203,9 +203,9 @@ namespace Prueba_Libro
 
             // Agregar imagen de lupa al botón
             ImageList imageList = new ImageList();
-            imageList.Images.Add(Properties.Resources.Lupa); // Suponiendo que "lupa" es el nombre de la imagen en tus recursos
+            imageList.Images.Add(Properties.Resources.Lupa);
             btnBuscar.ImageList = imageList;
-            btnBuscar.ImageIndex = 0; // El índice de la imagen dentro de ImageList
+            btnBuscar.ImageIndex = 0;
 
             Controls.Add(btnBuscar);
         }

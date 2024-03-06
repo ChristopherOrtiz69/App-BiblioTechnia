@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>F4OcFxmmAxIZQsdaYO1FgpnZkRIGcP+IRHtDHI24I/s=</dsig:DigestValue>
+        <dsig:DigestValue>x6J4C0c2cB/4MVQlEIX4Glfq3h8v6BzAFeoeE/9oqRc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -702,24 +702,6 @@
       <dsig:DigestValue>8YhgHx9qOfRJdDjX9acvJm/j5sMONyK62JfNWn/b8nw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Images\DarkMode.png" size="17442">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>o+B3Ga+DWpYarAZDVxdOyVXeTHTrBg6tt80VhiDhWIg=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Images\delete.png" size="16021">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>BEt/L9FVc3Alow4GSPQne0M3PQizOlICnIeEEQimmfs=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Images\FlechaRetroceso.png" size="4482">
     <hash>
       <dsig:Transforms>
@@ -738,6 +720,15 @@
       <dsig:DigestValue>noJe9lo9trZM357HjmazmBR4XAp3A4iucSJUiuwTpJY=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Images\modo-oscuro.png" size="20892">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HCSik0YsFQH5jBguTkLLQfi1zZbHMqYMwrrsEQDOxJU=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Images\plus.png" size="16571">
     <hash>
       <dsig:Transforms>
@@ -747,13 +738,40 @@
       <dsig:DigestValue>3n0KcFYOnjoH/q/Ii47lXcEwMc25heOfBEvbE+GjzxA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Images\zoom-in.png" size="13430">
+  <file name="Images\pregunta.png" size="14507">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Dc4m6Tqf+4dLbi6hC0Hk28BSGp5utp2fo0Nb417dMJo=</dsig:DigestValue>
+      <dsig:DigestValue>AXwVeAn3G6bVlNy/YULDEi4//F59gknutJFoN57SMkc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\signo-de-interrogacion.png" size="10876">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>uC1EtmQYQlJEOwP7YRKEs79SipAW7eEHdbWPEogeTeE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\zoom.png" size="14913">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fbPgzjSHmvMTpJ3nLpdXTeLzw1IhV2NgfzGIaoDYp8w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\zoomenos.png" size="14436">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>7EkmHD9ZD1wpiQ8NgYPSsv49RrUYwqRWCsPoIxpE5cg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="index.html" size="18416">

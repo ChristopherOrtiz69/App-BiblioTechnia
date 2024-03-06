@@ -17,9 +17,9 @@ namespace Prueba_Libro
                 public int Id { get; set; }
                 public string Nombre { get; set; }
                public byte[] Ruta { get; set; }
-                public System.Drawing.Image Imagen { get; set; } // Usa System.Drawing.Image aquí
+                public System.Drawing.Image Imagen { get; set; }
 
-                public Documento(int id, string nombre, byte[] ruta, System.Drawing.Image imagen) // Usa System.Drawing.Image aquí
+                public Documento(int id, string nombre, byte[] ruta, System.Drawing.Image imagen)
                 {
                     Id = id;
                     Nombre = nombre;

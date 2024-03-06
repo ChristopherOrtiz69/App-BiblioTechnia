@@ -23,6 +23,8 @@ namespace Prueba_Libro
         private bool _scrolling = false;
         private Panel glossaryPanel;
         private Button btnGlossary;
+        private int _currentPage = 1;
+        private int _totalPages;
 
 
         public PdfForm(byte[] pdfContent)
@@ -35,19 +37,22 @@ namespace Prueba_Libro
             InitializeGlossaryPanel();
 
             // Obtener el número total de páginas del documento PDF
-            using (MemoryStream ms = new MemoryStream(pdfContent))
-            {
-                using (var pdfDocument = new PdfDocument(new PdfReader(ms)))
-                {
-                    int totalPages = pdfDocument.GetNumberOfPages();
-                    InitializePageCounter(totalPages);
-                }
-            }
+            int totalPages = GetTotalPages(pdfContent);
+            InitializePageCounter(totalPages);
 
             // Suscribirse al evento MouseWheel
             this.MouseWheel += PdfForm_MouseWheel;
         }
-
+        private int GetTotalPages(byte[] pdfContent)
+        {
+            using (MemoryStream ms = new MemoryStream(pdfContent))
+            {
+                using (var pdfDocument = new PdfDocument(new PdfReader(ms)))
+                {
+                    return pdfDocument.GetNumberOfPages();
+                }
+            }
+        }
 
         private void InitializeViewer(byte[] pdfContent)
         {
@@ -68,7 +73,7 @@ namespace Prueba_Libro
         private void InitializeDarkModeButton()
         {
             Button btnDarkMode = new Button();
-            btnDarkMode.Location = new Point(1220, 10);
+            btnDarkMode.Location = new Point(1150, 10);
             btnDarkMode.Size = new Size(100, 50);
 
             // Quitar bordes y margen
@@ -77,8 +82,8 @@ namespace Prueba_Libro
             btnDarkMode.Margin = new Padding(0);
 
             // Cargar la imagen desde un archivo
-            Image image = Image.FromFile("Images/mode.png");
-            // Redimensionar la imagen a un tamaño más pequeño
+            Image image = Image.FromFile("Images/modo-oscuro.png");
+          
             int newWidth = 49; // Ancho deseado
             int newHeight = 49; // Alto deseado
             Image resizedImage = new Bitmap(image, new Size(newWidth, newHeight));
@@ -97,27 +102,26 @@ namespace Prueba_Libro
             if (_darkMode)
             {
                 this.BackColor = Color.Gray;
-                SetControlTextColors(this, Color.White); // Establecer el color del texto en blanco para todos los controles
-                SetControlTextColors(glossaryPanel, Color.Black); // Establecer el color del texto en negro solo para el panel de glosario
+                SetControlTextColors(this, Color.White);
+                SetControlTextColors(glossaryPanel, Color.Black); 
             }
             else
             {
                 this.BackColor = Color.White;
-                SetControlTextColors(this, Color.Black); // Establecer el color del texto en negro para todos los controles
-                SetControlTextColors(glossaryPanel, Color.Black); // Establecer el color del texto en negro solo para el panel de glosario
+                SetControlTextColors(this, Color.Black);
+                SetControlTextColors(glossaryPanel, Color.Black); 
             }
         }
 
 
-        // Método recursivo para establecer el color del texto en todos los controles y sus hijos
         private void SetControlTextColors(Control control, Color color)
         {
-            control.ForeColor = color; // Establecer el color del texto para el control actual
+            control.ForeColor = color; 
 
-            // Recorrer todos los controles secundarios de forma recursiva
+           
             foreach (Control childControl in control.Controls)
             {
-                SetControlTextColors(childControl, color); // Llamar recursivamente al método para los controles secundarios
+                SetControlTextColors(childControl, color);
             }
         }
 
@@ -170,7 +174,7 @@ namespace Prueba_Libro
 
 
             // Botón Primera Página
-            Button btnFirstPage = new Button();
+           /* Button btnFirstPage = new Button();
             btnFirstPage.Text = "Primera";
             btnFirstPage.Font = new Font("barlow", 15, FontStyle.Regular);
             btnFirstPage.Location = new Point(750, 10);
@@ -185,17 +189,17 @@ namespace Prueba_Libro
             btnLastPage.Location = new Point(850, 10);
             btnLastPage.Size = new Size(100, 35); // Tamaño más grande         
             btnLastPage.Click += btnLastPage_Click;
-            this.Controls.Add(btnLastPage);
+            this.Controls.Add(btnLastPage);*/
         }
 
         private void InitializeZoomButtons()
         {
             Button btnZoomIn = new Button();
             btnZoomIn.Size = new Size(100, 50);
-            btnZoomIn.Location = new Point(1000, 10);
+            btnZoomIn.Location = new Point(850, 10);
 
             // Cargar la imagen desde un archivo
-            Image image = Image.FromFile("Images/plus.png"); // Reemplaza "ruta_de_la_imagen.png" con la ruta de tu imagen
+            Image image = Image.FromFile("Images/zoom.png");
 
             // Define el ancho y alto deseados para la imagen dentro del botón
             int newWidth = 40; // Ancho deseado
@@ -204,7 +208,7 @@ namespace Prueba_Libro
             btnZoomIn.FlatAppearance.BorderSize = 0;
             btnZoomIn.Margin = new Padding(0);
 
-            // Redimensiona la imagen a las dimensiones deseadas
+           
             Image resizedImage = new Bitmap(image, new Size(newWidth, newHeight));
             btnZoomIn.Image = resizedImage;
 
@@ -218,20 +222,20 @@ namespace Prueba_Libro
 
             Button btnZoomOut = new Button();
             btnZoomOut.Size = new Size(100, 50);
-            btnZoomOut.Location = new Point(1100, 10);
+            btnZoomOut.Location = new Point(950, 10);
             btnZoomOut.FlatStyle = FlatStyle.Flat;
             btnZoomOut.FlatAppearance.BorderSize = 0;
             btnZoomOut.Margin = new Padding(0);
 
             // Cargar la imagen desde un archivo
-            Image image1 = Image.FromFile("Images/delete.png"); // Reemplaza "ruta_de_la_imagen.png" con la ruta de tu imagen
+            Image image1 = Image.FromFile("Images/zoomenos.png"); // Reemplaza "ruta_de_la_imagen.png" con la ruta de tu imagen
 
             // Define el ancho y alto deseados para la imagen dentro del botón
             int newWidth1 = 40; // Ancho deseado
             int newHeight1 = 40; // Alto deseado
 
             // Redimensiona la imagen a las dimensiones deseadas
-            Image resizedImage1 = new Bitmap(image1, new Size(newWidth1, newHeight1)); // Aquí se debe usar image1 en lugar de image
+            Image resizedImage1 = new Bitmap(image1, new Size(newWidth1, newHeight1));
             btnZoomOut.Image = resizedImage1;
 
             // Ajustar el tamaño de la imagen para que se ajuste al tamaño del botón
@@ -246,8 +250,9 @@ namespace Prueba_Libro
         }
         private void InitializePageCounter(int totalPages)
         {
+            _totalPages = totalPages;
             lblPageCounter = new Label();
-            lblPageCounter.Text = $"Página 1 de {totalPages}"; // Inicialmente en la página 1
+            UpdatePageCounter(_currentPage, _totalPages); // Inicialmente en la página 1
             lblPageCounter.Font = new Font("barlow", 20, FontStyle.Regular);
             lblPageCounter.AutoSize = true;
             lblPageCounter.Location = new Point(150, this.ClientSize.Height - lblPageCounter.Height - -10); // Ubicación del contador de páginas en la parte inferior
@@ -263,13 +268,23 @@ namespace Prueba_Libro
             {
                 _scrolling = true; // Marcar que se está realizando un cambio de página por scroll
 
-                if (e.Delta > 0)
+                if (e.Delta > 0) // Scroll hacia arriba
                 {
-                    _viewer.ShowPreviousPage(); // Mostrar página anterior al hacer scroll hacia arriba
+                    if (_currentPage > 1)
+                    {
+                        _currentPage--;
+                        _viewer.ShowPreviousPage();
+                        UpdatePageCounter(_currentPage, _totalPages);
+                    }
                 }
-                else
+                else // Scroll hacia abajo
                 {
-                    _viewer.ShowNextPage(); // Mostrar página siguiente al hacer scroll hacia abajo
+                    if (_currentPage < _totalPages)
+                    {
+                        _currentPage++;
+                        _viewer.ShowNextPage();
+                        UpdatePageCounter(_currentPage, _totalPages);
+                    }
                 }
 
                 // Manejar el evento MouseWheel para evitar el desplazamiento de la ventana
@@ -287,6 +302,8 @@ namespace Prueba_Libro
                 timer.Start();
             }
         }
+
+
 
 
         private void _viewer_DisplaySize(object sender, GhostscriptViewerViewEventArgs e)
@@ -384,22 +401,22 @@ namespace Prueba_Libro
                 _zoomFactor -= 0.02f; // Reducir el factor de zoom
                 ApplyZoom(true); // Aplicar estiramiento en los lados
                 _zoomOutCount++;
-                _zoomInCount = 0; // Reiniciar contador de aumento de zoom
+                _zoomInCount = 0; 
             }
         }
         private void InitializeGlossaryPanel()
         {
             // Crear el panel
             glossaryPanel = new Panel();
-            glossaryPanel.BackColor = Color.LightGoldenrodYellow;
-            glossaryPanel.Size = new Size(500, 500);
-            glossaryPanel.Location = new Point(650, 200); // Ajusta la ubicación según sea necesario
+            glossaryPanel.BackColor = Color.AliceBlue;
+            glossaryPanel.Size = new Size(500, 400);
+            glossaryPanel.Location = new Point(60, 10); 
             glossaryPanel.BorderStyle = BorderStyle.FixedSingle;
             glossaryPanel.Visible = false; // Inicialmente oculto
 
             // Agregar imagen al panel
             PictureBox pictureBoxGlossary = new PictureBox();
-            pictureBoxGlossary.Image = Image.FromFile("Images/mode.png"); // Reemplaza "Images/glossary_image.png" con la ruta de tu imagen
+            pictureBoxGlossary.Image = Image.FromFile("Images/modo-oscuro.png"); 
             pictureBoxGlossary.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxGlossary.Size = new Size(50, 50);
             pictureBoxGlossary.Location = new Point(15, 35);
@@ -407,28 +424,28 @@ namespace Prueba_Libro
             
             
             PictureBox pictureBoxGlossary1 = new PictureBox();
-            pictureBoxGlossary1.Image = Image.FromFile("Images/plus.png"); // Reemplaza "Images/glossary_image.png" con la ruta de tu imagen
+            pictureBoxGlossary1.Image = Image.FromFile("Images/zoom.png"); 
             pictureBoxGlossary1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxGlossary1.Size = new Size(50, 50);
             pictureBoxGlossary1.Location = new Point(16, 95);
             glossaryPanel.Controls.Add(pictureBoxGlossary1);  
             
             PictureBox pictureBoxGlossary2 = new PictureBox();
-            pictureBoxGlossary2.Image = Image.FromFile("Images/delete.png"); // Reemplaza "Images/glossary_image.png" con la ruta de tu imagen
+            pictureBoxGlossary2.Image = Image.FromFile("Images/zoomenos.png"); 
             pictureBoxGlossary2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxGlossary2.Size = new Size(50, 50);
             pictureBoxGlossary2.Location = new Point(16, 150);
             glossaryPanel.Controls.Add(pictureBoxGlossary2); 
             
             PictureBox pictureBoxGlossary3 = new PictureBox();
-            pictureBoxGlossary3.Image = Image.FromFile("Images/FlechaRetroceso.png"); // Reemplaza "Images/glossary_image.png" con la ruta de tu imagen
+            pictureBoxGlossary3.Image = Image.FromFile("Images/FlechaRetroceso.png"); 
             pictureBoxGlossary3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxGlossary3.Size = new Size(50, 50);
             pictureBoxGlossary3.Location = new Point(5, 210);
             glossaryPanel.Controls.Add(pictureBoxGlossary3);  
             
             PictureBox pictureBoxGlossary4 = new PictureBox();
-            pictureBoxGlossary4.Image = Image.FromFile("Images/FlechaAvance.png"); // Reemplaza "Images/glossary_image.png" con la ruta de tu imagen
+            pictureBoxGlossary4.Image = Image.FromFile("Images/FlechaAvance.png"); 
             pictureBoxGlossary4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxGlossary4.Size = new Size(50, 50);
             pictureBoxGlossary4.Location = new Point(47, 210);
@@ -438,28 +455,28 @@ namespace Prueba_Libro
 
             // Agregar texto al panel
             Label labelGlossary = new Label();
-            labelGlossary.Text = "Modo lectura Dia/Noche"; // Reemplaza con tu texto
+            labelGlossary.Text = "Modo lectura Dia/Noche"; 
             labelGlossary.AutoSize = true;
             labelGlossary.Font = new Font("barlow", 15, FontStyle.Regular);
             labelGlossary.Location = new Point(100, 50);
             glossaryPanel.Controls.Add(labelGlossary); 
             
             Label labelGlossary1 = new Label();
-            labelGlossary1.Text = "Aumentar zoom"; // Reemplaza con tu texto
+            labelGlossary1.Text = "Aumentar zoom";
             labelGlossary1.AutoSize = true;
             labelGlossary1.Font = new Font("barlow", 15, FontStyle.Regular);
             labelGlossary1.Location = new Point(100, 100);
             glossaryPanel.Controls.Add(labelGlossary1);
             
             Label labelGlossary2 = new Label();
-            labelGlossary2.Text = "Disminuir zoom"; // Reemplaza con tu texto
+            labelGlossary2.Text = "Disminuir zoom";
             labelGlossary2.AutoSize = true;
             labelGlossary2.Font = new Font("barlow", 15, FontStyle.Regular);
             labelGlossary2.Location = new Point(100, 160);
             glossaryPanel.Controls.Add(labelGlossary2);
             
             Label labelGlossary3 = new Label();
-            labelGlossary3.Text = "Avanzar/Retroceder de página"; // Reemplaza con tu texto
+            labelGlossary3.Text = "Avanzar/Retroceder de página";
             labelGlossary3.AutoSize = true;
             labelGlossary3.Font = new Font("barlow", 15, FontStyle.Regular);
             labelGlossary3.Location = new Point(100, 220);
@@ -469,12 +486,29 @@ namespace Prueba_Libro
             this.Controls.Add(glossaryPanel);
 
             // Crear el botón del glosario
+            // Carga la imagen desde el archivo
+            Image image = Image.FromFile("Images/signo-de-interrogacion.png");
+
+            // Define el tamaño deseado para la imagen
+            int desiredWidth = 50;
+            int desiredHeight = 50;
+
+            // Escala la imagen al tamaño deseado
+            Image scaledImage = new Bitmap(image, new Size(desiredWidth, desiredHeight));
+
+            // Crea el botón y asigna la imagen escalada
             btnGlossary = new Button();
-            btnGlossary.Text = "Glosario";
-            btnGlossary.Location = new Point(10, 10); // Ajusta la ubicación según sea necesario
-            btnGlossary.Size = new Size(80, 30);
+            btnGlossary.Image = scaledImage;
+            btnGlossary.ImageAlign = ContentAlignment.MiddleCenter; // Centra la imagen dentro del botón
+            btnGlossary.BackgroundImageLayout = ImageLayout.Stretch; // Estira la imagen para que se ajuste al tamaño del botón
+            btnGlossary.FlatStyle = FlatStyle.Flat; // Establece el estilo de borde plano
+            btnGlossary.FlatAppearance.BorderSize = 0; // Establece el grosor del borde a cero
+            btnGlossary.Location = new Point(650, 10);
+            btnGlossary.Size = new Size(50, 50);
             btnGlossary.Click += BtnGlossary_Click;
             this.Controls.Add(btnGlossary);
+
+
         }
 
         private void BtnGlossary_Click(object sender, EventArgs e)
@@ -507,13 +541,30 @@ namespace Prueba_Libro
 
         private void btnNextPage_Click(object sender, EventArgs e)
         {
-            _viewer.ShowNextPage();
+            if (_currentPage < _totalPages)
+            {
+                _currentPage++;
+                _viewer.ShowNextPage();
+                UpdatePageCounter(_currentPage, _totalPages);
+            }
         }
 
         private void btnPreviousPage_Click(object sender, EventArgs e)
         {
-            _viewer.ShowPreviousPage();
+            if (_currentPage > 1)
+            {
+                _currentPage--;
+                _viewer.ShowPreviousPage();
+                UpdatePageCounter(_currentPage, _totalPages);
+            }
         }
+
+
+        private void UpdatePageCounter(int currentPage, int totalPages)
+        {
+            lblPageCounter.Text = $"Página {currentPage} de {totalPages}";
+        }
+
 
         private void btnFirstPage_Click(object sender, EventArgs e)
         {

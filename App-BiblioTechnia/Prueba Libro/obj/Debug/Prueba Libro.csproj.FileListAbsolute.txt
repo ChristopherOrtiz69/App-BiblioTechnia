@@ -342,19 +342,26 @@ D:\Trabajo\Prueba Libro\bin\Debug\Aspose.PDF.dll
 D:\Trabajo\Prueba Libro\bin\Debug\Aspose.PDF.xml
 D:\Trabajo\Prueba Libro\obj\Debug\Prueba Libro.csproj.SuggestedBindingRedirects.cache
 D:\Trabajo\Prueba Libro\obj\Debug\Prueba Libro.exe.config
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\icudt.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\x64\pdfium.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\x86\pdfium.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\libpdfium.dylib
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Fonts\monofonto.otf
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\mode.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\FlechaRetroceso.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\plus.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\signo-de-interrogacion.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\zoom.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\zoomenos.png
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\index.html
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Resources\LibroCerrado.jpg
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\FlechaAvance.png
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Fonts\chris.otf
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe.config
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe.manifest
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.application
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.pdb
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\epubsharp.dll
@@ -465,10 +472,5 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba Libro.csproj.CopyComplete
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\App Bibliotechnia 1.0.exe
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\App Bibliotechnia 1.0.pdb
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\FlechaAvance.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\FlechaRetroceso.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\DarkMode.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\zoom-in.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\mode.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\plus.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\delete.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\pregunta.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\modo-oscuro.png
