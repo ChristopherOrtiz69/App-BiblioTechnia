@@ -39,6 +39,8 @@ namespace Prueba_Libro
 
             InitializeComponent();
             InitializeComponentsAndData();
+            ReproductorAudio reproductorAudioForm = new ReproductorAudio();
+            reproductorAudioForm.Show();
             this.AutoScroll = true;
             //pruebaEPUB pruebaEPUBForm = new pruebaEPUB();
             //pruebaEPUBForm.Show();
@@ -115,7 +117,7 @@ namespace Prueba_Libro
             nombresDocumentos = documentos.Select(doc => doc.Nombre).ToList(); // Obtener nombres de documentos
             imagenesDocumentos = documentos.Select(doc => doc.Imagen).ToList(); // Obtener imágenes de documentos
             InitializeUI(documentos); // Inicializar la interfaz de usuario
-            InitializeSearchBar(); // Inicializar la barra de búsqueda
+            InitializeSearchBar(); // Inicializar la barra de búsqueda 
         }
 
         private void InitializeUI(List<DocumentManager.Documento> documentos)
@@ -123,7 +125,7 @@ namespace Prueba_Libro
             // Aquí se obtienen los documentos ordenados
             var documentosOrdenados = documentManager.ObtenerDocumentos();
 
-            // Crear encabezado del formulario que es la imagen de BiblioTechnia
+            // Crear encabezado del formulario que es la imagen de BiblioTechnia. 
             PictureBox pictureBoxHeader = new PictureBox();
             pictureBoxHeader.Image = Properties.Resources.Logo_BiblioTechnia;
             pictureBoxHeader.SizeMode = PictureBoxSizeMode.Zoom;
@@ -353,7 +355,7 @@ namespace Prueba_Libro
             if (documento != null)
             {
                 // Crear una instancia del formulario de visor de PDF y mostrarlo
-                PdfForm pdfForm = new PdfForm(documento.Ruta); // Utiliza el contenido del PDF en lugar de la ruta
+                PdfForm pdfForm = new PdfForm(documento.Contenido); // Utiliza el contenido del PDF en lugar de la ruta
                 pdfForm.Show();
             }
             else

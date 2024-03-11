@@ -342,26 +342,30 @@ D:\Trabajo\Prueba Libro\bin\Debug\Aspose.PDF.dll
 D:\Trabajo\Prueba Libro\bin\Debug\Aspose.PDF.xml
 D:\Trabajo\Prueba Libro\obj\Debug\Prueba Libro.csproj.SuggestedBindingRedirects.cache
 D:\Trabajo\Prueba Libro\obj\Debug\Prueba Libro.exe.config
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.commons.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.kernel.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\icudt.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\x64\pdfium.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\x86\pdfium.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\libpdfium.dylib
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Audio\PruebaAudio2.mp3
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Fonts\monofonto.otf
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\modo-oscuro.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\signo-de-interrogacion.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\zoomenos.png
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\mode.png
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\FlechaRetroceso.png
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\plus.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\signo-de-interrogacion.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\pregunta.png
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\zoom.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\zoomenos.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\index.html
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Resources\LibroCerrado.jpg
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\FlechaAvance.png
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Fonts\chris.otf
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe.config
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe.manifest
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.application
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.exe
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\App Bibliotechnia 1.0.pdb
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\epubsharp.dll
@@ -390,6 +394,14 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Web.WebView2.Core.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Asio.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Core.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Midi.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Wasapi.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.WinForms.dll
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.WinMM.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Patagames.Pdf.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Patagames.Pdf.WinForms.dll
@@ -416,10 +428,8 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Ghostscript.NET.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.barcodes.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.bouncy-castle-connector.xml
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.commons.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.forms.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.io.xml
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.kernel.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.layout.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.pdfa.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\itext.pdfua.xml
@@ -438,6 +448,14 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Web.WebView2.Core.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Web.WebView2.WinForms.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Web.WebView2.Wpf.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Microsoft.Win32.Registry.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Asio.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Core.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Midi.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.Wasapi.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.WinForms.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\NAudio.WinMM.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Patagames.Pdf.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Patagames.Pdf.WinForms.xml
@@ -451,6 +469,8 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Reflection.Metadata.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Reflection.MetadataLoadContext.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Security.AccessControl.xml
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Text.Encoding.CodePages.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Text.Encodings.Web.xml
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\System.Text.Json.xml
@@ -460,6 +480,7 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\nl\PdfiumViewer.resources.dll
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba Libro.csproj.AssemblyReference.cache
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba_Libro.pruebaEPUB.resources
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba_Libro.ReproductorAudio.resources
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba_Libro.Form1.resources
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba_Libro.PdfForm.resources
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba_Libro.Properties.Resources.resources
@@ -472,5 +493,6 @@ C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Li
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\Prueba Libro.csproj.CopyComplete
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\App Bibliotechnia 1.0.exe
 C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\obj\Debug\App Bibliotechnia 1.0.pdb
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\pregunta.png
-C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\modo-oscuro.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\pausa.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\reiniciar.png
+C:\Users\Sistemas\Documents\GitHub\App-BiblioTechnia\App-BiblioTechnia\Prueba Libro\bin\Debug\Images\volumen.png

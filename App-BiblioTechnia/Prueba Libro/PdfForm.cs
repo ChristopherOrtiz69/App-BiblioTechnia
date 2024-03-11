@@ -228,9 +228,8 @@ namespace Prueba_Libro
             btnZoomOut.Margin = new Padding(0);
 
             // Cargar la imagen desde un archivo
-            Image image1 = Image.FromFile("Images/zoomenos.png"); // Reemplaza "ruta_de_la_imagen.png" con la ruta de tu imagen
-
-            // Define el ancho y alto deseados para la imagen dentro del botón
+            Image image1 = Image.FromFile("Images/zoomenos.png");
+           
             int newWidth1 = 40; // Ancho deseado
             int newHeight1 = 40; // Alto deseado
 
@@ -238,7 +237,7 @@ namespace Prueba_Libro
             Image resizedImage1 = new Bitmap(image1, new Size(newWidth1, newHeight1));
             btnZoomOut.Image = resizedImage1;
 
-            // Ajustar el tamaño de la imagen para que se ajuste al tamaño del botón
+          
             btnZoomOut.ImageAlign = ContentAlignment.MiddleCenter;
             btnZoomOut.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnZoomOut.Text = ""; // Establecer el texto del botón como una cadena vacía
@@ -366,7 +365,7 @@ namespace Prueba_Libro
                 MessageBox.Show("Prohibido tomar capturas de pantalla. Se detectó la combinación de teclas: Alt + P", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        
         private void PdfForm_KeyUp(object sender, KeyEventArgs e)
         {
             // Verificar si se levantó la tecla Shift

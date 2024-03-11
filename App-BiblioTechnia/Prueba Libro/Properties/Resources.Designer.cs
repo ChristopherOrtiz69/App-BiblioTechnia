@@ -71,6 +71,16 @@ namespace Prueba_Libro.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] AudioPrueba {
+            get {
+                object obj = ResourceManager.GetObject("AudioPrueba", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap biblioTechnia {
@@ -226,6 +236,16 @@ namespace Prueba_Libro.Properties {
         internal static byte[] prueba {
             get {
                 object obj = ResourceManager.GetObject("prueba", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] PruebaAudio2 {
+            get {
+                object obj = ResourceManager.GetObject("PruebaAudio2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
