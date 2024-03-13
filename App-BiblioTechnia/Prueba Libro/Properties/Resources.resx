@@ -121,6 +121,12 @@
   <data name="AudioPrueba" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AudioPrueba.mp4;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="BadBunny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BadBunny.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="balnearios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\balnearios.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="biblioTechnia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\biblioTechnia.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -183,6 +189,9 @@
   </data>
   <data name="sl1p_0001_1707415665p" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sl1p-0001-1707415665p.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="volumen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\volumen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_5R6d_0001_1707415664p" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\5R6d-0001-1707415664p.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
