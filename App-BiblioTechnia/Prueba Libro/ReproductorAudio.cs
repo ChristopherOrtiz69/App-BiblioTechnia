@@ -18,25 +18,26 @@ namespace Prueba_Libro
         private Button restartButton;
         private TrackBar volumeTrackBar;
 
-        public ReproductorAudio()
+        public ReproductorAudio(byte[] audioBytes)
         {
             InitializeComponent();
+            this.audioStream = new MemoryStream(audioBytes);
             trackBar.Scroll += trackBar_Scroll;
 
             // Agrega el PictureBox al formulario
             pictureBox = new PictureBox();
-            pictureBox.Image = Properties.Resources.Logo_BiblioTechnia; // Cambia "NombreDeTuImagen" al nombre de tu imagen
-            pictureBox.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta el tamaño del PictureBox al tamaño de la imagen
+            pictureBox.Image = Properties.Resources.Logo_BiblioTechnia;
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox.Location = new Point(30, -150);
             pictureBox.Size = new Size(400, 400);
-            Controls.Add(pictureBox); 
+            Controls.Add(pictureBox);
 
             // Agrega el botón de play/pause
             playPauseButton = new Button();
             playPauseButton.Size = new Size(100, 50);
             playPauseButton.Location = new Point(375, 250);
             playPauseButton.Click += PlayPauseButton_Click;
-            playPauseButton.FlatStyle =FlatStyle.Flat;
+            playPauseButton.FlatStyle = FlatStyle.Flat;
             playPauseButton.FlatAppearance.BorderSize = 0;
             playPauseButton.Margin = new Padding(0);
             Image image = Image.FromFile("Images/pausa.png");
@@ -47,7 +48,7 @@ namespace Prueba_Libro
             playPauseButton.Image = resizedImage;
             playPauseButton.ImageAlign = ContentAlignment.MiddleCenter;
             Controls.Add(playPauseButton);
-            
+
             restartButton = new Button();
             restartButton.Size = new Size(100, 50);
             restartButton.Location = new Point(287, 250);
@@ -65,8 +66,9 @@ namespace Prueba_Libro
             Controls.Add(restartButton);
 
             volumeTrackBar = new TrackBar();
-            volumeTrackBar.Location = new Point(50, 260);
-            volumeTrackBar.Size = new Size(150, 40);
+            volumeTrackBar.Location = new Point(650, 60);
+            volumeTrackBar.Size = new Size(40, 100); // Cambiar el tamaño para que sea vertical
+            volumeTrackBar.Orientation = Orientation.Vertical; // Cambiar la orientación a vertical
             volumeTrackBar.Minimum = 0; // Volumen mínimo
             volumeTrackBar.Maximum = 100; // Volumen máximo
             volumeTrackBar.TickFrequency = 10; // Incremento de volumen
@@ -74,13 +76,17 @@ namespace Prueba_Libro
             volumeTrackBar.Scroll += VolumeTrackBar_Scroll;
             Controls.Add(volumeTrackBar);
 
+            PictureBox volumePictureBox = new PictureBox();
+            volumePictureBox.Image = Properties.Resources.volumen;
+            volumePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            volumePictureBox.Size = new Size(40, 40);
+            volumePictureBox.Location = new Point(volumeTrackBar.Left, volumeTrackBar.Top - volumePictureBox.Height - 5);
+            Controls.Add(volumePictureBox);
+
             try
             {
-                // Convierte los bytes del recurso de audio en un MemoryStream
-                audioStream = new MemoryStream(Properties.Resources.PruebaAudio2);
-
                 // Crea un lector de archivos MP3
-                mp3FileReader = new Mp3FileReader(audioStream);
+                mp3FileReader = new Mp3FileReader(this.audioStream);
 
                 // Crea un dispositivo de salida de audio
                 waveOutDevice = new WaveOutEvent();
@@ -106,6 +112,7 @@ namespace Prueba_Libro
                 MessageBox.Show("Error al cargar o reproducir el archivo de audio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void VolumeTrackBar_Scroll(object sender, EventArgs e)
         {
             // Obtén el valor del control TrackBar para el volumen
@@ -151,14 +158,13 @@ namespace Prueba_Libro
             if (waveOutDevice.PlaybackState == PlaybackState.Paused)
             {
                 waveOutDevice.Play();
-
             }
             else
             {
                 waveOutDevice.Pause();
-               
             }
         }
+
         private void RestartButton_Click(object sender, EventArgs e)
         {
             // Detiene la reproducción del audio

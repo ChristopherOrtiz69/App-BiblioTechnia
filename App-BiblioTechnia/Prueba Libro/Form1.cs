@@ -39,9 +39,9 @@ namespace Prueba_Libro
 
             InitializeComponent();
             InitializeComponentsAndData();
-            ReproductorAudio reproductorAudioForm = new ReproductorAudio();
-            reproductorAudioForm.Show();
+
             this.AutoScroll = true;
+
             //pruebaEPUB pruebaEPUBForm = new pruebaEPUB();
             //pruebaEPUBForm.Show();
             //InicializarPDFEncriptado();
@@ -292,7 +292,7 @@ namespace Prueba_Libro
 
             return label;
         }
-    
+
 
 
         /*private void InicializarPDFEncriptado()
@@ -331,8 +331,23 @@ namespace Prueba_Libro
             // Verificar si se encontró el documento
             if (documento != null)
             {
-                // Mostrar el formulario del PDF correspondiente
-                ShowPdfForm(selectedDocumentId);
+                // Si el documento tiene audio, abrir el formulario de ReproductorAudio
+                if (documento.Audio != null)
+                {
+                    // Crear una instancia del formulario de ReproductorAudio y mostrarlo
+                    ReproductorAudio reproductorAudioForm = new ReproductorAudio(documento.Audio);
+                    reproductorAudioForm.Show();
+                }
+                else if (documento.Contenido != null)
+                {
+                    // Si no tiene audio pero tiene contenido, abrir el formulario de PDF correspondiente
+                    ShowPdfForm(documento.Contenido);
+                }
+                else
+                {
+                    // Si no tiene audio ni contenido, mostrar un mensaje indicando que no hay nada disponible
+                    MessageBox.Show("El documento seleccionado no tiene contenido disponible.", "Sin Contenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -340,29 +355,13 @@ namespace Prueba_Libro
             }
         }
 
-        private void pictureBox_MouseLeave(object sender, EventArgs e)
+        private void ShowPdfForm(byte[] pdfContent)
         {
-            // Se maneja el evento mouse leave en el PictureBox
-            PictureBox pictureBox = sender as PictureBox;
-            pictureBox.Image = Properties.Resources.LibroCerrado;
+            // Crear una instancia del formulario de visor de PDF y mostrarlo
+            PdfForm pdfForm = new PdfForm(pdfContent);
+            pdfForm.Show();
         }
 
-        private void ShowPdfForm(int documentId)
-        {
-            // Obtener el documento correspondiente al ID
-            DocumentManager.Documento documento = documentManager.ObtenerDocumentos().FirstOrDefault(doc => doc.Id == documentId);
-
-            if (documento != null)
-            {
-                // Crear una instancia del formulario de visor de PDF y mostrarlo
-                PdfForm pdfForm = new PdfForm(documento.Contenido); // Utiliza el contenido del PDF en lugar de la ruta
-                pdfForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Documento no encontrado.");
-            }
-        }
 
 
     }
