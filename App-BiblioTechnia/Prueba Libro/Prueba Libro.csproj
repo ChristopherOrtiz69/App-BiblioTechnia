@@ -280,6 +280,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="pruebaEPUB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,7 +370,6 @@
     <None Include="Resources\KhLH-0001-1707415666p.png" />
     <None Include="Resources\AudioPrueba.mp4" />
     <None Include="Resources\PruebaAudio2.mp3" />
-    <None Include="Resources\volumen.png" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -395,6 +399,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="biblioTechnia.ico" />
     <None Include="packages.config" />
