@@ -298,9 +298,6 @@
       <DependentUpon>ReproductorAudio.cs</DependentUpon>
     </Compile>
     <Compile Include="VisualizadorEpub.cs" />
-    <Content Include="Audio\PruebaAudio2.mp3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="icudt.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -373,6 +370,9 @@
     <None Include="Resources\balnearios.mp3" />
     <None Include="Resources\BadBunny.mp3" />
     <None Include="Resources\volumen.png" />
+    <None Include="Resources\Raton.jpg" />
+    <None Include="Resources\portadaBad.jpg" />
+    <None Include="Resources\fotoBalneario.jpg" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

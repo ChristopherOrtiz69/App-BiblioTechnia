@@ -121,6 +121,16 @@ namespace Prueba_Libro.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fotoBalneario {
+            get {
+                object obj = ResourceManager.GetObject("fotoBalneario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
         internal static byte[] KhLH_0001_1707415666 {
@@ -251,6 +261,16 @@ namespace Prueba_Libro.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap portadaBad {
+            get {
+                object obj = ResourceManager.GetObject("portadaBad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
         internal static byte[] prueba {
@@ -286,6 +306,16 @@ namespace Prueba_Libro.Properties {
         internal static System.Drawing.Bitmap QSK7_0001_1707415664p {
             get {
                 object obj = ResourceManager.GetObject("QSK7_0001_1707415664p", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Raton {
+            get {
+                object obj = ResourceManager.GetObject("Raton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

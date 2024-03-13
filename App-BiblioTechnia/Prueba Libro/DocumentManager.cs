@@ -35,12 +35,22 @@ namespace Prueba_Libro
             documentos = new List<Documento>
             {
                 // Ejemplo de documento con contenido y sin audio
-                new Documento(0, "Renacer", Properties.Resources.perro1, Properties.Resources._5R6d_0001_1707415664p),
-                new Documento(1, "Documento de audio", null,  Properties.Resources.KhLH_0001_1707415666p, Properties.Resources.PruebaAudio2),
-                new Documento(2, "Documento de audio", null,  Properties.Resources.KhLH_0001_1707415666p, Properties.Resources.balnearios),
-                new Documento(3, "No me quiero casar", null,  Properties.Resources.KhLH_0001_1707415666p, Properties.Resources.BadBunny),
+                new Documento(0, "Renacer Libro", Properties.Resources.perro1, Properties.Resources._5R6d_0001_1707415664p),
+                new Documento(1, "AudioLibro Ejemplo1", null,  Properties.Resources.Raton, Properties.Resources.PruebaAudio2),
+                new Documento(2, "AudioLibro Ejemplo2", null,  Properties.Resources.Raton, Properties.Resources.balnearios),
+                new Documento(3, "AudioLibro Ejemplo3", null,  Properties.Resources.portadaBad, Properties.Resources.BadBunny),
                 new Documento(4, "Encomio del arte de la medicina", Properties.Resources.sl1p_0001_1707415665, Properties.Resources.sl1p_0001_1707415665p),
                 new Documento(5, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(6, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(7, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(8, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(9, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(10, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(11, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(12, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(13, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(14, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
+                new Documento(15, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
 
             };
         }
