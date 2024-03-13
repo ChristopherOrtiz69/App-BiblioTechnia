@@ -83,6 +83,16 @@ namespace Prueba_Libro.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
+        internal static byte[] BadBunny {
+            get {
+                object obj = ResourceManager.GetObject("BadBunny", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
         internal static byte[] balnearios {
             get {
                 object obj = ResourceManager.GetObject("balnearios", resourceCulture);

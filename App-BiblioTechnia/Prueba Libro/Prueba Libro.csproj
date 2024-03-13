@@ -371,6 +371,7 @@
     <None Include="Resources\AudioPrueba.mp4" />
     <None Include="Resources\PruebaAudio2.mp3" />
     <None Include="Resources\balnearios.mp3" />
+    <None Include="Resources\BadBunny.mp3" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
