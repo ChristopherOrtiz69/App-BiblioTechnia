@@ -319,13 +319,19 @@
     <None Include="Images\FlechaAvance.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Images\flecha-izquierda.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\modo-oscuro.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\pausa.png">
+    <Content Include="Images\play-pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\reiniciar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\repeticion.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\signo-de-interrogacion.png">
@@ -373,6 +379,12 @@
     <None Include="Resources\Raton.jpg" />
     <None Include="Resources\portadaBad.jpg" />
     <None Include="Resources\fotoBalneario.jpg" />
+    <None Include="Resources\Logo_bibliotechnia_SinFondo.png" />
+    <None Include="Resources\Icono_SinFondo.png" />
+    <None Include="Resources\retrocesoSec.png" />
+    <None Include="Resources\retrocesoSec2.png" />
+    <None Include="Resources\play-pause.png" />
+    <None Include="Resources\flecha-izquierda.png" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -34,7 +34,7 @@ namespace Prueba_Libro
         {
             documentos = new List<Documento>
             {
-                // Ejemplo de documento con contenido y sin audio
+                
                 new Documento(0, "Renacer Libro", Properties.Resources.perro1, Properties.Resources._5R6d_0001_1707415664p),
                 new Documento(1, "AudioLibro Ejemplo1", null,  Properties.Resources.Raton, Properties.Resources.PruebaAudio2),
                 new Documento(2, "AudioLibro Ejemplo2", null,  Properties.Resources.Raton, Properties.Resources.balnearios),
@@ -77,7 +77,7 @@ namespace Prueba_Libro
 
         public List<byte[]> ObtenerAudiosDocumentos()
         {
-            return documentos.Where(doc => doc.Audio != null).Select(doc => doc.Audio).ToList(); // Retorna la lista de audios
+            return documentos.Where(doc => doc.Audio != null).Select(doc => doc.Audio).ToList();
         }
     }
 }

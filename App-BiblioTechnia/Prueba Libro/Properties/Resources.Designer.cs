@@ -113,6 +113,16 @@ namespace Prueba_Libro.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flecha_izquierda {
+            get {
+                object obj = ResourceManager.GetObject("flecha_izquierda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fondo {
             get {
                 object obj = ResourceManager.GetObject("fondo", resourceCulture);
@@ -126,6 +136,16 @@ namespace Prueba_Libro.Properties {
         internal static System.Drawing.Bitmap fotoBalneario {
             get {
                 object obj = ResourceManager.GetObject("fotoBalneario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icono_SinFondo {
+            get {
+                object obj = ResourceManager.GetObject("Icono_SinFondo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +236,16 @@ namespace Prueba_Libro.Properties {
         internal static System.Drawing.Bitmap Logo_BiblioTechnia {
             get {
                 object obj = ResourceManager.GetObject("Logo_BiblioTechnia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_bibliotechnia_SinFondo {
+            get {
+                object obj = ResourceManager.GetObject("Logo_bibliotechnia_SinFondo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +346,26 @@ namespace Prueba_Libro.Properties {
         internal static System.Drawing.Bitmap Raton {
             get {
                 object obj = ResourceManager.GetObject("Raton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap retrocesoSec {
+            get {
+                object obj = ResourceManager.GetObject("retrocesoSec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap retrocesoSec2 {
+            get {
+                object obj = ResourceManager.GetObject("retrocesoSec2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

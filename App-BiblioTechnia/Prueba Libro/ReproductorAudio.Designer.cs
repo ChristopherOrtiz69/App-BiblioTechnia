@@ -41,7 +41,7 @@
             this.trackBar.Margin = new System.Windows.Forms.Padding(5);
             this.trackBar.Maximum = 0;
             this.trackBar.Name = "trackBar";
-            this.trackBar.Size = new System.Drawing.Size(670, 45);
+            this.trackBar.Size = new System.Drawing.Size(653, 45);
             this.trackBar.TabIndex = 0;
             // 
             // labelTiempo

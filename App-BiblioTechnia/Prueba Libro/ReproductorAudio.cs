@@ -17,6 +17,10 @@ namespace Prueba_Libro
         private Button playPauseButton;
         private Button restartButton;
         private TrackBar volumeTrackBar;
+        private bool modoNoche = false;
+        Image playImage = Image.FromFile("Images/play-pause.png");
+        Image pauseImage = Image.FromFile("Images/flecha-izquierda.png");
+
 
         public ReproductorAudio(byte[] audioBytes)
         {
@@ -26,36 +30,43 @@ namespace Prueba_Libro
 
             // Agrega el PictureBox al formulario
             pictureBox = new PictureBox();
-            pictureBox.Image = Properties.Resources.Logo_BiblioTechnia;
+            pictureBox.Image = Properties.Resources.Logo_bibliotechnia_SinFondo;
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox.Location = new Point(30, -150);
             pictureBox.Size = new Size(400, 400);
             Controls.Add(pictureBox);
 
             // Agrega el botón de play/pause
+            // Crear el botón playPauseButton
             playPauseButton = new Button();
             playPauseButton.Size = new Size(100, 50);
-            playPauseButton.Location = new Point(375, 250);
-            playPauseButton.Click += PlayPauseButton_Click;
+            playPauseButton.Location = new Point(287, 250);
             playPauseButton.FlatStyle = FlatStyle.Flat;
             playPauseButton.FlatAppearance.BorderSize = 0;
             playPauseButton.Margin = new Padding(0);
-            Image image = Image.FromFile("Images/pausa.png");
-            // Redimensionar la imagen a un tamaño más pequeño
+            playPauseButton.ImageAlign = ContentAlignment.MiddleCenter;
+
+            // Cargar la imagen y redimensionarla
+            Image image = Image.FromFile("Images/play-pause.png");
             int newWidth = 50; // Ancho deseado
             int newHeight = 50; // Alto deseado
             Image resizedImage = new Bitmap(image, new Size(newWidth, newHeight));
             playPauseButton.Image = resizedImage;
-            playPauseButton.ImageAlign = ContentAlignment.MiddleCenter;
+
+            // Agregar el controlador de eventos al evento Click
+            playPauseButton.Click += PlayPauseButton_Click;
+
+            // Agregar el botón al formulario
             Controls.Add(playPauseButton);
+
 
             restartButton = new Button();
             restartButton.Size = new Size(100, 50);
-            restartButton.Location = new Point(287, 250);
+            restartButton.Location = new Point(500, 250);
             restartButton.FlatStyle = FlatStyle.Flat;
             restartButton.FlatAppearance.BorderSize = 0;
             restartButton.Margin = new Padding(0);
-            Image image1 = Image.FromFile("Images/reiniciar.png");
+            Image image1 = Image.FromFile("Images/repeticion.png");
             // Redimensionar la imagen a un tamaño más pequeño
             int newWidth1 = 50; // Ancho deseado
             int newHeight1 = 50; // Alto deseado
@@ -82,6 +93,59 @@ namespace Prueba_Libro
             volumePictureBox.Size = new Size(40, 40);
             volumePictureBox.Location = new Point(volumeTrackBar.Left, volumeTrackBar.Top - volumePictureBox.Height - 5);
             Controls.Add(volumePictureBox);
+
+           /* Button modoNocheButton = new Button();
+            modoNocheButton.Size = new Size(100, 50);
+            modoNocheButton.Location = new Point(600, 250);
+            modoNocheButton.Click += ModoNocheButton_Click;
+            modoNocheButton.FlatStyle = FlatStyle.Flat;
+            modoNocheButton.FlatAppearance.BorderSize = 0;
+            modoNocheButton.Margin = new Padding(0);
+            Image modoNocheImage = Image.FromFile("Images/modo-oscuro.png"); 
+            int newWidth2 = 50; // Ancho deseado
+            int newHeight2 = 50; // Alto deseado
+            Image resizedImage2 = new Bitmap(modoNocheImage, new Size(newWidth2, newHeight2));
+            modoNocheButton.Image = resizedImage2;
+            modoNocheButton.ImageAlign = ContentAlignment.MiddleCenter;
+            Controls.Add(modoNocheButton);*/
+
+            Color colorFondo = this.BackColor; // Guarda el color de fondo del formulario
+
+          
+
+            Button retrocederButton = new Button();
+            retrocederButton.Size = new Size(50, 50); // Ajusta el tamaño según el tamaño de tu imagen
+            retrocederButton.Location = new Point(225, 250); // Ajusta la posición según la ubicación deseada
+            retrocederButton.BackgroundImage = Properties.Resources.flecha_izquierda; // Reemplaza "ImagenRetroceder" con el nombre de tu imagen retroceder en los recursos
+            retrocederButton.BackgroundImageLayout = ImageLayout.Stretch; // Ajusta el diseño de la imagen según tus necesidades
+            retrocederButton.FlatStyle = FlatStyle.Flat; // Establece el estilo del botón como Flat
+            retrocederButton.FlatAppearance.BorderSize = 1; // Establece el ancho del borde a 1
+            retrocederButton.FlatAppearance.BorderColor = colorFondo; // Establece el color del borde como el color del fondo del formulario
+            retrocederButton.BackColor = colorFondo; // Establece el color de fondo del botón como el color del fondo del formulario
+            retrocederButton.Click += RetrocederButton_Click; // Asigna el evento de clic
+            Controls.Add(retrocederButton);
+
+            // Carga la imagen de Avanzar desde los recursos
+            Bitmap imagenAvanzar = Properties.Resources.flecha_izquierda;
+
+            // Rota la imagen 180 grados
+            imagenAvanzar.RotateFlip(RotateFlipType.Rotate180FlipNone);
+
+            // Crea el botón "Avanzar" con la imagen rotada
+            Button avanzarButton = new Button();
+            avanzarButton.Size = new Size(50, 50); // Ajusta el tamaño según el tamaño de tu imagen
+            avanzarButton.Location = new Point(400, 250); // Ajusta la posición según la ubicación deseada
+            avanzarButton.BackgroundImage = imagenAvanzar; // Usa la imagen rotada como fondo del botón
+            avanzarButton.BackgroundImageLayout = ImageLayout.Stretch; // Ajusta el diseño de la imagen según tus necesidades
+            avanzarButton.FlatStyle = FlatStyle.Flat; // Establece el estilo del botón como Flat
+            avanzarButton.FlatAppearance.BorderSize = 1; // Establece el ancho del borde a 1
+            avanzarButton.FlatAppearance.BorderColor = colorFondo; // Establece el color del borde como el color del fondo del formulario
+            avanzarButton.BackColor = colorFondo; // Establece el color de fondo del botón como el color del fondo del formulario
+            avanzarButton.Click += AvanzarButton_Click; // Asigna el evento de clic
+            Controls.Add(avanzarButton);
+
+
+
 
             try
             {
@@ -113,12 +177,78 @@ namespace Prueba_Libro
             }
         }
 
+      
+
+        private void AvanzarButton_Click(object sender, EventArgs e)
+        {
+            if (waveOutDevice != null && mp3FileReader != null)
+            {
+                // Pausa la reproducción mientras se ajusta la posición
+                waveOutDevice.Pause();
+
+                // Avanza 30 segundos
+                TimeSpan nuevaPosicion = mp3FileReader.CurrentTime.Add(TimeSpan.FromSeconds(30));
+
+                // Establece la nueva posición de reproducción
+                mp3FileReader.CurrentTime = nuevaPosicion;
+
+                // Continúa la reproducción
+                waveOutDevice.Play();
+            }
+        }
+
+        private void RetrocederButton_Click(object sender, EventArgs e)
+        {
+            if (waveOutDevice != null && mp3FileReader != null)
+            {
+                // Pausa la reproducción mientras se ajusta la posición
+                waveOutDevice.Pause();
+
+                // Retrocede 10 segundos
+                TimeSpan nuevaPosicion = mp3FileReader.CurrentTime.Subtract(TimeSpan.FromSeconds(10));
+
+                // Asegúrate de que la nueva posición no sea negativa
+                if (nuevaPosicion.TotalSeconds < 0)
+                    nuevaPosicion = TimeSpan.Zero;
+
+                // Establece la nueva posición de reproducción
+                mp3FileReader.CurrentTime = nuevaPosicion;
+
+                // Continúa la reproducción
+                waveOutDevice.Play();
+            }
+        }
+
+
+        private void ModoNocheButton_Click(object sender, EventArgs e)
+        {
+            // Cambiar el estado del modo noche
+            modoNoche = !modoNoche;
+
+            // Cambiar el color de fondo de la ventana
+            if (modoNoche)
+            {
+                this.BackColor = Color.Gray; // Cambiar el color a gris
+                pictureBox.Image = Properties.Resources.Icono_SinFondo;
+                pictureBox.Size = new Size(180,180);
+                pictureBox.Location = new Point(20, -40);
+            }
+            else
+            {
+                this.BackColor = SystemColors.Control; // Cambiar el color al estado natural
+                pictureBox.Image = Properties.Resources.Logo_bibliotechnia_SinFondo; 
+                pictureBox.Size = new Size(400, 400);
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.Location = new Point(30, -150);
+               
+            }
+        }
         private void VolumeTrackBar_Scroll(object sender, EventArgs e)
         {
             // Obtén el valor del control TrackBar para el volumen
             int volume = volumeTrackBar.Value;
 
-            // Convierte el valor del volumen al rango aceptado por NAudio (0.0 a 1.0)
+           
             float volumeNormalized = volume / 100f;
 
             // Ajusta el volumen del dispositivo de salida de audio
@@ -164,6 +294,7 @@ namespace Prueba_Libro
                 waveOutDevice.Pause();
             }
         }
+
 
         private void RestartButton_Click(object sender, EventArgs e)
         {
