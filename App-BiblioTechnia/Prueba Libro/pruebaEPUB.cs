@@ -1,8 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using VersOne.Epub;
+using System.IO;
+using System.Text;
+using VersOne.Epub.Schema;
+using System.Threading.Tasks;
 
 namespace Prueba_Libro
 {
@@ -11,52 +13,53 @@ namespace Prueba_Libro
         public pruebaEPUB()
         {
             InitializeComponent();
-            this.AutoScroll = true;
-            MostrarContenidoEpub("DocumentosPDF/pruebaEpub5.epub");
+            MostrarContenidoEPUB(); // Llama al método para mostrar el contenido del EPUB al iniciar el formulario
         }
 
-        private void MostrarContenidoEpub(string filePath)
+        private async Task MostrarContenidoEPUB()
         {
-            try
-            {
-                // Leer el archivo ePub
-                EpubBook book = EpubReader.ReadBook(filePath);
+            // Abre el cuadro de diálogo para seleccionar el archivo EPUB
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos EPUB|*.epub";
+            openFileDialog.Title = "Seleccionar archivo EPUB";
 
-                // Obtener el contenido HTML del primer capítulo
-                string htmlContent = ObtenerContenidoHtml(book);
-
-                // Mostrar el contenido en el control WebBrowser
-                webBrowser1.DocumentText = htmlContent;
-            }
-            catch (Exception ex)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Error al abrir el archivo ePub: " + ex.Message,
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                string epubFilePath = openFileDialog.FileName;
+
+                try
+                {
+                    // Carga el libro EPUB
+                    EpubBook book = EpubReader.ReadBook(epubFilePath);
+
+                    // Leer metadatos   
+                    string title = book.Title;
+
+                    // Mostrar metadatos en los controles del formulario
+                    lblTitle.Text = "Título: " + title;
+
+                    // Convertir contenido a HTML
+                    StringBuilder htmlBuilder = new StringBuilder();
+                    /*foreach (EpubContentFileRef contentFile in book.ReadingOrder)
+                    {
+                        // Leer contenido del archivo
+                        string content = await contentFile.ReadContentAsTextAsync();
+
+                        // Agregar el contenido al HTML
+                        htmlBuilder.AppendLine($"<h1>{contentFile.FileName}</h1>");
+                        htmlBuilder.AppendLine(content);
+                    }
+                    string htmlContent = htmlBuilder.ToString();
+
+                    // Mostrar contenido HTML en el WebBrowser
+                    webBrowser.DocumentText = htmlContent;*/
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al abrir el archivo EPUB: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
-        private string ObtenerContenidoHtml(EpubBook book)
-        {
-            // Construir el contenido HTML utilizando el contenido de los archivos del ePub
-            // Aquí necesitarás procesar los archivos HTML, CSS y otros recursos del ePub
-            // para construir un documento HTML completo que pueda ser renderizado por el WebBrowser
-            // Puedes acceder a los archivos a través de las propiedades del objeto EpubBook
-            // como ReadingOrder, Resources, etc.
-
-            // Construir el contenido HTML utilizando el contenido del primer capítulo del ePub
-            EpubLocalTextContentFile firstChapter = book.ReadingOrder.FirstOrDefault();
-            if (firstChapter != null)
-            {
-                string htmlContent = firstChapter.Content;
-                return htmlContent;
-            }
-            else
-            {
-                return "<html><body><h1>Contenido del ePub no encontrado</h1></body></html>";
-            }
-        }
+    }
 
     }
-}

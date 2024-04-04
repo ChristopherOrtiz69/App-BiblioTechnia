@@ -42,6 +42,9 @@ namespace Prueba_Libro
 
             this.AutoScroll = true;
 
+            /*pruebaEPUB pruebaEPUBForm = new pruebaEPUB();
+            pruebaEPUBForm.Show();*/
+
             //pruebaEPUB pruebaEPUBForm = new pruebaEPUB();
             //pruebaEPUBForm.Show();
             //InicializarPDFEncriptado();

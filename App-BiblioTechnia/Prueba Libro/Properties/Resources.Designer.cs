@@ -113,6 +113,16 @@ namespace Prueba_Libro.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boton_de_silencio {
+            get {
+                object obj = ResourceManager.GetObject("boton_de_silencio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flecha_izquierda {
             get {
                 object obj = ResourceManager.GetObject("flecha_izquierda", resourceCulture);
@@ -266,16 +276,6 @@ namespace Prueba_Libro.Properties {
         internal static byte[] monofonto {
             get {
                 object obj = ResourceManager.GetObject("monofonto", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] ola {
-            get {
-                object obj = ResourceManager.GetObject("ola", resourceCulture);
                 return ((byte[])(obj));
             }
         }

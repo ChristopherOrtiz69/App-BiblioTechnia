@@ -35,10 +35,10 @@ namespace Prueba_Libro
             documentos = new List<Documento>
             {
                 
-                new Documento(0, "Renacer Libro", Properties.Resources.perro1, Properties.Resources._5R6d_0001_1707415664p),
-                new Documento(1, "AudioLibro Ejemplo1", null,  Properties.Resources.Raton, Properties.Resources.PruebaAudio2),
-                new Documento(2, "AudioLibro Ejemplo2", null,  Properties.Resources.Raton, Properties.Resources.balnearios),
-                new Documento(3, "AudioLibro Ejemplo3", null,  Properties.Resources.portadaBad, Properties.Resources.BadBunny),
+                new Documento(0, "Renacer Libro PDF ", Properties.Resources.perro1, Properties.Resources._5R6d_0001_1707415664p),
+                new Documento(1, "Audio Libro Ejemplo 1", null,  Properties.Resources.Raton, Properties.Resources.PruebaAudio2),
+                new Documento(2, "Audio Libro Ejemplo 2", null,  Properties.Resources.Raton, Properties.Resources.balnearios),
+                new Documento(3, "Audio Libro Ejemplo 3", null,  Properties.Resources.portadaBad, Properties.Resources.BadBunny),
                 new Documento(4, "Encomio del arte de la medicina", Properties.Resources.sl1p_0001_1707415665, Properties.Resources.sl1p_0001_1707415665p),
                 new Documento(5, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),
                 new Documento(6, "Guia de Aves", Properties.Resources.QSK7_0001_1707415664, Properties.Resources.QSK7_0001_1707415664p),

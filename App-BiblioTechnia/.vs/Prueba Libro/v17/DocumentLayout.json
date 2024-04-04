@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|c:\\users\\sistemas\\documents\\github\\app-bibliotechnia\\app-bibliotechnia\\prueba libro\\reproductoraudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|solutionrelative:prueba libro\\reproductoraudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|c:\\users\\sistemas\\documents\\github\\app-bibliotechnia\\app-bibliotechnia\\prueba libro\\reproductoraudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|solutionrelative:prueba libro\\reproductoraudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Prueba Libro||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\prueba libro\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|solutionrelative:prueba libro\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|c:\\users\\sistemas\\documents\\github\\app-bibliotechnia\\app-bibliotechnia\\prueba libro\\documentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|solutionrelative:prueba libro\\documentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A9583E4-D973-41EE-A179-D349CAB3948F}|Prueba Libro\\Prueba Libro.csproj|c:\\users\\sistemas\\documents\\github\\app-bibliotechnia\\app-bibliotechnia\\prueba libro\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|f8d6553f-f752-4dbf-acb6-f291b744a792"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 367,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:800211933:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Prueba Libro",
+              "DocumentMoniker": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\Prueba Libro.csproj",
+              "RelativeDocumentMoniker": "Prueba Libro\\Prueba Libro.csproj",
+              "ToolTip": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\Prueba Libro.csproj",
+              "RelativeToolTip": "Prueba Libro\\Prueba Libro.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-04T18:42:21.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DocumentManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\DocumentManager.cs",
+              "RelativeDocumentMoniker": "Prueba Libro\\DocumentManager.cs",
+              "ToolTip": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\DocumentManager.cs",
+              "RelativeToolTip": "Prueba Libro\\DocumentManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAACJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T18:25:34.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReproductorAudio.cs",
+              "DocumentMoniker": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\ReproductorAudio.cs",
+              "RelativeDocumentMoniker": "Prueba Libro\\ReproductorAudio.cs",
+              "ToolTip": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\ReproductorAudio.cs",
+              "RelativeToolTip": "Prueba Libro\\ReproductorAudio.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAgwHYAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T15:49:40.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\Form1.cs",
+              "RelativeDocumentMoniker": "Prueba Libro\\Form1.cs",
+              "ToolTip": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\Form1.cs",
+              "RelativeToolTip": "Prueba Libro\\Form1.cs",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAAAI4AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-21T15:28:40.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReproductorAudio.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\ReproductorAudio.cs",
+              "RelativeDocumentMoniker": "Prueba Libro\\ReproductorAudio.cs",
+              "ToolTip": "C:\\Users\\Sistemas\\Documents\\GitHub\\App-BiblioTechnia\\App-BiblioTechnia\\Prueba Libro\\ReproductorAudio.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Prueba Libro\\ReproductorAudio.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T17:53:19.035Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

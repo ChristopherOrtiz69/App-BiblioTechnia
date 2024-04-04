@@ -18,8 +18,13 @@ namespace Prueba_Libro
         private Button restartButton;
         private TrackBar volumeTrackBar;
         private bool modoNoche = false;
-        Image playImage = Image.FromFile("Images/play-pause.png");
-        Image pauseImage = Image.FromFile("Images/flecha-izquierda.png");
+        private bool isMuted = false;
+        private Image volumeImage = Properties.Resources.volumen;
+        private Image muteImage = Properties.Resources.boton_de_silencio;
+        Image playImage = Image.FromFile("Images/jugar.png");
+        Image pauseImage = Image.FromFile("Images/pausa.png");
+        private bool isPlaying = false;
+        private Button muteButton;
 
 
         public ReproductorAudio(byte[] audioBytes)
@@ -27,6 +32,7 @@ namespace Prueba_Libro
             InitializeComponent();
             this.audioStream = new MemoryStream(audioBytes);
             trackBar.Scroll += trackBar_Scroll;
+            
 
             // Agrega el PictureBox al formulario
             pictureBox = new PictureBox();
@@ -36,28 +42,29 @@ namespace Prueba_Libro
             pictureBox.Size = new Size(400, 400);
             Controls.Add(pictureBox);
 
-            // Agrega el botón de play/pause
+            
             // Crear el botón playPauseButton
             playPauseButton = new Button();
             playPauseButton.Size = new Size(100, 50);
-            playPauseButton.Location = new Point(287, 250);
+            playPauseButton.Location = new Point(287,250);
             playPauseButton.FlatStyle = FlatStyle.Flat;
             playPauseButton.FlatAppearance.BorderSize = 0;
             playPauseButton.Margin = new Padding(0);
             playPauseButton.ImageAlign = ContentAlignment.MiddleCenter;
 
             // Cargar la imagen y redimensionarla
-            Image image = Image.FromFile("Images/play-pause.png");
+                Image image = Image.FromFile("Images/jugar.png");
             int newWidth = 50; // Ancho deseado
             int newHeight = 50; // Alto deseado
             Image resizedImage = new Bitmap(image, new Size(newWidth, newHeight));
-            playPauseButton.Image = resizedImage;
+           playPauseButton.Image = resizedImage;
 
             // Agregar el controlador de eventos al evento Click
             playPauseButton.Click += PlayPauseButton_Click;
 
             // Agregar el botón al formulario
             Controls.Add(playPauseButton);
+
 
 
             restartButton = new Button();
@@ -71,7 +78,7 @@ namespace Prueba_Libro
             int newWidth1 = 50; // Ancho deseado
             int newHeight1 = 50; // Alto deseado
             Image resizedImage1 = new Bitmap(image1, new Size(newWidth1, newHeight1));
-            restartButton.Image = resizedImage1;
+            restartButton.Image = resizedImage1;    
             restartButton.ImageAlign = ContentAlignment.MiddleCenter;
             restartButton.Click += RestartButton_Click;
             Controls.Add(restartButton);
@@ -87,12 +94,6 @@ namespace Prueba_Libro
             volumeTrackBar.Scroll += VolumeTrackBar_Scroll;
             Controls.Add(volumeTrackBar);
 
-            PictureBox volumePictureBox = new PictureBox();
-            volumePictureBox.Image = Properties.Resources.volumen;
-            volumePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            volumePictureBox.Size = new Size(40, 40);
-            volumePictureBox.Location = new Point(volumeTrackBar.Left, volumeTrackBar.Top - volumePictureBox.Height - 5);
-            Controls.Add(volumePictureBox);
 
            /* Button modoNocheButton = new Button();
             modoNocheButton.Size = new Size(100, 50);
@@ -115,9 +116,9 @@ namespace Prueba_Libro
 
             Button retrocederButton = new Button();
             retrocederButton.Size = new Size(50, 50); // Ajusta el tamaño según el tamaño de tu imagen
-            retrocederButton.Location = new Point(225, 250); // Ajusta la posición según la ubicación deseada
-            retrocederButton.BackgroundImage = Properties.Resources.flecha_izquierda; // Reemplaza "ImagenRetroceder" con el nombre de tu imagen retroceder en los recursos
-            retrocederButton.BackgroundImageLayout = ImageLayout.Stretch; // Ajusta el diseño de la imagen según tus necesidades
+            retrocederButton.Location = new Point(225, 250); 
+            retrocederButton.BackgroundImage = Properties.Resources.flecha_izquierda; 
+            retrocederButton.BackgroundImageLayout = ImageLayout.Stretch; 
             retrocederButton.FlatStyle = FlatStyle.Flat; // Establece el estilo del botón como Flat
             retrocederButton.FlatAppearance.BorderSize = 1; // Establece el ancho del borde a 1
             retrocederButton.FlatAppearance.BorderColor = colorFondo; // Establece el color del borde como el color del fondo del formulario
@@ -133,16 +134,30 @@ namespace Prueba_Libro
 
             // Crea el botón "Avanzar" con la imagen rotada
             Button avanzarButton = new Button();
-            avanzarButton.Size = new Size(50, 50); // Ajusta el tamaño según el tamaño de tu imagen
-            avanzarButton.Location = new Point(400, 250); // Ajusta la posición según la ubicación deseada
-            avanzarButton.BackgroundImage = imagenAvanzar; // Usa la imagen rotada como fondo del botón
-            avanzarButton.BackgroundImageLayout = ImageLayout.Stretch; // Ajusta el diseño de la imagen según tus necesidades
-            avanzarButton.FlatStyle = FlatStyle.Flat; // Establece el estilo del botón como Flat
+            avanzarButton.Size = new Size(50, 50);
+            avanzarButton.Location = new Point(400, 250); 
+            avanzarButton.BackgroundImage = imagenAvanzar; 
+            avanzarButton.BackgroundImageLayout = ImageLayout.Stretch; 
+            avanzarButton.FlatStyle = FlatStyle.Flat; 
             avanzarButton.FlatAppearance.BorderSize = 1; // Establece el ancho del borde a 1
             avanzarButton.FlatAppearance.BorderColor = colorFondo; // Establece el color del borde como el color del fondo del formulario
             avanzarButton.BackColor = colorFondo; // Establece el color de fondo del botón como el color del fondo del formulario
             avanzarButton.Click += AvanzarButton_Click; // Asigna el evento de clic
             Controls.Add(avanzarButton);
+
+            // Crear el botón de mute
+            muteButton = new Button();
+            muteButton.Size = new Size(40, 40); // Tamaño del botón
+            muteButton.Location = new Point(volumeTrackBar.Left, volumeTrackBar.Top - muteButton.Height - 5); // Posición debajo del control de volumen
+            muteButton.FlatStyle = FlatStyle.Flat; // Estilo del botón
+            muteButton.FlatAppearance.BorderSize = 0; // Sin borde
+
+            // Cargar la imagen de volumen y asignarla al botón
+            Image volumeImage = Properties.Resources.volumen;
+            muteButton.BackgroundImage = volumeImage; // Asignar imagen al fondo del botón
+            muteButton.BackgroundImageLayout = ImageLayout.Zoom; // Ajuste de imagen          
+            muteButton.Click += MuteButton_Click;          
+            Controls.Add(muteButton);
 
 
 
@@ -157,6 +172,7 @@ namespace Prueba_Libro
 
                 // Asigna el lector de archivos MP3 al dispositivo de salida
                 waveOutDevice.Init(mp3FileReader);
+                
 
                 // Asigna el máximo valor de la barra de desplazamiento al tiempo total del audio
                 trackBar.Maximum = (int)mp3FileReader.TotalTime.TotalSeconds;
@@ -177,7 +193,7 @@ namespace Prueba_Libro
             }
         }
 
-      
+     
 
         private void AvanzarButton_Click(object sender, EventArgs e)
         {
@@ -207,7 +223,7 @@ namespace Prueba_Libro
                 // Retrocede 10 segundos
                 TimeSpan nuevaPosicion = mp3FileReader.CurrentTime.Subtract(TimeSpan.FromSeconds(10));
 
-                // Asegúrate de que la nueva posición no sea negativa
+             
                 if (nuevaPosicion.TotalSeconds < 0)
                     nuevaPosicion = TimeSpan.Zero;
 
@@ -235,8 +251,8 @@ namespace Prueba_Libro
             }
             else
             {
-                this.BackColor = SystemColors.Control; // Cambiar el color al estado natural
-                pictureBox.Image = Properties.Resources.Logo_bibliotechnia_SinFondo; 
+                this.BackColor = SystemColors.Control; // Cambiar el color al estado natural 
+                pictureBox.Image = Properties.Resources.Logo_bibliotechnia_SinFondo;
                 pictureBox.Size = new Size(400, 400);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox.Location = new Point(30, -150);
@@ -284,16 +300,81 @@ namespace Prueba_Libro
 
         private void PlayPauseButton_Click(object sender, EventArgs e)
         {
-            // Si la reproducción está en pausa, reanuda; si no, pausa
-            if (waveOutDevice.PlaybackState == PlaybackState.Paused)
+            // Cambia el estado del botón
+            isPlaying = !isPlaying;
+
+            // Si la reproducción está en curso, pausa; si no, reanuda
+            if (isPlaying)
             {
-                waveOutDevice.Play();
+                if (waveOutDevice.PlaybackState == PlaybackState.Playing)
+                {
+                    waveOutDevice.Pause();
+                    // Agrega un filtro rojo al botón cuando está en pausa
+                    playPauseButton.BackColor = Color.Red;
+                    // Actualiza el texto del label
+                    statusLabel1.Text = "Pausa";
+                }
             }
             else
             {
-                waveOutDevice.Pause();
+                // Si la reproducción está en pausa, reanuda; si no, no hace nada
+                if (waveOutDevice.PlaybackState == PlaybackState.Paused)
+                {
+                    waveOutDevice.Play();
+                    // Quita el filtro rojo cuando se reanuda la reproducción
+                    playPauseButton.BackColor = DefaultBackColor;
+                    // Actualiza el texto del label
+                    statusLabel1.Text = "Reproduciendo";
+                }
             }
         }
+
+        private void MuteButton_Click(object sender, EventArgs e)
+        {
+            // Cambiar el estado de silencio
+            isMuted = !isMuted;
+
+            // Si está en silencio, establecer el volumen en cero y cambiar el color del botón a rojo
+            if (isMuted)
+            {
+                volumeTrackBar.Value = 0;
+                muteButton.BackColor = Color.Red;
+            }
+            else
+            {
+                // Si no está en silencio, restaurar el volumen original y cambiar el color del botón al color del formulario
+                volumeTrackBar.Value = 50; // O cualquier valor deseado
+                muteButton.BackColor = this.BackColor;
+            }
+
+            // Ajustar el volumen según el valor actual de la barra de desplazamiento
+            VolumeTrackBar_Scroll(null, null);
+        }
+
+
+
+
+
+        private void UpdatePlayPauseButtonImage()
+        {
+            // Si la reproducción está en pausa, muestra la imagen de play; si no, muestra la imagen de pausa
+            if (waveOutDevice.PlaybackState == PlaybackState.Paused)
+            {
+                playPauseButton.Image = playImage;
+            }
+            else
+            {
+                playPauseButton.Image = pauseImage;
+            }
+        }
+
+        private void WaveOutDevice_PlaybackStopped(object sender, StoppedEventArgs e)
+        {
+            // Cuando la reproducción se detiene, actualiza la imagen del botón
+            UpdatePlayPauseButtonImage();
+        }
+
+
 
 
         private void RestartButton_Click(object sender, EventArgs e)
@@ -334,6 +415,21 @@ namespace Prueba_Libro
             }
 
             base.OnFormClosing(e);
+        }
+
+        private void ReproductorAudio_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cincoSegundosMenos_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
